@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @matter.nombre %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @matter.cantidad %>
+</p>
+
+<p>
+  <strong>Medida:</strong>
+  <%= @matter.medida %>
+</p>
+
+<p>
+  <strong>Saldo:</strong>
+  <%= @matter.saldo %>
+</p>
+
+<p>
+  <strong>Fecha ingreso:</strong>
+  <%= @matter.fecha_ingreso %>
+</p>
+
+<p>
+  <strong>Fecha utiliza:</strong>
+  <%= @matter.fecha_utiliza %>
+</p>
+
+<%= link_to 'Edit', edit_matter_path(@matter) %> |
+<%= link_to 'Back', matters_path %>

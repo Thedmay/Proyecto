@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bill:</strong>
+  <%= @bill_product.Bill %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @bill_product.Product %>
+</p>
+
+<%= link_to 'Edit', edit_bill_product_path(@bill_product) %> |
+<%= link_to 'Back', bill_products_path %>

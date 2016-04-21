@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @bill.numero %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @bill.fecha %>
+</p>
+
+<p>
+  <strong>Razon social:</strong>
+  <%= @bill.razon_social %>
+</p>
+
+<p>
+  <strong>Giro comercial:</strong>
+  <%= @bill.giro_comercial %>
+</p>
+
+<p>
+  <strong>Monto neto:</strong>
+  <%= @bill.monto_neto %>
+</p>
+
+<p>
+  <strong>Iva:</strong>
+  <%= @bill.iva %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @bill.total %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @bill.Customer %>
+</p>
+
+<%= link_to 'Edit', edit_bill_path(@bill) %> |
+<%= link_to 'Back', bills_path %>

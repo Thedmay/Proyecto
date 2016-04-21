@@ -1,0 +1,33 @@
+<%= form_for(@assistance) do |f| %>
+  <% if @assistance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assistance.errors.count, "error") %> prohibited this assistance from being saved:</h2>
+
+      <ul>
+      <% @assistance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :asiste %><br>
+    <%= f.check_box :asiste %>
+  </div>
+  <div class="field">
+    <%= f.label :licencia %><br>
+    <%= f.check_box :licencia %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha %><br>
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :Employee_id %><br>
+    <%= f.text_field :Employee_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

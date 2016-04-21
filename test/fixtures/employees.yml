@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  rut: MyString
+  clave: MyString
+  email: MyString
+  sueldo: 1.5
+  fecha_ingreso: 2016-04-17
+
+two:
+  nombre: MyString
+  rut: MyString
+  clave: MyString
+  email: MyString
+  sueldo: 1.5
+  fecha_ingreso: 2016-04-17

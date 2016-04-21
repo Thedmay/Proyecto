@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Customer Matters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Matter</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customer_matters.each do |customer_matter| %>
+      <tr>
+        <td><%= customer_matter.Customer %></td>
+        <td><%= customer_matter.Matter %></td>
+        <td><%= link_to 'Show', customer_matter %></td>
+        <td><%= link_to 'Edit', edit_customer_matter_path(customer_matter) %></td>
+        <td><%= link_to 'Destroy', customer_matter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer matter', new_customer_matter_path %>
