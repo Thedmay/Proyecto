@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :bill_products
+  resources :bill_products
+  resources :bill_products
+  resources :bill_products
+  resources :products
+  resources :categories
+  resources :customer_matters
+  resources :matters
+  resources :bills
+  resources :orders
+  resources :customers
+  resources :assistances
   resources :assistances
   resources :matter_products
   resources :bill_products

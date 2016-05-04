@@ -1,3 +1,3 @@
 class Bill < ActiveRecord::Base
-  belongs_to :Customer
+  belongs_to :customer
 end

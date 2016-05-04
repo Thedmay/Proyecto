@@ -14,8 +14,8 @@
   <tbody>
     <% @customer_matters.each do |customer_matter| %>
       <tr>
-        <td><%= customer_matter.Customer %></td>
-        <td><%= customer_matter.Matter %></td>
+        <td><%= customer_matter.customer %></td>
+        <td><%= customer_matter.matter %></td>
         <td><%= link_to 'Show', customer_matter %></td>
         <td><%= link_to 'Edit', edit_customer_matter_path(customer_matter) %></td>
         <td><%= link_to 'Destroy', customer_matter, method: :delete, data: { confirm: 'Are you sure?' } %></td>

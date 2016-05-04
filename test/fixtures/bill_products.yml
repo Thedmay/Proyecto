@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  Bill_id: 
-  Product_id: 
+  bill_id: 
+  product_id: 
 
 two:
-  Bill_id: 
-  Product_id: 
+  bill_id: 
+  product_id: 

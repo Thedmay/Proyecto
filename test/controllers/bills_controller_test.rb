@@ -18,7 +18,7 @@ class BillsControllerTest < ActionController::TestCase
 
   test "should create bill" do
     assert_difference('Bill.count') do
-      post :create, bill: { Customer_id: @bill.Customer_id, fecha: @bill.fecha, giro_comercial: @bill.giro_comercial, iva: @bill.iva, monto_neto: @bill.monto_neto, numero: @bill.numero, razon_social: @bill.razon_social, total: @bill.total }
+      post :create, bill: { customer_id: @bill.customer_id, fecha: @bill.fecha, giro_comercial: @bill.giro_comercial, iva: @bill.iva, monto_neto: @bill.monto_neto, numero: @bill.numero, razon_social: @bill.razon_social, total: @bill.total }
     end
 
     assert_redirected_to bill_path(assigns(:bill))
@@ -35,7 +35,7 @@ class BillsControllerTest < ActionController::TestCase
   end
 
   test "should update bill" do
-    patch :update, id: @bill, bill: { Customer_id: @bill.Customer_id, fecha: @bill.fecha, giro_comercial: @bill.giro_comercial, iva: @bill.iva, monto_neto: @bill.monto_neto, numero: @bill.numero, razon_social: @bill.razon_social, total: @bill.total }
+    patch :update, id: @bill, bill: { customer_id: @bill.customer_id, fecha: @bill.fecha, giro_comercial: @bill.giro_comercial, iva: @bill.iva, monto_neto: @bill.monto_neto, numero: @bill.numero, razon_social: @bill.razon_social, total: @bill.total }
     assert_redirected_to bill_path(assigns(:bill))
   end
 

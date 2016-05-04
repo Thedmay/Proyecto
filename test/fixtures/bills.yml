@@ -2,20 +2,20 @@
 
 one:
   numero: 1
-  fecha: 2016-04-17
+  fecha: 2016-04-21
   razon_social: MyString
   giro_comercial: MyString
   monto_neto: 1.5
   iva: 1.5
   total: 1.5
-  Customer_id: 
+  customer_id: 
 
 two:
   numero: 1
-  fecha: 2016-04-17
+  fecha: 2016-04-21
   razon_social: MyString
   giro_comercial: MyString
   monto_neto: 1.5
   iva: 1.5
   total: 1.5
-  Customer_id: 
+  customer_id: 

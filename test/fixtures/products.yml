@@ -6,8 +6,8 @@ one:
   unidades: 1.5
   cantidad: 1.5
   medida: MyString
-  fecha_produce: 2016-04-17
-  Category_id: 
+  fecha_produce: 2016-04-21
+  category_id: 
 
 two:
   nombre: MyString
@@ -15,5 +15,5 @@ two:
   unidades: 1.5
   cantidad: 1.5
   medida: MyString
-  fecha_produce: 2016-04-17
-  Category_id: 
+  fecha_produce: 2016-04-21
+  category_id: 

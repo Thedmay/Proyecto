@@ -4,7 +4,7 @@ class CreateAssistances < ActiveRecord::Migration
       t.boolean :asiste
       t.boolean :licencia
       t.date :fecha
-      t.references :Employee, index: true, foreign_key: true
+      t.references :employee, index: true, foreign_key: true
 
       t.timestamps null: false
     end

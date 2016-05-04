@@ -2,16 +2,16 @@
 
 one:
   numero: 1
-  fecha: 2016-04-17
+  fecha: 2016-04-21
   detalle: MyString
   cantidad: 1.5
   medida: MyString
-  Customer_id: 
+  customer_id: 
 
 two:
   numero: 1
-  fecha: 2016-04-17
+  fecha: 2016-04-21
   detalle: MyString
   cantidad: 1.5
   medida: MyString
-  Customer_id: 
+  customer_id: 

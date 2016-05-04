@@ -69,6 +69,6 @@ class BillProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_product_params
-      params.require(:bill_product).permit(:Bill_id, :Product_id)
+      params.require(:bill_product).permit(:bill_id, :product_id)
     end
 end

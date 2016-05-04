@@ -1,4 +1,4 @@
 class CustomerMatter < ActiveRecord::Base
-  belongs_to :Customer
-  belongs_to :Matter
+  belongs_to :customer
+  belongs_to :matter
 end

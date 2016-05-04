@@ -14,8 +14,8 @@
   <tbody>
     <% @bill_products.each do |bill_product| %>
       <tr>
-        <td><%= bill_product.Bill %></td>
-        <td><%= bill_product.Product %></td>
+        <td><%= bill_product.bill %></td>
+        <td><%= bill_product.product %></td>
         <td><%= link_to 'Show', bill_product %></td>
         <td><%= link_to 'Edit', edit_bill_product_path(bill_product) %></td>
         <td><%= link_to 'Destroy', bill_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

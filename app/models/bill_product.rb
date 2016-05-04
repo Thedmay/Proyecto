@@ -1,4 +1,4 @@
 class BillProduct < ActiveRecord::Base
-  belongs_to :Bill
-  belongs_to :Product
+  belongs_to :bill
+  belongs_to :product
 end
