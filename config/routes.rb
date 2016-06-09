@@ -1,40 +1,13 @@
 Rails.application.routes.draw do
-  resources :bill_products
-  resources :bill_products
-  resources :bill_products
-  resources :bill_products
-  resources :products
-  resources :categories
-  resources :customer_matters
-  resources :matters
+  resources :assistances
   resources :bills
-  resources :orders
-  resources :customers
-  resources :assistances
-  resources :assistances
-  resources :matter_products
-  resources :bill_products
-  resources :products
   resources :categories
-  resources :customer_matters
-  resources :matters
-  resources :bills
-  resources :orders
   resources :customers
-  resources :assistances
   resources :employees
+  resources :matters
+  resources :orders
+  resources :products
   devise_for :usuarios
-  resources :assistances
-  resources :employees
-  resources :matter_products
-  resources :bill_products
-  resources :products
-  resources :categories
-  resources :customer_matters
-  resources :matters
-  resources :bills
-  resources :orders
-  resources :customers
   
   get 'welcome/index'
   # The priority is based upon order of creation: first created -> highest priority.

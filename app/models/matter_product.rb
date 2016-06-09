@@ -1,4 +1,4 @@
 class MatterProduct < ActiveRecord::Base
-  belongs_to :Matter
-  belongs_to :Product
+  belongs_to :matter
+  belongs_to :matter
 end

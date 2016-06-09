@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421202346) do
+ActiveRecord::Schema.define(version: 20160609175525) do
 
   create_table "assistances", force: :cascade do |t|
     t.boolean  "asiste"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160421202346) do
   create_table "bill_products", force: :cascade do |t|
     t.integer  "bill_id",    limit: 4
     t.integer  "product_id", limit: 4
+    t.integer  "cantidad",   limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160421202346) do
   create_table "customer_matters", force: :cascade do |t|
     t.integer  "customer_id", limit: 4
     t.integer  "matter_id",   limit: 4
+    t.integer  "cantidad",    limit: 4
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
@@ -86,6 +88,20 @@ ActiveRecord::Schema.define(version: 20160421202346) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "matter_products", force: :cascade do |t|
+    t.integer  "matter_id",  limit: 4
+    t.integer  "product_id", limit: 4
+    t.string   "nombre",     limit: 255
+    t.date     "fecha"
+    t.integer  "cantidad",   limit: 4
+    t.string   "medida",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "matter_products", ["matter_id"], name: "index_matter_products_on_matter_id", using: :btree
+  add_index "matter_products", ["product_id"], name: "index_matter_products_on_product_id", using: :btree
+
   create_table "matters", force: :cascade do |t|
     t.string   "nombre",        limit: 255
     t.float    "cantidad",      limit: 24
@@ -96,6 +112,17 @@ ActiveRecord::Schema.define(version: 20160421202346) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer  "order_id",   limit: 4
+    t.integer  "product_id", limit: 4
+    t.integer  "cantidad",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "order_products", ["order_id"], name: "index_order_products_on_order_id", using: :btree
+  add_index "order_products", ["product_id"], name: "index_order_products_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "numero",      limit: 4
@@ -149,6 +176,10 @@ ActiveRecord::Schema.define(version: 20160421202346) do
   add_foreign_key "bills", "customers"
   add_foreign_key "customer_matters", "customers"
   add_foreign_key "customer_matters", "matters"
+  add_foreign_key "matter_products", "matters"
+  add_foreign_key "matter_products", "products"
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "products"
   add_foreign_key "orders", "customers"
   add_foreign_key "products", "categories"
 end

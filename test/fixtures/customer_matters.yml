@@ -3,7 +3,9 @@
 one:
   customer_id: 
   matter_id: 
+  cantidad: 
 
 two:
   customer_id: 
   matter_id: 
+  cantidad: 

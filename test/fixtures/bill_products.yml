@@ -3,7 +3,9 @@
 one:
   bill_id: 
   product_id: 
+  cantidad: 
 
 two:
   bill_id: 
   product_id: 
+  cantidad: 

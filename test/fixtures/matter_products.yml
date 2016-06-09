@@ -1,19 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  matter_id: 
+  matter_id: 
   nombre: MyString
-  fecha: 2016-04-17
-  materia: MyString
-  cantidad: 1.5
+  fecha: 2016-06-09
+  cantidad: 
   medida: MyString
-  Matter_id: 
-  Product_id: 
 
 two:
+  matter_id: 
+  matter_id: 
   nombre: MyString
-  fecha: 2016-04-17
-  materia: MyString
-  cantidad: 1.5
+  fecha: 2016-06-09
+  cantidad: 
   medida: MyString
-  Matter_id: 
-  Product_id: 
