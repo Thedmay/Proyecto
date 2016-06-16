@@ -8,27 +8,75 @@
 </head>
 <body>
 	<header>
-		<nav>
-			<ul class="nav nav-tabs">
-				<li>
-					<%= link_to "Inicio",root_path %>
-					<% if usuario_signed_in? %>
-						<li>
-							<%= link_to "Editar Perfil", root_path %>
-							<% #edit_usuario_session_path(current_usuario) %>
-						</li>
-						<li>
-							<%= link_to "Cerrar sesion", destroy_usuario_session_path, method: :delete%>
-						</li>
-					<% else %>
-						<li>
-							<%= link_to "Ingresar", new_usuario_session_path%>
-						</li>
-						<li>
-							<%= link_to "Registrarse", new_usuario_registration_path%>
-						</li>
-					<% end %>
+		<nav class="be-blue black">
+			<ul class="row center-xs bloque">
+				<li class="col-md">
+					<b><%= link_to "Inicio",root_path %></b>
 				</li>
+				<% if usuario_signed_in? %>
+					<li class="col-md">
+						<a class="black">Empleados</a>
+						<ul>
+							<li class=""><%= link_to  "Agregar", new_employee_path%></li>
+							<li class=""><%= link_to  "Buscar", root_path%></li>
+							<li class=""><%= link_to  "Listar", employees_path%></li>
+						</ul>
+					</li>
+					<li class="col-md">
+						<a class="black">Clientes</a>
+						<ul>
+							<li class=""><%= link_to  "Agregar", new_customer_path%></li>
+							<li class=""><%= link_to  "Buscar", root_path%></li>
+							<li class=""><%= link_to  "Listar", customers_path%></li>
+						</ul>
+					</li>
+					<li class="col-md">
+						<a class="black">Facturas</a>
+						<ul>
+							<li class=""><%= link_to  "Agregar", new_customer_path%></li>
+							<li class=""><%= link_to  "Buscar", root_path%></li>
+							<li class=""><%= link_to  "Listar", customers_path%></li>
+						</ul>
+					</li>
+					<li class="col-md">
+						<a class="black">Productos</a>
+						<ul>
+							<li class=""><%= link_to  "Agregar", new_product_path%></li>
+							<li class=""><%= link_to  "Buscar", root_path%></li>
+							<li class=""><%= link_to  "Listar", products_path%></li>
+						</ul>
+					</li>
+					<li class="col-md">
+						<a class="black">Materias</a>
+						<ul>
+							<li class=""><%= link_to  "Agregar", new_matter_path%></li>
+							<li class=""><%= link_to  "Buscar", root_path%></li>
+							<li class=""><%= link_to  "Listar", matters_path%></li>
+						</ul>
+					</li>
+					<li class="col-md">
+						<a class="black">Pedido</a>
+						<ul>
+							<li class=""><%= link_to  "Agregar", new_order_path%></li>
+							<li class=""><%= link_to  "Buscar", root_path%></li>
+							<li class=""><%= link_to  "Listar", orders_path%></li>
+						</ul>
+					</li>
+					<li class="col-md">
+						<%= link_to "Editar Perfil", root_path %>
+						<% #edit_usuario_session_path(current_usuario) %>
+					</li>
+					<li class="col-md">
+						<%= link_to "Cerrar sesion", destroy_usuario_session_path, method: :delete%>
+					</li>
+				<% else %>
+					<li class="col-md">
+						<%= link_to "Ingresar", new_usuario_session_path%>
+					</li>
+					<li class="col-md">
+						<%= link_to "Registrarse", new_usuario_registration_path%>
+					</li>
+					<% end %>
 			</ul>
 		</nav>
 	</header>

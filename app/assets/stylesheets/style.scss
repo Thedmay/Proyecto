@@ -1,0 +1,35 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+.be-blue{
+	background-color:#383838;
+}
+.black{
+	color: #f1f1f1 !important;
+}
+a:visited{
+	color: inherit !important;
+}
+ul{
+	list-style:none;
+}		
+.bloque li a {
+	background-color:#383838;
+	color:#f1f1f1;
+	text-decoration:none;
+	display:block;
+	padding: 10px 10px;
+	opacity: 0.8;
+}		
+.bloque li a:hover {
+	background-color:#174C4F;
+}
+.bloque li ul {
+	display:none;
+	position:absolute;
+	min-width:135px;
+}		
+.bloque li:hover > ul {
+	display:block;
+}
