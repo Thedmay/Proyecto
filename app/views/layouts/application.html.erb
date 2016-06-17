@@ -8,14 +8,14 @@
 </head>
 <body>
 	<header>
-		<nav class="be-blue black">
+		<nav class="be-blue blanco">
 			<ul class="row center-xs bloque">
-				<li class="col-md">
+				<li class="col-md tamaño">
 					<b><%= link_to "Inicio",root_path %></b>
 				</li>
 				<% if usuario_signed_in? %>
 					<li class="col-md">
-						<a class="black">Empleados</a>
+						<a class="holy">Empleados</a>
 						<ul>
 							<li class=""><%= link_to  "Agregar", new_employee_path%></li>
 							<li class=""><%= link_to  "Buscar", root_path%></li>
@@ -23,7 +23,7 @@
 						</ul>
 					</li>
 					<li class="col-md">
-						<a class="black">Clientes</a>
+						<a class="">Clientes</a>
 						<ul>
 							<li class=""><%= link_to  "Agregar", new_customer_path%></li>
 							<li class=""><%= link_to  "Buscar", root_path%></li>
@@ -31,7 +31,7 @@
 						</ul>
 					</li>
 					<li class="col-md">
-						<a class="black">Facturas</a>
+						<a class="">Facturas</a>
 						<ul>
 							<li class=""><%= link_to  "Agregar", new_customer_path%></li>
 							<li class=""><%= link_to  "Buscar", root_path%></li>
@@ -39,7 +39,7 @@
 						</ul>
 					</li>
 					<li class="col-md">
-						<a class="black">Productos</a>
+						<a class="">Productos</a>
 						<ul>
 							<li class=""><%= link_to  "Agregar", new_product_path%></li>
 							<li class=""><%= link_to  "Buscar", root_path%></li>
@@ -47,7 +47,7 @@
 						</ul>
 					</li>
 					<li class="col-md">
-						<a class="black">Materias</a>
+						<a class="">Materias</a>
 						<ul>
 							<li class=""><%= link_to  "Agregar", new_matter_path%></li>
 							<li class=""><%= link_to  "Buscar", root_path%></li>
@@ -55,7 +55,7 @@
 						</ul>
 					</li>
 					<li class="col-md">
-						<a class="black">Pedido</a>
+						<a class="">Pedido</a>
 						<ul>
 							<li class=""><%= link_to  "Agregar", new_order_path%></li>
 							<li class=""><%= link_to  "Buscar", root_path%></li>
@@ -63,11 +63,20 @@
 						</ul>
 					</li>
 					<li class="col-md">
-						<%= link_to "Editar Perfil", root_path %>
-						<% #edit_usuario_session_path(current_usuario) %>
+						<a>Asistencia</a>
 					</li>
 					<li class="col-md">
-						<%= link_to "Cerrar sesion", destroy_usuario_session_path, method: :delete%>
+						<a><span class="icon-cog"></span></a>
+						<ul>
+							<li class="">
+								<%= link_to "Editar Perfil", root_path %>
+								<% #edit_usuario_session_path(current_usuario) %>
+							</li>
+							<li>
+								<%= link_to "Cerrar sesion", destroy_usuario_session_path, method: :delete%>
+							</li>
+						</ul>
+						
 					</li>
 				<% else %>
 					<li class="col-md">
