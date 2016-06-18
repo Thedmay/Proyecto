@@ -8,7 +8,7 @@
 </head>
 <body>
 	<header>
-		<nav class="be-blue blanco">
+		<nav class="be-gray blanco">
 			<ul class="row center-xs bloque">
 				<li class="col-md tamaño">
 					<b><%= link_to "Inicio",root_path %></b>
@@ -33,9 +33,9 @@
 					<li class="col-md">
 						<a class="">Facturas</a>
 						<ul>
-							<li class=""><%= link_to  "Agregar", new_customer_path%></li>
+							<li class=""><%= link_to  "Agregar", new_bill_path%></li>
 							<li class=""><%= link_to  "Buscar", root_path%></li>
-							<li class=""><%= link_to  "Listar", customers_path%></li>
+							<li class=""><%= link_to  "Listar", bills_path%></li>
 						</ul>
 					</li>
 					<li class="col-md">
@@ -91,6 +91,8 @@
 	</header>
 	<p class="notice" style="<%="display:none;" if notice.nil? %>"><%= notice %></p>
 	<p class="alert" "<%="display:none;" if alert.nil? %>"><%= alert %></p>
-	<%= yield %>
+	<div class="margen">
+		<%= yield %>
+	</div>
 </body>
 </html>

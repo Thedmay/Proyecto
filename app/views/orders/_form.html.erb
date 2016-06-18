@@ -32,8 +32,8 @@
     <%= f.text_field :medida %>
   </div>
   <div class="field">
-    <%= f.label :customer_id %><br>
-    <%= f.text_field :customer_id %>
+    <%= f.label :customer_id%>
+    <%= collection_select( :order, :customer_id, Customer.all, :id, :nombre, {}, { :multiple => false})%>
   </div>
   <div class="actions">
     <%= f.submit %>

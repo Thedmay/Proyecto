@@ -40,8 +40,8 @@
     <%= f.text_field :total %>
   </div>
   <div class="field">
-    <%= f.label :customer_id %><br>
-    <%= f.text_field :customer_id %>
+    <%= f.label :customer_id%>
+    <%= collection_select( :bill, :customer_id, Customer.all, :id, :nombre, {}, { :multiple => false})%>
   </div>
   <div class="actions">
     <%= f.submit %>
