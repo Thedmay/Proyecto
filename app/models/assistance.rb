@@ -1,3 +1,4 @@
 class Assistance < ActiveRecord::Base
-  belongs_to :Employee
+  belongs_to :fecha
+  belongs_to :employee
 end

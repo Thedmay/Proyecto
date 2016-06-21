@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @matters = Matter.all
   end
 
   # GET /products/1/edit
@@ -25,6 +26,8 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @product.cantidades = params[:cantidades]
+    @product.matters = params[:matters]
 
     respond_to do |format|
       if @product.save
@@ -69,6 +72,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:nombre, :codigo, :unidades, :cantidad, :medida, :fecha_produce, :category_id)
+      params.require(:product).permit(:nombre, :codigo, :unidades, :cantidad, :medida, :fecha_produce, :category_id, :cantidades, :matters)
     end
 end

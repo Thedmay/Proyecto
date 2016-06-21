@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Fechas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dia</th>
+      <th>Mes</th>
+      <th>Año</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fechas.each do |fecha| %>
+      <tr>
+        <td><%= fecha.dia %></td>
+        <td><%= fecha.mes %></td>
+        <td><%= fecha.año %></td>
+        <td><%= link_to 'Show', fecha %></td>
+        <td><%= link_to 'Edit', edit_fecha_path(fecha) %></td>
+        <td><%= link_to 'Destroy', fecha, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fecha', new_fecha_path %>

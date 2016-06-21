@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Unidades</th>
+      <th>Cantidad</th>
+      <th>Medida</th>
+      <th>Fecha produce</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%i=0
+    while i < productos.size() %>
+      <tr>
+        <td><%= productos.at(i).nombre%></td>
+        <td><%= productos.at(i).codigo %></td>
+        <td><%= productos.at(i).unidades %></td>
+        <td><%= cantidades.at(i).cantidad %></td>
+        <td><%= productos.at(i).medida %></td>
+        <td><%= productos.at(i).fecha_produce %></td>
+        <td><%= productos.at(i).category.nombre %></td>
+      </tr>
+      <%i+=1%>
+    <% end %>
+  </tbody>
+</table>

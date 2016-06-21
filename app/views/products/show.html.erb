@@ -32,8 +32,10 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @product.category %>
+  <%= @product.category.nombre %>
 </p>
+
+<%= render '/tableMatters2', materiales: @product.matters%>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

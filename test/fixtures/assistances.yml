@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  fecha_id: 
+  employee_id: 
   asiste: false
-  licencia: false
-  fecha: 2016-04-21
-  Employee_id: 
 
 two:
+  fecha_id: 
+  employee_id: 
   asiste: false
-  licencia: false
-  fecha: 2016-04-21
-  Employee_id: 

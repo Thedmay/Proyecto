@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dia: 1
+  mes: 1
+  año: 1
+
+two:
+  dia: 1
+  mes: 1
+  año: 1

@@ -35,6 +35,9 @@
     <%= f.label :customer_id%>
     <%= collection_select( :order, :customer_id, Customer.all, :id, :nombre, {}, { :multiple => false})%>
   </div>
+
+  <%= render '/tableProducts1', productos: productos %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,0 +1,33 @@
+<%= form_for(@lincense) do |f| %>
+  <% if @lincense.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lincense.errors.count, "error") %> prohibited this lincense from being saved:</h2>
+
+      <ul>
+      <% @lincense.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :employee_id %><br>
+    <%= f.text_field :employee_id %>
+  </div>
+  <div class="field">
+    <%= f.label :fechaInicio %><br>
+    <%= f.date_select :fechaInicio %>
+  </div>
+  <div class="field">
+    <%= f.label :duracion %><br>
+    <%= f.number_field :duracion %>
+  </div>
+  <div class="field">
+    <%= f.label :detalle %><br>
+    <%= f.text_area :detalle %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

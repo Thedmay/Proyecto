@@ -1,0 +1,27 @@
+<label>Materiales</label>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Cantidad??</th>
+          <th>Medida</th>
+          <th>Saldo</th>
+          <th>Fecha ingreso</th>
+          <th>Fecha utiliza</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% materiales.each do |matter| %>
+          <tr>
+            <td><%= check_box_tag "matters[]", matter.id %><%=matter.nombre%></td>
+            <td><%= matter.cantidad %></td>
+            <td><%= matter.medida %></td>
+            <td><%= matter.saldo %></td>
+            <td><%= matter.fecha_ingreso %></td>
+            <td><%= matter.fecha_utiliza %></td></td>
+            <td><%= number_field_tag "cantidades[]" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609175525) do
+ActiveRecord::Schema.define(version: 20160621063931) do
 
   create_table "assistances", force: :cascade do |t|
-    t.boolean  "asiste"
-    t.boolean  "licencia"
-    t.date     "fecha"
+    t.integer  "fecha_id",    limit: 4
     t.integer  "employee_id", limit: 4
+    t.boolean  "asiste"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
 
   add_index "assistances", ["employee_id"], name: "index_assistances_on_employee_id", using: :btree
+  add_index "assistances", ["fecha_id"], name: "index_assistances_on_fecha_id", using: :btree
 
   create_table "bill_products", force: :cascade do |t|
     t.integer  "bill_id",    limit: 4
@@ -88,15 +88,31 @@ ActiveRecord::Schema.define(version: 20160609175525) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "fechas", force: :cascade do |t|
+    t.integer  "dia",        limit: 4
+    t.integer  "mes",        limit: 4
+    t.integer  "año",        limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "lincenses", force: :cascade do |t|
+    t.integer  "employee_id", limit: 4
+    t.date     "fechaInicio"
+    t.integer  "duracion",    limit: 4
+    t.text     "detalle",     limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "lincenses", ["employee_id"], name: "index_lincenses_on_employee_id", using: :btree
+
   create_table "matter_products", force: :cascade do |t|
     t.integer  "matter_id",  limit: 4
     t.integer  "product_id", limit: 4
-    t.string   "nombre",     limit: 255
-    t.date     "fecha"
     t.integer  "cantidad",   limit: 4
-    t.string   "medida",     limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_index "matter_products", ["matter_id"], name: "index_matter_products_on_matter_id", using: :btree
@@ -171,11 +187,13 @@ ActiveRecord::Schema.define(version: 20160609175525) do
   add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "assistances", "employees"
+  add_foreign_key "assistances", "fechas"
   add_foreign_key "bill_products", "bills"
   add_foreign_key "bill_products", "products"
   add_foreign_key "bills", "customers"
   add_foreign_key "customer_matters", "customers"
   add_foreign_key "customer_matters", "matters"
+  add_foreign_key "lincenses", "employees"
   add_foreign_key "matter_products", "matters"
   add_foreign_key "matter_products", "products"
   add_foreign_key "order_products", "orders"

@@ -5,10 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Asiste</th>
-      <th>Licencia</th>
       <th>Fecha</th>
       <th>Employee</th>
+      <th>Asiste</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,9 @@
   <tbody>
     <% @assistances.each do |assistance| %>
       <tr>
-        <td><%= assistance.asiste %></td>
-        <td><%= assistance.licencia %></td>
         <td><%= assistance.fecha %></td>
-        <td><%= assistance.Employee %></td>
+        <td><%= assistance.employee %></td>
+        <td><%= assistance.asiste %></td>
         <td><%= link_to 'Show', assistance %></td>
         <td><%= link_to 'Edit', edit_assistance_path(assistance) %></td>
         <td><%= link_to 'Destroy', assistance, method: :delete, data: { confirm: 'Are you sure?' } %></td>

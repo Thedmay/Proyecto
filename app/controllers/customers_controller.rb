@@ -15,6 +15,7 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
+    @matters = Matter.all
   end
 
   # GET /customers/1/edit
@@ -25,6 +26,8 @@ class CustomersController < ApplicationController
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
+    @customer.cantidades = params[:cantidades]
+    @customer.matters = params[:matters]
 
     respond_to do |format|
       if @customer.save
@@ -69,6 +72,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:nombre, :rut, :telefono, :email, :direccion)
+      params.require(:customer).permit(:nombre, :rut, :telefono, :email, :direccion, :cantidades, :matters)
     end
 end

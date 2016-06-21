@@ -36,9 +36,12 @@
     <%= f.date_select :fecha_produce %>
   </div>
   <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.text_field :category_id %>
+    <%= f.label :category_id%>
+    <%= collection_select( :product, :category_id, Category.all, :id, :nombre, {}, { :multiple => false})%>
   </div>
+
+  <%= render '/tableMatters1', materiales: materiales %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

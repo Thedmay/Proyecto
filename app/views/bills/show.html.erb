@@ -40,5 +40,7 @@
   <%= @bill.customer.nombre %>
 </p>
 
+<%= render '/tableProducts2', productos: @bill.products, cantidades: @bill.bill_products %>
+
 <%= link_to 'Edit', edit_bill_path(@bill) %> |
 <%= link_to 'Back', bills_path %>

@@ -12,20 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :fecha_id %><br>
+    <%= f.text_field :fecha_id %>
+  </div>
+  <div class="field">
+    <%= f.label :employee_id %><br>
+    <%= f.text_field :employee_id %>
+  </div>
+  <div class="field">
     <%= f.label :asiste %><br>
     <%= f.check_box :asiste %>
-  </div>
-  <div class="field">
-    <%= f.label :licencia %><br>
-    <%= f.check_box :licencia %>
-  </div>
-  <div class="field">
-    <%= f.label :fecha %><br>
-    <%= f.date_select :fecha %>
-  </div>
-  <div class="field">
-    <%= f.label :Employee_id %><br>
-    <%= f.text_field :Employee_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   resources :assistances
+  resources :assistances
+  resources :lincenses
+  resources :fechas
+  resources :assistances
   resources :bills
   resources :categories
   resources :customers

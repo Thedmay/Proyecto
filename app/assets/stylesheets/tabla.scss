@@ -1,3 +1,11 @@
+table input[type=checkbox] {
+  /* All browsers except webkit*/
+  transform: scale(0.8);
+
+  /* Webkit browsers*/
+  -webkit-transform: scale(0.8);
+}
+
 table a:link {
   color: #666;
   font-weight: bold;

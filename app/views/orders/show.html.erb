@@ -30,5 +30,7 @@
   <%= @order.customer.nombre %>
 </p>
 
+<%= render '/tableProducts2', productos: @order.products, cantidades: @order.order_products %>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
