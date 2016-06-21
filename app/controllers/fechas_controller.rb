@@ -10,11 +10,13 @@ class FechasController < ApplicationController
   # GET /fechas/1
   # GET /fechas/1.json
   def show
+    @employees = Fecha.employees
   end
 
   # GET /fechas/new
   def new
     @fecha = Fecha.new
+    @employees = Employee.all
   end
 
   # GET /fechas/1/edit
@@ -25,6 +27,7 @@ class FechasController < ApplicationController
   # POST /fechas.json
   def create
     @fecha = Fecha.new(fecha_params)
+    @employees = params[:employees]
 
     respond_to do |format|
       if @fecha.save
@@ -69,6 +72,6 @@ class FechasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fecha_params
-      params.require(:fecha).permit(:dia, :mes, :año)
+      params.require(:fecha).permit(:fecha, :employees)
     end
 end

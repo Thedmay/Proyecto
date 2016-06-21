@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621063931) do
+ActiveRecord::Schema.define(version: 20160621204609) do
 
   create_table "assistances", force: :cascade do |t|
     t.integer  "fecha_id",    limit: 4
@@ -89,11 +89,9 @@ ActiveRecord::Schema.define(version: 20160621063931) do
   end
 
   create_table "fechas", force: :cascade do |t|
-    t.integer  "dia",        limit: 4
-    t.integer  "mes",        limit: 4
-    t.integer  "año",        limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date     "fecha"
   end
 
   create_table "lincenses", force: :cascade do |t|

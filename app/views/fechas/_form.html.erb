@@ -12,17 +12,33 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :dia %><br>
-    <%= f.number_field :dia %>
+    <%= f.label :Fecha %><br>
+    <%= f.date_select :fecha %>
   </div>
-  <div class="field">
-    <%= f.label :mes %><br>
-    <%= f.number_field :mes %>
-  </div>
-  <div class="field">
-    <%= f.label :año %><br>
-    <%= f.number_field :año %>
-  </div>
+  <label>Empleados</label>
+  <table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Rut</th>
+      <th>Email</th>
+      <th>Sueldo</th>
+      <th>Fecha ingreso</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% empleados.each do |employee| %>
+      <tr>
+        <td><%= check_box_tag "employees[]", matter.id %><%= employee.nombre %></td>
+        <td><%= employee.rut %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.sueldo %></td>
+        <td><%= employee.fecha_ingreso %></td>td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
   <div class="actions">
     <%= f.submit %>
   </div>

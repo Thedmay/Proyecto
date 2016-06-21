@@ -15,5 +15,30 @@
   <%= @fecha.año %>
 </p>
 
+<label>Empleados</label>
+  <table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Rut</th>
+      <th>Email</th>
+      <th>Sueldo</th>
+      <th>Fecha ingreso</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% empleados.each do |employee| %>
+      <tr>
+        <td><%= employee.nombre %></td>
+        <td><%= employee.rut %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.sueldo %></td>
+        <td><%= employee.fecha_ingreso %></td>td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_fecha_path(@fecha) %> |
 <%= link_to 'Back', fechas_path %>
