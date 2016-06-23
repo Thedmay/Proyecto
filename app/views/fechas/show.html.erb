@@ -1,18 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Dia:</strong>
-  <%= @fecha.dia %>
-</p>
-
-<p>
-  <strong>Mes:</strong>
-  <%= @fecha.mes %>
-</p>
-
-<p>
-  <strong>Año:</strong>
-  <%= @fecha.año %>
+  <strong>Fecha:</strong>
+  <%= @fecha.fecha %>
 </p>
 
 <label>Empleados</label>
@@ -28,13 +18,13 @@
   </thead>
 
   <tbody>
-    <% empleados.each do |employee| %>
+    <% @fecha.employees.each do |employee| %>
       <tr>
         <td><%= employee.nombre %></td>
         <td><%= employee.rut %></td>
         <td><%= employee.email %></td>
         <td><%= employee.sueldo %></td>
-        <td><%= employee.fecha_ingreso %></td>td>
+        <td><%= employee.fecha_ingreso %></td>
       </tr>
     <% end %>
   </tbody>

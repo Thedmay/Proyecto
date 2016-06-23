@@ -10,7 +10,7 @@ class Fecha < ActiveRecord::Base
 	def save_assistances
 		@employees.each do |employee|
 			Assistance.create(fecha_id:self.id,
-				employee_id:employee.at(i),
+				employee_id:employee,
 				asiste:true)
 		end
 	end

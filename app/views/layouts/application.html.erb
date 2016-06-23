@@ -7,93 +7,117 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<header>
-		<nav class="be-gray blanco">
-			<ul class="row center-xs bloque">
-				<li class="col-md tamaño">
-					<b><%= link_to "Inicio",root_path %></b>
-				</li>
-				<% if usuario_signed_in? %>
-					<li class="col-md">
-						<a class="holy">Empleados</a>
-						<ul>
-							<li class=""><%= link_to  "Agregar", new_employee_path%></li>
-							<li class=""><%= link_to  "Buscar", root_path%></li>
-							<li class=""><%= link_to  "Listar", employees_path%></li>
-						</ul>
-					</li>
-					<li class="col-md">
-						<a class="">Clientes</a>
-						<ul>
-							<li class=""><%= link_to  "Agregar", new_customer_path%></li>
-							<li class=""><%= link_to  "Buscar", root_path%></li>
-							<li class=""><%= link_to  "Listar", customers_path%></li>
-						</ul>
-					</li>
-					<li class="col-md">
-						<a class="">Facturas</a>
-						<ul>
-							<li class=""><%= link_to  "Agregar", new_bill_path%></li>
-							<li class=""><%= link_to  "Buscar", root_path%></li>
-							<li class=""><%= link_to  "Listar", bills_path%></li>
-						</ul>
-					</li>
-					<li class="col-md">
-						<a class="">Productos</a>
-						<ul>
-							<li class=""><%= link_to  "Agregar", new_product_path%></li>
-							<li class=""><%= link_to  "Buscar", root_path%></li>
-							<li class=""><%= link_to  "Listar", products_path%></li>
-						</ul>
-					</li>
-					<li class="col-md">
-						<a class="">Materias</a>
-						<ul>
-							<li class=""><%= link_to  "Agregar", new_matter_path%></li>
-							<li class=""><%= link_to  "Buscar", root_path%></li>
-							<li class=""><%= link_to  "Listar", matters_path%></li>
-						</ul>
-					</li>
-					<li class="col-md">
-						<a class="">Pedido</a>
-						<ul>
-							<li class=""><%= link_to  "Agregar", new_order_path%></li>
-							<li class=""><%= link_to  "Buscar", root_path%></li>
-							<li class=""><%= link_to  "Listar", orders_path%></li>
-						</ul>
-					</li>
-					<li class="col-md">
-						<a>Asistencia</a>
-						<ul>
-							<li class=""><%= link_to  "Agregar", new_fecha_path%></li>
-							<li class=""><%= link_to  "Buscar", root_path%></li>
-							<li class=""><%= link_to  "Listar", fechas_path%></li>
-						</ul>
-					</li>
-					<li class="col-md">
-						<a><span class="glyphicon glyphicon-user barra"></span></a>
-						<ul>
-							<li class="">
-								<%= link_to "Editar Perfil", root_path %>
-								<% #edit_usuario_session_path(current_usuario) %>
-							</li>
-							<li>
-								<%= link_to "Cerrar sesion", destroy_usuario_session_path, method: :delete%>
-							</li>
-						</ul>
-						
-					</li>
-				<% else %>
-					<li class="col-md">
-						<%= link_to "Ingresar", new_usuario_session_path%>
-					</li>
-					<li class="col-md">
-						<%= link_to "Registrarse", new_usuario_registration_path%>
-					</li>
-					<% end %>
-			</ul>
-		</nav>
-	</header>
+	<div id="wrap">
+		<header>
+			<div class="inner relative">
+				<a class="logo"><%= image_tag("logo.png") %></a>
+				
+				<nav id="navigation">
+					<ul id="main-menu">
+						<li class="current-menu-item"><%= link_to  "Inicio", root_path%></li>
+						<% if usuario_signed_in? %>
+						<li class="parent">
+							<a> Recursos Humanos</a>
+							<ul class="sub-menu">
+								<li>
+									<a class="parent"> Empleados</a>
+									<ul class="sub-menu">
+										<li><%= link_to  "Agregar", new_employee_path%></li>
+										<li><%= link_to  "Buscar", root_path%></li>
+										<li><%= link_to  "Listar", employees_path%></li>
+									</ul>
+								</li>
+								<li>
+									<a class="parent">Asistencia</a>
+									<ul class="sub-menu">
+										<li><%= link_to  "Agregar", new_assistance_path%></li>
+										<li><%= link_to  "Buscar", root_path%></li>
+										<li><%= link_to  "Listar", assistances_path%></li>
+									</ul>
+								</li>
+								<li>
+									<a class="parent"> Licencias</a>
+									<ul class="sub-menu">
+										<li><%= link_to  "Agregar", new_lincense_path%></li>
+										<li><%= link_to  "Buscar", root_path%></li>
+										<li><%= link_to  "Listar", lincenses_path%></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="parent">
+							<a> Elaboración</a>
+							<ul class="sub-menu">
+								<li>
+									<a class="parent"> Productos</a>
+									<ul class="sub-menu">
+										<li><%= link_to  "Agregar", new_product_path%></li>
+										<li><%= link_to  "Buscar", root_path%></li>
+										<li><%= link_to  "Listar", products_path%></li>
+									</ul>
+								</li>
+								<li>
+									<a class="parent"> Materias</a>
+									<ul class="sub-menu">
+										<li><%= link_to  "Agregar", new_matter_path%></li>
+										<li><%= link_to  "Buscar", root_path%></li>
+										<li><%= link_to  "Listar", matters_path%></li>
+									</ul>
+								</li>
+								<li>
+									<a class="parent"> Categorias</a>
+									<ul class="sub-menu">
+										<li><%= link_to  "Agregar", new_category_path%></li>
+										<li><%= link_to  "Listar", categories_path%></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="parent">
+							<a> Documentos</a>
+							<ul class="sub-menu">
+								<li>
+									<a class="parent"> Pedidos</a>
+									<ul class="sub-menu">
+										<li><%= link_to  "Agregar", new_order_path%></li>
+										<li><%= link_to  "Buscar", root_path%></li>
+										<li><%= link_to  "Listar", orders_path%></li>
+									</ul>
+								</li>
+								<li>
+									<a class="parent"> Facturas</a>
+									<ul class="sub-menu">
+										<li><%= link_to  "Agregar", new_bill_path%></li>
+										<li><%= link_to  "Buscar", root_path%></li>
+										<li><%= link_to  "Listar", bills_path%></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="parent">
+							<a> Clientes</a>
+							<ul class="sub-menu">
+								<li><%= link_to  "Agregar", new_customer_path%></li>
+								<li><%= link_to  "Buscar", root_path%></li>
+								<li><%= link_to  "Listar", customers_path%></li>>
+							</ul>
+						</li>
+						<li class="parent">
+							<a><span class="glyphicon glyphicon-user"></span></a>
+							<ul class="sub-menu">
+								<li><%= link_to "Editar Perfil", edit_usuario_registration_path %></li>
+			        		<li><%= link_to "Cerrar sesion", destroy_usuario_session_path, method: :delete%></li>
+							</ul>
+						</li>
+						<% else %>
+							<li class="current-menu-item"><%= link_to "Ingresar", new_usuario_session_path%></li>
+							<li class="current-menu-item"><%= link_to "Registrarse", new_usuario_registration_path%></li>
+						<% end %>
+					</ul>
+				</nav>
+			</div>
+		</header>	
+	</div> 
 	<p class="notice" style="<%="display:none;" if notice.nil? %>"><%= notice %></p>
 	<p class="alert" "<%="display:none;" if alert.nil? %>"><%= alert %></p>
 	<div class="margen">

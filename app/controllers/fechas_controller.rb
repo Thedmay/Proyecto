@@ -10,7 +10,6 @@ class FechasController < ApplicationController
   # GET /fechas/1
   # GET /fechas/1.json
   def show
-    @employees = Fecha.employees
   end
 
   # GET /fechas/new
@@ -27,7 +26,7 @@ class FechasController < ApplicationController
   # POST /fechas.json
   def create
     @fecha = Fecha.new(fecha_params)
-    @employees = params[:employees]
+    @fecha.employees = params[:employees]
 
     respond_to do |format|
       if @fecha.save

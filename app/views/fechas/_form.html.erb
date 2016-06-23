@@ -30,11 +30,11 @@
   <tbody>
     <% empleados.each do |employee| %>
       <tr>
-        <td><%= check_box_tag "employees[]", matter.id %><%= employee.nombre %></td>
+        <td><%= check_box_tag "employees[]", employee.id %><%= employee.nombre %></td>
         <td><%= employee.rut %></td>
         <td><%= employee.email %></td>
         <td><%= employee.sueldo %></td>
-        <td><%= employee.fecha_ingreso %></td>td>
+        <td><%= employee.fecha_ingreso %></td>
       </tr>
     <% end %>
   </tbody>
