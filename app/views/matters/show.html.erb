@@ -30,5 +30,33 @@
   <%= @matter.fecha_utiliza %>
 </p>
 
+<label>Productos</label>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Unidades</th>
+      <th>Cantidad</th>
+      <th>Medida</th>
+      <th>Fecha produce</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matter.products.each do |product| %>
+      <tr>
+        <td><%= product.nombre %></td>
+        <td><%= product.codigo %></td>
+        <td><%= product.unidades %></td>
+        <td><%= product.cantidad %></td>
+        <td><%= product.medida %></td>
+        <td><%= product.fecha_produce %></td>
+        <td><%= product.category.nombre %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to 'Edit', edit_matter_path(@matter) %> |
 <%= link_to 'Back', matters_path %>

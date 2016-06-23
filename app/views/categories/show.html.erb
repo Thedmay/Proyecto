@@ -5,5 +5,30 @@
   <%= @category.nombre %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Unidades</th>
+      <th>Cantidad</th>
+      <th>Medida</th>
+      <th>Fecha produce</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @category.products.each do |product| %>
+      <tr>
+        <td><%= product.nombre %></td>
+        <td><%= product.codigo %></td>
+        <td><%= product.unidades %></td>
+        <td><%= product.cantidad %></td>
+        <td><%= product.medida %></td>
+        <td><%= product.fecha_produce %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

@@ -30,5 +30,42 @@
   <%= @employee.fecha_ingreso %>
 </p>
 
+<label>Licencias</label>
+<table>
+  <thead>
+    <tr>
+      <th>Fechainicio</th>
+      <th>Duracion</th>
+      <th>Detalle</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employee.lincenses.each do |lincense| %>
+      <tr>
+        <td><%= lincense.fechaInicio %></td>
+        <td><%= lincense.duracion %></td>
+        <td><%= lincense.detalle %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<label>Asistencia</label>
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employee.fechas.each do |fecha| %>
+      <tr>
+        <td><%= fecha.fecha %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path %>
