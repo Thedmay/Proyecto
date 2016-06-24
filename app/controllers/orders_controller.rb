@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @products = Product.all
+    @matters = Matter.all
   end
 
   # GET /orders/1/edit
@@ -26,8 +27,10 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.cantidades = params[:cantidades]
+    @order.cantidades = params[:cantidadesProducts]
     @order.products = params[:products]
+    @order.matters = params[:matters]
+    @cantidadesMatters = params[:cantidadesMatters]
 
     respond_to do |format|
       if @order.save
@@ -72,6 +75,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:numero, :fecha, :detalle, :cantidad, :medida, :customer_id, :cantidades, :products)
+      params.require(:order).permit(:numero, :fecha, :detalle, :cantidad, :medida, :customer_id, :cantidadesProducts, :products, :matters, :cantidadesMatters)
     end
 end

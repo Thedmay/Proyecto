@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621204609) do
+ActiveRecord::Schema.define(version: 20160624031750) do
 
   create_table "assistances", force: :cascade do |t|
     t.integer  "fecha_id",    limit: 4
@@ -57,15 +57,15 @@ ActiveRecord::Schema.define(version: 20160621204609) do
   end
 
   create_table "customer_matters", force: :cascade do |t|
-    t.integer  "customer_id", limit: 4
-    t.integer  "matter_id",   limit: 4
-    t.integer  "cantidad",    limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "matter_id",  limit: 4
+    t.integer  "cantidad",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "order_id",   limit: 4
   end
 
-  add_index "customer_matters", ["customer_id"], name: "index_customer_matters_on_customer_id", using: :btree
   add_index "customer_matters", ["matter_id"], name: "index_customer_matters_on_matter_id", using: :btree
+  add_index "customer_matters", ["order_id"], name: "index_customer_matters_on_order_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
     t.string   "nombre",     limit: 255
@@ -189,7 +189,6 @@ ActiveRecord::Schema.define(version: 20160621204609) do
   add_foreign_key "bill_products", "bills"
   add_foreign_key "bill_products", "products"
   add_foreign_key "bills", "customers"
-  add_foreign_key "customer_matters", "customers"
   add_foreign_key "customer_matters", "matters"
   add_foreign_key "lincenses", "employees"
   add_foreign_key "matter_products", "matters"

@@ -26,7 +26,7 @@ class BillsController < ApplicationController
   # POST /bills.json
   def create
     @bill = Bill.new(bill_params)
-    @bill.cantidades = params[:cantidades]
+    @bill.cantidades = params[:cantidadesProduct]
     @bill.products = params[:products]
     
     respond_to do |format|
@@ -72,6 +72,6 @@ class BillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
-      params.require(:bill).permit(:numero, :fecha, :razon_social, :giro_comercial, :monto_neto, :iva, :total, :customer_id, :cantidades, :products)
+      params.require(:bill).permit(:numero, :fecha, :razon_social, :giro_comercial, :monto_neto, :iva, :total, :customer_id, :cantidadesProduct, :products)
     end
 end
