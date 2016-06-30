@@ -3,6 +3,7 @@ class Bill < ActiveRecord::Base
   has_many :bill_products
   has_many :products, through: :bill_products
   after_create :save_bill_products
+  before_destroy :destroy_listProducts
 
   def cantidades=(cantidades)
   	@cantidades=cantidades
@@ -20,5 +21,11 @@ class Bill < ActiveRecord::Base
   			product_id: @products.at(i))
   		i+=1
   	end
+  end
+
+  def destroy_listProducts
+    self.bill_products.each do |bill_product|
+      bill_product.destroy
+    end
   end
 end
