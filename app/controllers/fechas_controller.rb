@@ -20,6 +20,7 @@ class FechasController < ApplicationController
 
   # GET /fechas/1/edit
   def edit
+    @employees = Employee.all
   end
 
   # POST /fechas
@@ -42,6 +43,8 @@ class FechasController < ApplicationController
   # PATCH/PUT /fechas/1
   # PATCH/PUT /fechas/1.json
   def update
+    @fecha.employees2 = params[:employees]
+    @fecha.employees3 = params[:employees2]
     respond_to do |format|
       if @fecha.update(fecha_params)
         format.html { redirect_to @fecha, notice: 'Fecha was successfully updated.' }
@@ -71,6 +74,6 @@ class FechasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fecha_params
-      params.require(:fecha).permit(:fecha, :employees)
+      params.require(:fecha).permit(:fecha, :employees, :employees2)
     end
 end

@@ -1,3 +1,4 @@
+<% editar ||= false %>
 <%= form_for(@fecha) do |f| %>
   <% if @fecha.errors.any? %>
     <div id="error_explanation">
@@ -15,30 +16,59 @@
     <%= f.label :Fecha %><br>
     <%= f.date_select :fecha %>
   </div>
+  
   <label>Empleados</label>
   <table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Rut</th>
-      <th>Email</th>
-      <th>Sueldo</th>
-      <th>Fecha ingreso</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% empleados.each do |employee| %>
+    <thead>
       <tr>
-        <td><%= check_box_tag "employees[]", employee.id %><%= employee.nombre %></td>
-        <td><%= employee.rut %></td>
-        <td><%= employee.email %></td>
-        <td><%= employee.sueldo %></td>
-        <td><%= employee.fecha_ingreso %></td>
+        <th>Nombre</th>
+        <th>Rut</th>
+        <th>Email</th>
+        <th>Sueldo</th>
+        <th>Fecha ingreso</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% empleados.each do |employee| %>
+        <tr>
+          <td><%= check_box_tag "employees[]", employee.id, checked: true  %><%= employee.nombre %></td>
+          <td><%= employee.rut %></td>
+          <td><%= employee.email %></td>
+          <td><%= employee.sueldo %></td>
+          <td><%= employee.fecha_ingreso %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if editar %>
+    <label>Empleados ausentes </label>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Rut</th>
+          <th>Email</th>
+          <th>Sueldo</th>
+          <th>Fecha ingreso</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @employees.each do |employee| %>
+          <% if !@fecha.employees.include?(employee) %>
+            <tr>
+              <td><%= check_box_tag "employees2[]", employee.id %><%= employee.nombre %></td>
+              <td><%= employee.rut %></td>
+              <td><%= employee.email %></td>
+              <td><%= employee.sueldo %></td>
+              <td><%= employee.fecha_ingreso %></td>
+            </tr>
+        <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
