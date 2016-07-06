@@ -1,3 +1,5 @@
+<% editar ||= false %>
+
 <%= form_for(@bill) do |f| %>
   <% if @bill.errors.any? %>
     <div id="error_explanation">
@@ -44,7 +46,7 @@
     <%= collection_select( :bill, :customer_id, Customer.all, :id, :nombre, {}, { :multiple => false})%>
   </div>
   
-  <%= render '/tableProducts1', productos: productos %>
+  <%= render '/tableProducts1', productos: productos, editar:editar %>
 
   <div class="actions">
     <%= f.submit %>

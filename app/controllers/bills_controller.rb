@@ -20,13 +20,14 @@ class BillsController < ApplicationController
 
   # GET /bills/1/edit
   def edit
+    @products = Product.all
   end
 
   # POST /bills
   # POST /bills.json
   def create
     @bill = Bill.new(bill_params)
-    @bill.cantidades = params[:cantidadesProduct]
+    @bill.cantidades = params[:cantidadesProducts]
     @bill.products = params[:products]
     
     respond_to do |format|
@@ -43,6 +44,10 @@ class BillsController < ApplicationController
   # PATCH/PUT /bills/1
   # PATCH/PUT /bills/1.json
   def update
+    @bill.products2=params[:products]
+    @bill.products3=params[:products2]
+    @bill.cantidades2=params[:cantidadesProducts]
+    @bill.cantidades3=params[:cantidadesProducts2]
     respond_to do |format|
       if @bill.update(bill_params)
         format.html { redirect_to @bill, notice: 'Bill was successfully updated.' }
@@ -72,6 +77,6 @@ class BillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
-      params.require(:bill).permit(:numero, :fecha, :razon_social, :giro_comercial, :monto_neto, :iva, :total, :customer_id, :cantidadesProduct, :products)
+      params.require(:bill).permit(:numero, :fecha, :razon_social, :giro_comercial, :monto_neto, :iva, :total, :customer_id, :cantidadesProducts, :products, :cantidadesProducts2, :products2)
     end
 end

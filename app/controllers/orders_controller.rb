@@ -21,16 +21,18 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    @matters = Matter.all
+    @products = Product.all
   end
 
   # POST /orders
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.cantidades = params[:cantidadesProducts]
+    @order.cantidadesProducts = params[:cantidadesProducts]
     @order.products = params[:products]
     @order.matters = params[:matters]
-    @cantidadesMatters = params[:cantidadesMatters]
+    @order.cantidadesMatters = params[:cantidadesMatters]
 
     respond_to do |format|
       if @order.save
@@ -46,6 +48,15 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    @order.products2 = params[:products]
+    @order.products3 = params[:products2]
+    @order.matters2 = params[:matters]
+    @order.matters3 = params[:matters2]
+    @order.cantidadesProducts2 = params[:cantidadesProducts]
+    @order.cantidadesProducts3 = params[:cantidadesProducts2]
+    @order.cantidadesMatters2 = params[:cantidadesMatters]
+    @order.cantidadesMatters3 = params[:cantidadesMatters2]
+
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
@@ -75,6 +86,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:numero, :fecha, :detalle, :cantidad, :medida, :customer_id, :cantidadesProducts, :products, :matters, :cantidadesMatters)
+      params.require(:order).permit(:numero, :fecha, :detalle, :cantidad, :medida, :customer_id, :cantidadesProducts, :products, :matters, :cantidadesMatters, :cantidadesProducts2, :products2, :matters2, :cantidadesMatters2)
     end
 end

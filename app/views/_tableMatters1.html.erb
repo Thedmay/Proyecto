@@ -1,4 +1,37 @@
-<label>Materias</label>
+<% editar ||=false %>
+
+<div class="field">
+  <label>Materias</label>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cantidad??</th>
+        <th>Medida</th>
+        <th>Saldo</th>
+        <th>Fecha ingreso</th>
+        <th>Fecha utiliza</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% materiales.each do |matter| %>
+        <tr>
+          <td><%= check_box_tag "matters[]", matter.id, :checked => editar %><%=matter.nombre%></td>
+          <td><%= matter.cantidad %></td>
+          <td><%= matter.medida %></td>
+          <td><%= matter.saldo %></td>
+          <td><%= matter.fecha_ingreso %></td>
+          <td><%= matter.fecha_utiliza %></td></td>
+          <td><%= number_field_tag "cantidadesMatters[]" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="field">
+  <% if editar %>
+    <label>Todas las Materias</label>
     <table>
       <thead>
         <tr>
@@ -12,16 +45,20 @@
         </tr>
       </thead>
       <tbody>
-        <% materiales.each do |matter| %>
-          <tr>
-            <td><%= check_box_tag "matters[]", matter.id %><%=matter.nombre%></td>
-            <td><%= matter.cantidad %></td>
-            <td><%= matter.medida %></td>
-            <td><%= matter.saldo %></td>
-            <td><%= matter.fecha_ingreso %></td>
-            <td><%= matter.fecha_utiliza %></td></td>
-            <td><%= number_field_tag "cantidadesMatters[]" %></td>
-          </tr>
+        <% @matters.each do |matter| %>
+          <% if !materiales.include?(matter) %>
+            <tr>
+              <td><%= check_box_tag "matters2[]", matter.id %><%=matter.nombre%></td>
+              <td><%= matter.cantidad %></td>
+              <td><%= matter.medida %></td>
+              <td><%= matter.saldo %></td>
+              <td><%= matter.fecha_ingreso %></td>
+              <td><%= matter.fecha_utiliza %></td></td>
+              <td><%= number_field_tag "cantidadesMatters2[]" %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
+  <% end %>
+</div>

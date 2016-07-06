@@ -1,6 +1,6 @@
 <h1>Editing Order</h1>
 
-<%= render 'form', productos: @order.products %>
+<%= render 'form', productos: @order.products, materiales: @order.matters, editar: true %>
 
 <%= link_to 'Show', @order %> |
 <%= link_to 'Back', orders_path %>

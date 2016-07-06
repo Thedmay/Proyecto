@@ -20,13 +20,14 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @matters = Matter.all
   end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @product.cantidades = params[:cantidades]
+    @product.cantidadesMatters = params[:cantidadesMatters]
     @product.matters = params[:matters]
 
     respond_to do |format|
@@ -43,6 +44,11 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @product.cantidadesMatters2=params[:cantidadesMatters]
+    @product.matters2=params[:matters]
+    @product.cantidadesMatters3=params[:cantidadesMatters2]
+    @product.matters3=params[:matters2]
+    
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -72,6 +78,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:nombre, :codigo, :unidades, :cantidad, :medida, :fecha_produce, :category_id, :cantidades, :matters)
+      params.require(:product).permit(:nombre, :codigo, :unidades, :cantidad, :medida, :fecha_produce, :category_id, :cantidadesMatters, :matters, :cantidadesMatters2, :matters2)
     end
 end

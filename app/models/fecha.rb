@@ -34,9 +34,11 @@ class Fecha < ActiveRecord::Base
 	end
 
 	def update_employees
-		destroy_assistances
-		@employees=@employees2
-		save_assistances
+		self.employees.each do |employee|
+			if !employees2.include?(employee)
+				employee.destroy
+			end
+		end
 		if @employees3 != nil
 			@employees3.each do |employee|
 				Assistance.create(fecha_id:self.id,
