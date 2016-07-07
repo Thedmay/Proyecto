@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624031750) do
+ActiveRecord::Schema.define(version: 20160707161746) do
 
   create_table "assistances", force: :cascade do |t|
     t.integer  "fecha_id",    limit: 4
@@ -118,7 +118,6 @@ ActiveRecord::Schema.define(version: 20160624031750) do
 
   create_table "matters", force: :cascade do |t|
     t.string   "nombre",        limit: 255
-    t.float    "cantidad",      limit: 24
     t.string   "medida",        limit: 255
     t.float    "saldo",         limit: 24
     t.date     "fecha_ingreso"
@@ -155,7 +154,6 @@ ActiveRecord::Schema.define(version: 20160624031750) do
     t.string   "nombre",        limit: 255
     t.string   "codigo",        limit: 255
     t.float    "unidades",      limit: 24
-    t.float    "cantidad",      limit: 24
     t.string   "medida",        limit: 255
     t.date     "fecha_produce"
     t.integer  "category_id",   limit: 4

@@ -10,6 +10,7 @@ class BillsController < ApplicationController
   # GET /bills/1
   # GET /bills/1.json
   def show
+    @cantidadesProducts = BillProduct.cantidades(@bill.id, 1)
   end
 
   # GET /bills/new
@@ -22,6 +23,7 @@ class BillsController < ApplicationController
   def edit
     @products = Product.all
     @productsMiss = Product.diferencia(@bill.products)
+    @cantidadesProducts = BillProduct.cantidades(@bill.id, 1)
   end
 
   # POST /bills

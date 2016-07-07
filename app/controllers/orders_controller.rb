@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @cantidadesProducts = OrderProduct.cantidades(@order.id, 0)
+    @cantidadesMatters = CustomerMatter.cantidades(@order.id, 0)
   end
 
   # GET /orders/new
@@ -25,6 +27,8 @@ class OrdersController < ApplicationController
     @products = Product.all
     @productsMiss = Product.diferencia(@order.products)
     @mattersMiss = Matter.diferencia(@order.matters)
+    @cantidadesProducts = OrderProduct.cantidades(@order.id, 0)
+    @cantidadesMatters = CustomerMatter.cantidades(@order.id, 0)
   end
 
   # POST /orders

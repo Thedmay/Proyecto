@@ -1,4 +1,6 @@
 class OrderProduct < ActiveRecord::Base
   belongs_to :order
   belongs_to :product
+
+  include CantidadConcern
 end

@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>Cantidad:</strong>
-  <%= @matter.cantidad %>
-</p>
-
-<p>
   <strong>Medida:</strong>
   <%= @matter.medida %>
 </p>
@@ -37,7 +32,6 @@
       <th>Nombre</th>
       <th>Codigo</th>
       <th>Unidades</th>
-      <th>Cantidad</th>
       <th>Medida</th>
       <th>Fecha produce</th>
       <th>Category</th>
@@ -50,7 +44,6 @@
         <td><%= product.nombre %></td>
         <td><%= product.codigo %></td>
         <td><%= product.unidades %></td>
-        <td><%= product.cantidad %></td>
         <td><%= product.medida %></td>
         <td><%= product.fecha_produce %></td>
         <td><%= product.category.nombre %></td>

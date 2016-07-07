@@ -12,15 +12,17 @@
   </thead>
 
   <tbody>
+    <% i = 0 %>
     <% materiales.each do |matter| %>
       <tr>
         <td><%= matter.nombre %></td>
-        <td><%= matter.cantidad %></td>
+        <td><%= @cantidadesMatters.at(i) %></td>
         <td><%= matter.medida %></td>
         <td><%= matter.saldo %></td>
         <td><%= matter.fecha_ingreso %></td>
         <td><%= matter.fecha_utiliza %></td>
       </tr>
+      <% i+=1 %>
     <% end %>
   </tbody>
 </table>

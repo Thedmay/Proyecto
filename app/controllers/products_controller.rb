@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @cantidadesMatters = MatterProduct.cantidades(@product.id, 2)
   end
 
   # GET /products/new
@@ -21,7 +22,8 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @matters = Matter.all
-    @mattersMiss = Matter.DiferenciaConcern(@product.matters)
+    @mattersMiss = Matter.diferencia(@product.matters)
+    @cantidadesMatters = MatterProduct.cantidades(@product.id, 2)
   end
 
   # POST /products

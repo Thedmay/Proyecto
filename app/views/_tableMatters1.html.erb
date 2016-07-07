@@ -6,7 +6,6 @@
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>Cantidad??</th>
         <th>Medida</th>
         <th>Saldo</th>
         <th>Fecha ingreso</th>
@@ -15,16 +14,21 @@
       </tr>
     </thead>
     <tbody>
+      <% i = 0 %>
       <% materiales.each do |matter| %>
         <tr>
           <td><%= check_box_tag "matters[]", matter.id, :checked => editar %><%=matter.nombre%></td>
-          <td><%= matter.cantidad %></td>
           <td><%= matter.medida %></td>
           <td><%= matter.saldo %></td>
           <td><%= matter.fecha_ingreso %></td>
           <td><%= matter.fecha_utiliza %></td></td>
-          <td><%= number_field_tag "cantidadesMatters[]" %></td>
+          <% if editar %>
+            <td><%= number_field_tag "cantidadesMatters[]", @cantidadesMatters.at(i) %></td>
+          <% else %>
+            <td><%= number_field_tag "cantidadesMatters[]", '0' %></td>
+          <% end %>
         </tr>
+        <% i+=1 %>
       <% end %>
     </tbody>
   </table>
@@ -36,7 +40,6 @@
       <thead>
         <tr>
           <th>Nombre</th>
-          <th>Cantidad??</th>
           <th>Medida</th>
           <th>Saldo</th>
           <th>Fecha ingreso</th>
@@ -48,12 +51,11 @@
         <% @mattersMiss.each do |matter| %>
           <tr>
             <td><%= check_box_tag "matters2[]", matter.id %><%=matter.nombre%></td>
-            <td><%= matter.cantidad %></td>
             <td><%= matter.medida %></td>
             <td><%= matter.saldo %></td>
             <td><%= matter.fecha_ingreso %></td>
             <td><%= matter.fecha_utiliza %></td></td>
-            <td><%= number_field_tag "cantidadesMatters2[]" %></td>
+            <td><%= number_field_tag "cantidadesMatters2[]", '0' %></td>
           </tr>
         <% end %>
       </tbody>
