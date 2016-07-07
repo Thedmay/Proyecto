@@ -21,6 +21,7 @@ class BillsController < ApplicationController
   # GET /bills/1/edit
   def edit
     @products = Product.all
+    @productsMiss = Product.diferencia(@bill.products)
   end
 
   # POST /bills

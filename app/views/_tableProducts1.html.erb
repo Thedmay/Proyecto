@@ -50,19 +50,17 @@
       </thead>
 
       <tbody>
-        <% @products.each do |product| %>
-          <% if !productos.include?(product) %>
-            <tr>
-              <td><%= check_box_tag "products2[]", product.id %><%=product.nombre%></td>
-              <td><%= product.codigo %></td>
-              <td><%= product.unidades %></td>
-              <td><%= product.cantidad %></td>
-              <td><%= product.medida %></td>
-              <td><%= product.fecha_produce %></td>
-              <td><%= product.category.nombre %></td>
-              <td><%= number_field_tag "cantidadesProducts2[]" %></td>
-            </tr>
-          <% end %>
+        <% @productsMiss.each do |product| %>
+          <tr>
+            <td><%= check_box_tag "products2[]", product.id %><%=product.nombre%></td>
+            <td><%= product.codigo %></td>
+            <td><%= product.unidades %></td>
+            <td><%= product.cantidad %></td>
+            <td><%= product.medida %></td>
+            <td><%= product.fecha_produce %></td>
+            <td><%= product.category.nombre %></td>
+            <td><%= number_field_tag "cantidadesProducts2[]" %></td>
+          </tr>
         <% end %>
       </tbody>
     </table>

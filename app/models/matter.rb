@@ -5,6 +5,8 @@ class Matter < ActiveRecord::Base
 	has_many :matters, through: :customer_matters
 	before_destroy :destroy_listMatters, :destroy_listProducts
 
+	include DiferenciaConcern
+
 	def destroy_listMatters
 		self.customer_matters.each do |customer_matter|
 			customer_matter.destroy

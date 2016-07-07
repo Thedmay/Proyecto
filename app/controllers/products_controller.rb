@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @matters = Matter.all
+    @mattersMiss = Matter.DiferenciaConcern(@product.matters)
   end
 
   # POST /products

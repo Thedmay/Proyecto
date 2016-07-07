@@ -23,6 +23,8 @@ class OrdersController < ApplicationController
   def edit
     @matters = Matter.all
     @products = Product.all
+    @productsMiss = Product.diferencia(@order.products)
+    @mattersMiss = Matter.diferencia(@order.matters)
   end
 
   # POST /orders

@@ -8,6 +8,8 @@ class Product < ActiveRecord::Base
   after_update :update_listMatters
   before_destroy :destroy_listMatters, :destroy_listOrders, :destroy_listBills
 
+  include DiferenciaConcern
+
   def cantidadesMatters=(cantidadesMatters)
     if cantidadesMatters!=nil
       cantidadesMatters.delete('')

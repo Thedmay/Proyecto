@@ -45,18 +45,16 @@
         </tr>
       </thead>
       <tbody>
-        <% @matters.each do |matter| %>
-          <% if !materiales.include?(matter) %>
-            <tr>
-              <td><%= check_box_tag "matters2[]", matter.id %><%=matter.nombre%></td>
-              <td><%= matter.cantidad %></td>
-              <td><%= matter.medida %></td>
-              <td><%= matter.saldo %></td>
-              <td><%= matter.fecha_ingreso %></td>
-              <td><%= matter.fecha_utiliza %></td></td>
-              <td><%= number_field_tag "cantidadesMatters2[]" %></td>
-            </tr>
-          <% end %>
+        <% @mattersMiss.each do |matter| %>
+          <tr>
+            <td><%= check_box_tag "matters2[]", matter.id %><%=matter.nombre%></td>
+            <td><%= matter.cantidad %></td>
+            <td><%= matter.medida %></td>
+            <td><%= matter.saldo %></td>
+            <td><%= matter.fecha_ingreso %></td>
+            <td><%= matter.fecha_utiliza %></td></td>
+            <td><%= number_field_tag "cantidadesMatters2[]" %></td>
+          </tr>
         <% end %>
       </tbody>
     </table>
