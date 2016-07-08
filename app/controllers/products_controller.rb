@@ -11,6 +11,8 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @cantidadesMatters = MatterProduct.cantidades(@product.id, 2)
+    @cantidadPedidos = OrderProduct.sumaCantidad(@product.id, 0)
+    @cantidadVentas = BillProduct.sumaCantidad(@product.id, 0)
   end
 
   # GET /products/new

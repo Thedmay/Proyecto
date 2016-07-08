@@ -10,6 +10,7 @@ class MattersController < ApplicationController
   # GET /matters/1
   # GET /matters/1.json
   def show
+    @cantidadPedidos = CustomerMatter.sumaCantidad(@matter.id, 1)
   end
 
   # GET /matters/new

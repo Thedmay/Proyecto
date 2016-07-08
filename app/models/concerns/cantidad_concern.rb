@@ -19,5 +19,20 @@ module CantidadConcern
 			end
 			return aux
 		end
+
+		def sumaCantidad(id, tipo)
+			suma = 0
+			string = ""
+			if tipo == 0
+				string = "product_id="+id.to_s
+			end
+			if tipo == 1
+				string = "matter_id="+id.to_s
+			end
+			where(string).each do |elemento|
+				suma += elemento.cantidad
+			end
+			return suma
+		end
 	end
 end
