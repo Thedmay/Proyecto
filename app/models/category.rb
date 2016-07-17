@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base
+	validates :nombre, presence: true
 	has_many :products;
 	before_destroy :destroy_products
 

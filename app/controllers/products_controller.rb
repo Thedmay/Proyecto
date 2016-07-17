@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
     @product.matters = params[:matters]
 
     respond_to do |format|
-      if @product.save
+      if validar_tablas and @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
     @product.matters3=params[:matters2]
     
     respond_to do |format|
-      if @product.update(product_params)
+      if validar_tablas and validar_tablas2 and @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -84,5 +84,13 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:nombre, :codigo, :unidades, :cantidad, :medida, :fecha_produce, :category_id, :cantidadesMatters, :matters, :cantidadesMatters2, :matters2)
+    end
+
+    def validar_tablas1
+      return !(params[:cantidadesMatters].empty? and params[:matters].empty?)
+    end
+
+    def validar_tablas2
+      return !(params[:cantidadesMatters2].empty? and params[:matters2].empty?)
     end
 end

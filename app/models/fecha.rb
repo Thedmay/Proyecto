@@ -1,4 +1,5 @@
 class Fecha < ActiveRecord::Base
+	validates :fecha, presence: true
 	has_many :assistances
 	has_many :employees, through: :assistances
 	after_create :save_assistances

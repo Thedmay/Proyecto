@@ -1,4 +1,10 @@
 class Employee < ActiveRecord::Base
+	validates :nombre, presence: true
+	validates :rut, presence: true
+	validates :clave, presence: true
+	validates :email, presence: true
+	validates :sueldo, presence: true
+	validates :fecha_ingreso, presence: true
 	has_many :lincenses
 	has_many :assistances
 	has_many :fechas, through: :assistances

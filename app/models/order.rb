@@ -1,4 +1,10 @@
 class Order < ActiveRecord::Base
+  validates :numero, presence: true
+  validates :fecha, presence: true
+  validates :detalle, presence: true
+  validates :cantidad, presence: true
+  validates :medida, presence: true
+  validates :customer_id, presence: true
   belongs_to :customer
   has_many :order_products
   has_many :customer_matters

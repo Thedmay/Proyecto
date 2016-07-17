@@ -1,3 +1,7 @@
 class Lincense < ActiveRecord::Base
-  belongs_to :employee
+	validates :employee_id, presence: true
+	validates :duracion, presence: true
+	validates :fechaInicio, presence: true
+	validates :detalle, presence: true
+  	belongs_to :employee
 end

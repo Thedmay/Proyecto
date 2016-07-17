@@ -1,4 +1,11 @@
 class Bill < ActiveRecord::Base
+  validates :numero, presence: true
+  validates :fecha, presence: true
+  validates :razon_social, presence: true
+  validates :giro_comercial, presence: true
+  validates :monto_neto, presence: true
+  validates :iva, presence: true
+  validates :total, presence: true
   belongs_to :customer
   has_many :bill_products
   has_many :products, through: :bill_products
