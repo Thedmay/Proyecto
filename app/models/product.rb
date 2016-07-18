@@ -1,7 +1,9 @@
 class Product < ActiveRecord::Base
   validates :nombre, presence: true
   validates :codigo, presence: true
+  validates :codigo, numericality: { only_integer: true }
   validates :unidades, presence: true
+  validates :unidades, numericality: { only_integer: true }
   validates :medida, presence: true
   validates :fecha_produce, presence: true
   validates :category_id, presence: true

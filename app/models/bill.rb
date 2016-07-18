@@ -1,12 +1,16 @@
 class Bill < ActiveRecord::Base
   validates :numero, presence: true
+  validates :numero, numericality: { only_integer: true }
   validates :numero, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
   validates :fecha, presence: true
   validates :razon_social, presence: true
   validates :giro_comercial, presence: true
   validates :monto_neto, presence: true
+  validates :monto_neto, numericality: { only_integer: true }
   validates :iva, presence: true
+  validates :iva, numericality: { only_integer: true }
   validates :total, presence: true
+  validates :total, numericality: { only_integer: true }
   belongs_to :customer
   has_many :bill_products
   has_many :products, through: :bill_products

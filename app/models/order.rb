@@ -1,9 +1,11 @@
 class Order < ActiveRecord::Base
   validates :numero, presence: true
   validates :numero, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
+  validates :numero, numericality: { only_integer: true }
   validates :fecha, presence: true
   validates :detalle, presence: true
   validates :cantidad, presence: true
+  validates :cantidad, numericality: { only_integer: true }
   validates :medida, presence: true
   validates :customer_id, presence: true
   belongs_to :customer

@@ -9,6 +9,7 @@ class Employee < ActiveRecord::Base
 	validates :email, format: { :with => VALID_EMAIL_REGEX }
 	validates :email, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
 	validates :sueldo, presence: true
+	validates :sueldo, numericality: { only_integer: true }
 	validates :fecha_ingreso, presence: true
 	has_many :lincenses
 	has_many :assistances

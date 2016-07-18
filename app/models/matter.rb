@@ -2,6 +2,7 @@ class Matter < ActiveRecord::Base
 	validates :nombre, presence: true
 	validates :medida, presence: true
 	validates :saldo, presence: true
+	validates :cantidad, numericality: { only_integer: true }
 	validates :fecha_ingreso, presence: true
 	validates :fecha_utiliza, presence: true
 	has_many :matter_products
