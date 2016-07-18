@@ -1,5 +1,6 @@
 class Fecha < ActiveRecord::Base
 	validates :fecha, presence: true
+	validates :fecha, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
 	has_many :assistances
 	has_many :employees, through: :assistances
 	after_create :save_assistances

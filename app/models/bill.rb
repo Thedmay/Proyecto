@@ -1,5 +1,6 @@
 class Bill < ActiveRecord::Base
   validates :numero, presence: true
+  validates :numero, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
   validates :fecha, presence: true
   validates :razon_social, presence: true
   validates :giro_comercial, presence: true

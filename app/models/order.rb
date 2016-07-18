@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   validates :numero, presence: true
+  validates :numero, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
   validates :fecha, presence: true
   validates :detalle, presence: true
   validates :cantidad, presence: true
