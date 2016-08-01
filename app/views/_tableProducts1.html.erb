@@ -24,7 +24,7 @@
           <td><%= product.medida %></td>
           <td><%= product.fecha_produce %></td>
           <td><%= product.category.nombre %></td>
-          <% if editar %>
+          <% if editar or @cantidadesProducts != nil%>
             <td><%= number_field_tag "cantidadesProducts[]", @cantidadesProducts.at(i) %></td>
           <% else %>
             <td><%= number_field_tag "cantidadesProducts[]", '0' %></td>
@@ -52,16 +52,18 @@
       </thead>
 
       <tbody>
-        <% @productsMiss.each do |product| %>
-          <tr>
-            <td><%= check_box_tag "products2[]", product.id %><%=product.nombre%></td>
-            <td><%= product.codigo %></td>
-            <td><%= product.unidades %></td>
-            <td><%= product.medida %></td>
-            <td><%= product.fecha_produce %></td>
-            <td><%= product.category.nombre %></td>
-            <td><%= number_field_tag "cantidadesProducts2[]", '0' %></td>
-          </tr>
+        <% if @productsMiss != nil %>
+          <% @productsMiss.each do |product| %>
+            <tr>
+              <td><%= check_box_tag "products2[]", product.id %><%=product.nombre%></td>
+              <td><%= product.codigo %></td>
+              <td><%= product.unidades %></td>
+              <td><%= product.medida %></td>
+              <td><%= product.fecha_produce %></td>
+              <td><%= product.category.nombre %></td>
+              <td><%= number_field_tag "cantidadesProducts2[]", '0' %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>

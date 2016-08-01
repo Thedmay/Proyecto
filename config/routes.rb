@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :orders
   resources :products
   devise_for :usuarios
+
+  get 'orders/:id/bill', to: 'orders#bill'
   
   get 'welcome/index'
   get 'quienes/index'

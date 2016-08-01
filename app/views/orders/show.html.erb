@@ -32,5 +32,7 @@
 
 <%= render '/tableProducts2', productos: @order.products, cantidades: @order.order_products %>
 <%= render '/tableMatters2', materiales: @order.matters%>
+
+<%= link_to 'Facturar', params[:id]+'/bill' %> |
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

@@ -1,0 +1,5 @@
+<h1>Facturar Orden</h1>
+
+<%= render '/bills/form', productos: @order.products, customer: @order.customer %>
+
+<%= link_to 'Back', bills_path %>

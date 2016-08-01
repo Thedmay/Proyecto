@@ -1,4 +1,5 @@
 <% editar ||= false %>
+<% customer ||= nil %>
 
 <%= form_for(@bill) do |f| %>
   <% if @bill.errors.any? %>
@@ -15,7 +16,7 @@
 
   <div class="field">
     <%= f.label :numero %><br>
-    <%= f.number_field :numero %>
+    <%= f.number_field :numero  %>
   </div>
   <div class="field">
     <%= f.label :fecha %><br>
@@ -43,7 +44,11 @@
   </div>
   <div class="field">
     <%= f.label :customer_id%>
-    <%= collection_select( :bill, :customer_id, Customer.all, :id, :nombre, {}, { :multiple => false})%>
+    <% if customer == nil %>
+      <%= collection_select( :bill, :customer_id, Customer.all, :id, :nombre, {}, { :multiple => false})%>
+    <% else %>
+      <%= collection_select( :bill, :customer_id, Customer.listaFalsa(customer), :id, :nombre, {}, { :multiple => false})%>
+    <% end %>
   </div>
   
   <%= render '/tableProducts1', productos: productos, editar:editar %>

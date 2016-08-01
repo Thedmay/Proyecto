@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :bill]
 
   # GET /orders
   # GET /orders.json
@@ -19,6 +19,11 @@ class OrdersController < ApplicationController
     @order = Order.new
     @products = Product.all
     @matters = Matter.all
+  end
+
+  def bill
+    @bill = Bill.new
+    @cantidadesProducts = OrderProduct.cantidades(@order.id, 0)
   end
 
   # GET /orders/1/edit
@@ -64,7 +69,7 @@ class OrdersController < ApplicationController
     @order.cantidadesMatters3 = params[:cantidadesMatters2]
 
     respond_to do |format|
-      if validar_tablas1 and validar_tablas2 and validar_tablas3 and validar_tablas4 and  @order.update(order_params)
+      if  @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
@@ -93,21 +98,5 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:numero, :fecha, :detalle, :cantidad, :medida, :customer_id, :cantidadesProducts, :products, :matters, :cantidadesMatters, :cantidadesProducts2, :products2, :matters2, :cantidadesMatters2)
-    end
-
-    def validar_tablas1
-      return !(params[:cantidadesProducts].empty? and params[:products].empty?)
-    end
-
-    def validar_tablas3
-      return !(params[:cantidadesProducts2].empty? and params[:products2].empty?)
-    end
-
-    def validar_tablas2
-      return !(params[:cantidadesMatters].empty? and params[:matters].empty?)
-    end
-
-    def validar_tablas4
-      return !(params[:cantidadesMatters2].empty? and params[:matters2].empty?)
     end
 end

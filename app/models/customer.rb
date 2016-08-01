@@ -24,4 +24,10 @@ class Customer < ActiveRecord::Base
 			order.destroy
 		end
 	end
+
+	def self.listaFalsa(customer)
+		array = Array.new
+		array.push(customer)
+		return array
+	end
 end
