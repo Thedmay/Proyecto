@@ -57,10 +57,11 @@ ol, ul {
 	display: inline-block;
 	font-size: 0;
 	padding-top:15px;
+	margin-left:-150px;
 }
 #navigation {
 	position: absolute;
-	right: 40px;
+	right: 10px;
 	bottom: 0px;
 }
 
@@ -219,7 +220,7 @@ ul.sub-menu > li > a.parent {
 	#main-menu > li:hover > a,
 	#main-menu > li.current-menu-item > a {
 		border: 1px solid #444 !important;
-		color: #F08080 !important;
+		color: #fff !important;
 	}
 
 	ul.sub-menu {

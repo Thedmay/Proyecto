@@ -8,3 +8,34 @@
 	background-image: image-url("fondo.jpg"); 
 	background-color:#000;
 }
+
+#cintaimagen {
+      width:98%;
+      height:200px;/* ALTO CINTA */
+      background:url(cinta.jpg) repeat-x transparent;
+      display:block;
+      border:5px solid gainsboro;
+      box-shadow:0 0 8px silver;
+
+
+      -webkit-animation-name: cintaimagen;
+      -webkit-animation-duration: 20s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+    
+      -moz-animation-name: cintaimagen;
+      -moz-animation-duration: 20s;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: linear;
+
+      animation-name: cintaimagen;
+      animation-duration: 20s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    @-webkit-keyframes cintaimagen{  0% {background-position:0 0;} 100% { background-position:-960px 0; } }
+
+    @-moz-keyframes cintaimagen {  0% {background-position:0 0;} 100% { background-position:-960px 0; } }
+
+    @keyframes cintaimagen {  0% {background-position:0 0;} 100% { background-position:-960px 0; } }
