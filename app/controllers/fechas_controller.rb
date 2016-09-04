@@ -35,7 +35,7 @@ class FechasController < ApplicationController
         format.json { render :show, status: :created, location: @fecha }
       else
         format.html { render :new }
-        format.json { render json: @fecha.errors, status: :unprocessable_entity }
+        format.json { render json: @fecha.errors ,status: :unprocessable_entity }
       end
     end
   end

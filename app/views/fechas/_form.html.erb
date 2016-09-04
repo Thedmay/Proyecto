@@ -30,14 +30,16 @@
     </thead>
 
     <tbody>
-      <% empleados.each do |employee| %>
-        <tr>
-          <td><%= check_box_tag "employees[]", employee.id, checked: true  %><%= employee.nombre %></td>
-          <td><%= employee.rut %></td>
-          <td><%= employee.email %></td>
-          <td><%= employee.sueldo %></td>
-          <td><%= employee.fecha_ingreso %></td>
-        </tr>
+      <% if empleados != nil %>
+        <% empleados.each do |employee| %>
+          <tr>
+            <td><%= check_box_tag "employees[]", employee.id, checked: true  %><%= employee.nombre %></td>
+            <td><%= employee.rut %></td>
+            <td><%= employee.email %></td>
+            <td><%= employee.sueldo %></td>
+            <td><%= employee.fecha_ingreso %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
