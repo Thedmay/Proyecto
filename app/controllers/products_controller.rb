@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
     @product.matters = params[:matters]
 
     respond_to do |format|
-      if validar_tablas and @product.save
+      if validar_tablas1 and @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
     @product.matters3=params[:matters2]
     
     respond_to do |format|
-      if validar_tablas and validar_tablas2 and @product.update(product_params)
+      if validar_ambas_tablas and @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -87,10 +87,14 @@ class ProductsController < ApplicationController
     end
 
     def validar_tablas1
-      return !(params[:cantidadesMatters].empty? and params[:matters].empty?)
+      return !(params[:cantidadesMatters]==nil or params[:matters]==nil)
     end
 
     def validar_tablas2
-      return !(params[:cantidadesMatters2].empty? and params[:matters2].empty?)
+      return !(params[:cantidadesMatters2]==nil or params[:matters2]==nil)
+    end
+
+    def validar_ambas_tablas
+      return (validar_tablas1 or validar_tablas2)
     end
 end
