@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -18,14 +19,10 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @matters = Matter.all
   end
 
   # GET /products/1/edit
   def edit
-    @matters = Matter.all
-    @mattersMiss = Matter.diferencia(@product.matters)
-    @cantidadesMatters = MatterProduct.cantidades(@product.id, 2)
   end
 
   # POST /products

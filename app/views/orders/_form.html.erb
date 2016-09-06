@@ -14,31 +14,36 @@
 
   <div class="field">
     <%= f.label :numero %><br>
-    <%= f.number_field :numero %>
+    <%= f.number_field :numero, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :fecha %><br>
-    <%= f.date_select :fecha %>
+    <%= f.date_select :fecha , class: 'form-control'%>
   </div>
   <div class="field">
     <%= f.label :detalle %><br>
-    <%= f.text_field :detalle %>
+    <%= f.text_field :detalle , class: 'form-control'%>
   </div>
   <div class="field">
     <%= f.label :cantidad %><br>
-    <%= f.text_field :cantidad %>
+    <%= f.text_field :cantidad , class: 'form-control'%>
   </div>
   <div class="field">
     <%= f.label :medida %><br>
-    <%= f.text_field :medida %>
+    <%= f.text_field :medida, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :customer_id%>
-    <%= collection_select( :order, :customer_id, Customer.all, :id, :nombre, {}, { :multiple => false})%>
+    <%= collection_select( :order, :customer_id, Customer.all, :id, :nombre, {}, { :multiple => false}) %>
   </div>
-
-  <%= render '/tableProducts1', productos: productos, editar:editar %>
-  <%= render '/tableMatters1', materiales: materiales, editar:editar%>
+  <% if editar %>
+    <%= render '/tableProducts1', productos: productos, editar:editar, productos2: productos2, cantidades_products: cantidades_products %>
+    <%= render '/tableMatters1', materiales: materiales, materiales2: materiales2, cantidades_matters: cantidades_matters, editar:editar%>
+  <% else %>
+    <%= render '/tableProducts1', productos: productos, editar:editar %>
+    <%= render '/tableMatters1', materiales: materiales, editar:editar%>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

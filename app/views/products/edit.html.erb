@@ -1,6 +1,6 @@
 <h1>Editing Product</h1>
 
-<%= render 'form', materiales: @product.matters, editar: true %>
+<%= render 'form', materiales: @product.matters, materiales2: Matter.diferencia(@product.matters), cantidad_matters: MatterProduct.cantidades(@product.id, 2),editar: true %>
 
 <%= link_to 'Show', @product %> |
 <%= link_to 'Back', products_path %>

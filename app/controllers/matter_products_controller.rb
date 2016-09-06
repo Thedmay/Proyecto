@@ -1,4 +1,5 @@
 class MatterProductsController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :set_matter_product, only: [:show, :edit, :update, :destroy]
 
   # GET /matter_products

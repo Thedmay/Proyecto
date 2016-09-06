@@ -1,4 +1,5 @@
 class CustomerMattersController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :set_customer_matter, only: [:show, :edit, :update, :destroy]
 
   # GET /customer_matters

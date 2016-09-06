@@ -22,10 +22,10 @@
           <td><%= matter.saldo %></td>
           <td><%= matter.fecha_ingreso %></td>
           <td><%= matter.fecha_utiliza %></td></td>
-          <% if editar and @cantidadesMatters != nil %>
-            <td><%= number_field_tag "cantidadesMatters[]", @cantidadesMatters.at(i) %></td>
+          <% if editar or cantidades_matters != nil %>
+            <td><%= number_field_tag "cantidadesMatters[]", cantidades_matters.at(i) , class: 'form-control'%></td>
           <% else %>
-            <td><%= number_field_tag "cantidadesMatters[]", '0' %></td>
+            <td><%= number_field_tag "cantidadesMatters[]", '0', class: 'form-control' %></td>
           <% end %>
         </tr>
         <% i+=1 %>
@@ -48,15 +48,15 @@
         </tr>
       </thead>
       <tbody>
-        <% if @mattersMiss != nil %>
-          <% @mattersMiss.each do |matter| %>
+        <% if materiales2 != nil %>
+          <% materiales2.each do |matter| %>
             <tr>
               <td><%= check_box_tag "matters2[]", matter.id %><%=matter.nombre%></td>
               <td><%= matter.medida %></td>
               <td><%= matter.saldo %></td>
               <td><%= matter.fecha_ingreso %></td>
               <td><%= matter.fecha_utiliza %></td></td>
-              <td><%= number_field_tag "cantidadesMatters2[]", '0' %></td>
+              <td><%= number_field_tag "cantidadesMatters2[]", '0', class: 'form-control' %></td>
             </tr>
           <% end %>
         <% end %>

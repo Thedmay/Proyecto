@@ -14,30 +14,34 @@
 
   <div class="field">
     <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
+    <%= f.text_field :nombre , class: 'form-control'%>
   </div>
   <div class="field">
     <%= f.label :codigo %><br>
-    <%= f.text_field :codigo %>
+    <%= f.text_field :codigo , class: 'form-control'%>
   </div>
   <div class="field">
     <%= f.label :unidades %><br>
-    <%= f.text_field :unidades %>
+    <%= f.text_field :unidades , class: 'form-control'%>
   </div>
   <div class="field">
     <%= f.label :medida %><br>
-    <%= f.text_field :medida %>
+    <%= f.text_field :medida , class: 'form-control'%>
   </div>
   <div class="field">
     <%= f.label :fecha_produce %><br>
-    <%= f.date_select :fecha_produce %>
+    <%= f.date_select :fecha_produce , class: 'form-control'%>
   </div>
   <div class="field">
     <%= f.label :category_id%>
     <%= collection_select( :product, :category_id, Category.all, :id, :nombre, {}, { :multiple => false})%>
   </div>
 
-  <%= render '/tableMatters1', materiales: materiales, editar: editar %>
+  <% if editar %>
+    <%= render '/tableMatters1', materiales: materiales, materiales2: materiales2, cantidades_matters: cantidad_matters ,editar: editar %>
+  <% else %>
+    <%= render '/tableMatters1', materiales: materiales, editar: editar %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>

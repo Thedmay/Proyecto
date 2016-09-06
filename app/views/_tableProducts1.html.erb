@@ -1,4 +1,5 @@
 <% editar ||= false %>
+<% cantidades_products ||= nil %>
 
 <div class="field">
   <label>Productos</label>
@@ -24,10 +25,10 @@
           <td><%= product.medida %></td>
           <td><%= product.fecha_produce %></td>
           <td><%= product.category.nombre %></td>
-          <% if editar or @cantidadesProducts != nil%>
-            <td><%= number_field_tag "cantidadesProducts[]", @cantidadesProducts.at(i) %></td>
+          <% if editar or cantidades_products != nil%>
+            <td><%= number_field_tag "cantidadesProducts[]", cantidades_products.at(i), class: 'form-control' %></td>
           <% else %>
-            <td><%= number_field_tag "cantidadesProducts[]", '0' %></td>
+            <td><%= number_field_tag "cantidadesProducts[]", '0' , class: 'form-control'%></td>
           <% end %>
         </tr>
         <% i+=1 %>
@@ -52,8 +53,8 @@
       </thead>
 
       <tbody>
-        <% if @productsMiss != nil %>
-          <% @productsMiss.each do |product| %>
+        <% if productos2 != nil %>
+          <% productos2.each do |product| %>
             <tr>
               <td><%= check_box_tag "products2[]", product.id %><%=product.nombre%></td>
               <td><%= product.codigo %></td>

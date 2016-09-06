@@ -1,4 +1,5 @@
 class OrderProductsController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :set_order_product, only: [:show, :edit, :update, :destroy]
 
   # GET /order_products

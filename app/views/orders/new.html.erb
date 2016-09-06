@@ -1,5 +1,5 @@
 <h1>New Order</h1>
 
-<%= render 'form', productos: @products, materiales: @matters %>
+<%= render 'form', productos: Product.all, materiales: Matter.all %>
 
 <%= link_to 'Back', orders_path %>

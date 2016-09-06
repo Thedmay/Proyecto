@@ -16,6 +16,8 @@ class Employee < ActiveRecord::Base
 	has_many :fechas, through: :assistances
 	before_destroy :destroy_assistances, :destroy_lincenses
 
+	include DiferenciaConcern
+
 	def destroy_assistances
 		self.assistances.each do |assistance|
 			assistance.destroy

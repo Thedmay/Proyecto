@@ -1,4 +1,5 @@
 class BillsController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   # GET /bills
@@ -16,14 +17,10 @@ class BillsController < ApplicationController
   # GET /bills/new
   def new
     @bill = Bill.new
-    @products = Product.all
   end
 
   # GET /bills/1/edit
   def edit
-    @products = Product.all
-    @productsMiss = Product.diferencia(@bill.products)
-    @cantidadesProducts = BillProduct.cantidades(@bill.id, 1)
   end
 
   # POST /bills

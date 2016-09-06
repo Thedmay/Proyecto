@@ -1,6 +1,7 @@
 <h1>Editing Bill</h1>
 
-<%= render 'form', productos: @bill.products, editar: true %>
+<%= render 'form', productos: @bill.products, productos2: Product.diferencia(@bill.products), cantidades_products: BillProduct.cantidades(@bill.id, 1) ,editar: true %>
+
 
 <%= link_to 'Show', @bill %> |
 <%= link_to 'Back', bills_path %>

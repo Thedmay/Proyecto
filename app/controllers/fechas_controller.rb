@@ -1,6 +1,7 @@
 class FechasController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :set_fecha, only: [:show, :edit, :update, :destroy]
-
+  hola = false
   # GET /fechas
   # GET /fechas.json
   def index
@@ -20,7 +21,6 @@ class FechasController < ApplicationController
 
   # GET /fechas/1/edit
   def edit
-    @employees = Employee.all
   end
 
   # POST /fechas

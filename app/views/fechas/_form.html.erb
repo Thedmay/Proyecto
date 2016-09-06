@@ -57,8 +57,8 @@
       </thead>
 
       <tbody>
-        <% @employees.each do |employee| %>
-          <% if !@fecha.employees.include?(employee) %>
+        <% if empleados2 != nil %>
+          <% empleados2.each do |employee| %>
             <tr>
               <td><%= check_box_tag "employees2[]", employee.id %><%= employee.nombre %></td>
               <td><%= employee.rut %></td>
@@ -66,7 +66,7 @@
               <td><%= employee.sueldo %></td>
               <td><%= employee.fecha_ingreso %></td>
             </tr>
-        <% end %>
+          <% end %>
         <% end %>
       </tbody>
     </table>

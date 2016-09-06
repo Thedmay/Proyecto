@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :set_order, only: [:show, :edit, :update, :destroy, :bill]
 
   # GET /orders
@@ -17,23 +18,14 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @products = Product.all
-    @matters = Matter.all
   end
 
   def bill
     @bill = Bill.new
-    @cantidadesProducts = OrderProduct.cantidades(@order.id, 0)
   end
 
   # GET /orders/1/edit
   def edit
-    @matters = Matter.all
-    @products = Product.all
-    @productsMiss = Product.diferencia(@order.products)
-    @mattersMiss = Matter.diferencia(@order.matters)
-    @cantidadesProducts = OrderProduct.cantidades(@order.id, 0)
-    @cantidadesMatters = CustomerMatter.cantidades(@order.id, 0)
   end
 
   # POST /orders

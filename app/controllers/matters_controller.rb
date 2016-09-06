@@ -1,4 +1,5 @@
 class MattersController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :set_matter, only: [:show, :edit, :update, :destroy]
 
   # GET /matters
