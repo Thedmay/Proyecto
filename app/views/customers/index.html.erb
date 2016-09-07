@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Customers</h1>
+<h1>Listando Clientes</h1>
 
 <table>
   <thead>
@@ -22,9 +22,9 @@
         <td><%= customer.telefono %></td>
         <td><%= customer.email %></td>
         <td><%= customer.direccion %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', customer %></td>
+        <td><%= link_to 'Editar', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Destrior', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Customer', new_customer_path %>
+<%= link_to 'Nuevo Cliente', new_customer_path , class: "btn btn-default margenes"%>

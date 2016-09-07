@@ -33,9 +33,14 @@
   </div>
   <div class="field">
     <%= f.label :fecha_ingreso %><br>
-    <%= f.date_select :fecha_ingreso , class: 'form-control'%>
+    <%= f.date_select :fecha_ingreso%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary margenes", value:texto%>
+    <% if texto=="Editar" %>
+      <%= link_to 'Mostrar', @employee , class: "btn btn-info margenes" %> 
+    <% end %>
+    <%= link_to 'Volver', employees_path , class: "btn btn-default margenes" %>
   </div>
+
 <% end %>

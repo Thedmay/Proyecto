@@ -33,8 +33,8 @@
     <%= f.text_field :medida, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :customer_id%>
-    <%= collection_select( :order, :customer_id, Customer.all, :id, :nombre, {}, { :multiple => false}) %>
+    <%= f.label :customer_id, value: "Cliente"%>
+    <%= collection_select( :order, :customer_id, Customer.all, :id, :nombre, {},{ :class => 'form-control', :multiple => false}) %>
   </div>
   <% if editar %>
     <%= render '/tableProducts1', productos: productos, editar:editar, productos2: productos2, cantidades_products: cantidades_products %>
@@ -45,6 +45,10 @@
   <% end %>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary margenes", value: texto%>
+    <% if texto=="Editar" %>
+      <%= link_to 'Mostrar', @order , class: "btn btn-primary margenes"%> 
+    <% end %>
+    <%= link_to 'Volver', orders_path , class: "btn btn-default margenes"%>
   </div>
 <% end %>

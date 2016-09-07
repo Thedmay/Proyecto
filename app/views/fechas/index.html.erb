@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Fechas</h1>
+<h1>Listando Fechas</h1>
 
 <table>
   <thead>
@@ -14,9 +14,9 @@
     <% @fechas.each do |fecha| %>
       <tr>
         <td><%= fecha.fecha %></td>
-        <td><%= link_to 'Show', fecha %></td>
-        <td><%= link_to 'Edit', edit_fecha_path(fecha) %></td>
-        <td><%= link_to 'Destroy', fecha, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostar', fecha %></td>
+        <td><%= link_to 'Editar', edit_fecha_path(fecha) %></td>
+        <td><%= link_to 'Destruir', fecha, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Fecha', new_fecha_path %>
+<%= link_to 'Nueva Fecha', new_fecha_path , class: "btn btn-primary"%>

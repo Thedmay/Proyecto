@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Lincenses</h1>
+<h1>Listando Licencias</h1>
 
 <table>
   <thead>
@@ -20,9 +20,9 @@
         <td><%= lincense.fechaInicio %></td>
         <td><%= lincense.duracion %></td>
         <td><%= lincense.detalle %></td>
-        <td><%= link_to 'Show', lincense %></td>
-        <td><%= link_to 'Edit', edit_lincense_path(lincense) %></td>
-        <td><%= link_to 'Destroy', lincense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', lincense %></td>
+        <td><%= link_to 'Editar', edit_lincense_path(lincense) %></td>
+        <td><%= link_to 'Destruir', lincense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Lincense', new_lincense_path %>
+<%= link_to 'Nueva Licencia', new_lincense_path , class: "btn btn-primary margenes"%>

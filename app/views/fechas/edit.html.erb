@@ -1,6 +1,5 @@
-<h1>Editing Fecha</h1>
+<h1>Editando Asistencia</h1>
 
-<%= render 'form', empleados: @fecha.employees, editar: true, empleados2: Employee.diferencia(@fecha.employees) %>
+<%= render 'form', texto: "Editar", empleados: @fecha.employees, editar: true, empleados2: Employee.diferencia(@fecha.employees) %>
 
-<%= link_to 'Show', @fecha %> |
-<%= link_to 'Back', fechas_path %>
+

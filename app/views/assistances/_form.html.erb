@@ -24,6 +24,10 @@
     <%= f.check_box :asiste , class: 'form-control'%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary margenes" value: texto%>
+    <% if texto=="Editar" %>
+      <%= link_to 'Show', @assistance, class: "btn btn-info margenes"%> |
+    <% end %>
+    <%= link_to 'Back', assistances_path, class: "btn btn-default margenes" %>
   </div>
 <% end %>

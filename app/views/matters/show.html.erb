@@ -39,7 +39,7 @@
       <th>Unidades</th>
       <th>Medida</th>
       <th>Fecha produce</th>
-      <th>Category</th>
+      <th>Categoria</th>
     </tr>
   </thead>
 
@@ -56,5 +56,5 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Edit', edit_matter_path(@matter) %> |
-<%= link_to 'Back', matters_path %>
+<%= link_to 'Editar', edit_matter_path(@matter) , class: "btn btn-primary margenes"%> 
+<%= link_to 'Volver', matters_path ,class: "btn btn-default margenes"%>

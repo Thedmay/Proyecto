@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :employee_id%>
-    <%= collection_select( :lincense, :employee_id, Employee.all, :id, :nombre, {}, { :multiple => false})%>
+    <%= f.label :employee_id, value: "Empleado"%>
+    <%= collection_select( :lincense, :employee_id, Employee.all, :id, :nombre, {}, {:class => 'form-control', :multiple => false})%>
   </div>
   <div class="field">
-    <%= f.label :fechaInicio %><br>
+    <%= f.label :fechaInicio , value: "Fecha de inicio" %><br>
     <%= f.date_select :fechaInicio, class: 'form-control' %>
   </div>
   <div class="field">
@@ -28,6 +28,10 @@
     <%= f.text_area :detalle, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary margenes", value: texto %>
+    <% if texto=="Editar" %>
+      <%= link_to 'Mostrar', @lincense, class: "btn btn-info margenes" %> 
+    <% end %>
+    <%= link_to 'Volver', lincenses_path, class: "btn btn-default margenes" %>
   </div>
 <% end %>

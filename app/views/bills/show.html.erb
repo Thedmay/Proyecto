@@ -36,11 +36,11 @@
 </p>
 
 <p>
-  <strong>Customer:</strong>
+  <strong>Cliente:</strong>
   <%= @bill.customer.nombre %>
 </p>
 
 <%= render '/tableProducts2', productos: @bill.products, cantidades: @bill.bill_products %>
 
-<%= link_to 'Edit', edit_bill_path(@bill) %> |
-<%= link_to 'Back', bills_path %>
+<%= link_to 'Editar', edit_bill_path(@bill) , class: "btn btn-primary margenes"%> 
+<%= link_to 'Volver', bills_path , class: "btn btn-default margenes"%>

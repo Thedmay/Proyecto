@@ -44,9 +44,9 @@
     <%= f.text_field :total , class: 'form-control'%>
   </div>
   <div class="field">
-    <%= f.label :customer_id%>
+    <%= f.label :customer_id, value:"Cliente"%>
     <% if customer == nil %>
-      <%= collection_select( :bill, :customer_id, Customer.all, :id, :nombre, {}, { :multiple => false})%>
+      <%= collection_select( :bill, :customer_id, Customer.all, :id, :nombre, {}, {:class => 'form-control', :multiple => false})%>
     <% else %>
       <%= collection_select( :bill, :customer_id, Customer.listaFalsa(customer), :id, :nombre, {}, { :multiple => false})%>
     <% end %>
@@ -60,6 +60,10 @@
   
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary margenes", value: texto%>
+    <% if texto=="Editar" %>
+      <%= link_to 'Mostrar', @bill , class: "btn btn-info margenes"%> 
+    <% end %>
+    <%= link_to 'Volver', bills_path , class: "btn btn-default margenes"%>
   </div>
 <% end %>

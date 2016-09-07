@@ -72,6 +72,10 @@
     </table>
   <% end %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary margenes" ,value: texto%>
+    <% if texto=="Editar" %>
+      <%= link_to 'Mostrar', @fecha, class: "btn btn-info margenes" %> 
+    <% end %>
+    <%= link_to 'Volver', fechas_path, class: "btn btn-default margenes"%>
   </div>
 <% end %>

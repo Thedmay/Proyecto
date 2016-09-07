@@ -34,7 +34,7 @@
   </div>
   <div class="field">
     <%= f.label :category_id%>
-    <%= collection_select( :product, :category_id, Category.all, :id, :nombre, {}, { :multiple => false})%>
+    <%= collection_select( :product, :category_id, Category.all, :id, :nombre, {}, { :class => 'form-control',:multiple => false})%>
   </div>
 
   <% if editar %>
@@ -44,6 +44,10 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary margenes", value: texto %>
+    <% if texto=="Editar" %>
+      <%= link_to 'Mostrar', @product ,class: "btn btn-info margenes"%> 
+    <% end %>
+    <%= link_to 'Volver', products_path, class: "btn btn-default margenes"%>
   </div>
 <% end %>

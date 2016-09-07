@@ -10,20 +10,20 @@
             </div>
 
             <div class="form-group">
-                <%= f.label :password %>
+                <%= f.label :password , value: "Contraseña"%>
                 <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <em>(<%= @minimum_password_length %> caracteres minimo)</em>
                 <% end %><br />
                 <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
             </div>
 
             <div class="form-group">
-                <%= f.label :password_confirmation %><br />
+                <%= f.label :password_confirmation, value: "Confirme Contraseña" %><br />
                 <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
             </div>
 
             <div class="text-center">
-                <%= f.submit "Sign up", class:"btn btn-info" %>
+                <%= f.submit "Sign up", class:"btn btn-info" , value: "Registrarse"%>
             </div>
         <% end %>
         <div class="text-center">
