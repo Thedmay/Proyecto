@@ -11,31 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre, class: 'form-control'%>
-  </div>
-  <div class="field">
-    <%= f.label :medida %><br>
-    <%= f.text_field :medida, class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :saldo %><br>
-    <%= f.text_field :saldo, class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :fecha_ingreso %><br>
-    <%= f.date_select :fecha_ingreso %>
-  </div>
-  <div class="field">
-    <%= f.label :fecha_utiliza %><br>
-    <%= f.date_select :fecha_utiliza %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary margenes", value: texto%>
-    <% if texto=="Editar" %>
-      <%= link_to 'Mostrar', @matter,class: "btn btn-info margenes" %> 
-    <% end %>
-    <%= link_to 'Volver', matters_path ,class: "btn btn-default margenes"%>
+  <div class="caja">
+    <div class="field">
+      <%= f.label :nombre %><br>
+      <%= f.text_field :nombre, class: 'form-control'%>
+    </div>
+    <div class="field">
+      <%= f.label :medida %><br>
+      <%= f.text_field :medida, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :saldo %><br>
+      <%= f.text_field :saldo, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :fecha_ingreso %><br>
+      <%= f.date_select :fecha_ingreso %>
+    </div>
+    <div class="field">
+      <%= f.label :fecha_utiliza %><br>
+      <%= f.date_select :fecha_utiliza %>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary margenes", value: texto%>
+      <% if texto=="Editar" %>
+        <%= link_to 'Mostrar', @matter,class: "btn btn-info margenes" %> 
+      <% end %>
+      <%= link_to 'Volver', matters_path ,class: "btn btn-default margenes"%>
+    </div>
   </div>
 <% end %>

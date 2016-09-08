@@ -11,36 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre , class: 'form-control'%>
+  <div class="caja">
+    <div class="field">
+      <%= f.label :nombre %><br>
+      <%= f.text_field :nombre , class: 'form-control'%>
+    </div>
+    <div class="field">
+      <%= f.label :rut %><br>
+      <%= f.text_field :rut , class: 'form-control'%>
+    </div>
+    <div class="field">
+      <%= f.label :clave %><br>
+      <%= f.text_field :clave , class: 'form-control'%>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email , class: 'form-control'%>
+    </div>
+    <div class="field">
+      <%= f.label :sueldo %><br>
+      <%= f.number_field :sueldo , class: 'form-control'%>
+    </div>
+    <div class="field">
+      <%= f.label :fecha_ingreso %><br>
+      <%= f.date_select :fecha_ingreso%>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary margenes", value:texto%>
+      <% if texto=="Editar" %>
+        <%= link_to 'Mostrar', @employee , class: "btn btn-info margenes" %> 
+      <% end %>
+      <%= link_to 'Volver', employees_path , class: "btn btn-default margenes" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :rut %><br>
-    <%= f.text_field :rut , class: 'form-control'%>
-  </div>
-  <div class="field">
-    <%= f.label :clave %><br>
-    <%= f.text_field :clave , class: 'form-control'%>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email , class: 'form-control'%>
-  </div>
-  <div class="field">
-    <%= f.label :sueldo %><br>
-    <%= f.text_field :sueldo , class: 'form-control'%>
-  </div>
-  <div class="field">
-    <%= f.label :fecha_ingreso %><br>
-    <%= f.date_select :fecha_ingreso%>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary margenes", value:texto%>
-    <% if texto=="Editar" %>
-      <%= link_to 'Mostrar', @employee , class: "btn btn-info margenes" %> 
-    <% end %>
-    <%= link_to 'Volver', employees_path , class: "btn btn-default margenes" %>
-  </div>
-
 <% end %>
