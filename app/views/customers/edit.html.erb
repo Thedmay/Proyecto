@@ -1,3 +1,6 @@
-<h1>Editando Cliente</h1>
-
-<%= render 'form', texto: "Editar"%>
+<% if can? :update, :Customer %>
+	<h1>Editando Cliente</h1>
+	<%= render 'form', texto: "Editar"%>
+<% else %>
+	<%= render '/noPermission' %>
+<% end %>

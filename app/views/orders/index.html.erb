@@ -1,37 +1,43 @@
-<p id="notice"><%= notice %></p>
+<% if can? :crud, :Order %>
+  <p id="notice"><%= notice %></p>
 
-<h1>Listando Pedidos</h1>
+  <h1>Listando Pedidos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Numero</th>
-      <th>Fecha</th>
-      <th>Detalle</th>
-      <th>Cantidad</th>
-      <th>Medida</th>
-      <th>Cliente</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= order.numero %></td>
-        <td><%= order.fecha %></td>
-        <td><%= order.detalle %></td>
-        <td><%= order.cantidad %></td>
-        <td><%= order.medida %></td>
-        <td><%= order.customer.nombre %></td>
-        <td><%= link_to 'Mostrar', order %></td>
-        <td><%= link_to 'Editar', edit_order_path(order) %></td>
-        <td><%= link_to 'Destruir', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Numero</th>
+        <th>Fecha</th>
+        <th>Detalle</th>
+        <th>Cantidad</th>
+        <th>Medida</th>
+        <th>Cliente</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.numero %></td>
+          <td><%= order.fecha %></td>
+          <td><%= order.detalle %></td>
+          <td><%= order.cantidad %></td>
+          <td><%= order.medida %></td>
+          <td><%= order.customer.nombre %></td>
+          <td><%= link_to 'Mostrar', order %></td>
+          <td><%= link_to 'Editar', edit_order_path(order) %></td>
+          <% if can? :destroy, :Product %>
+            <td><%= link_to 'Destruir', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'Nuevo Pedido', new_order_path , class: "btn btn-default margenes"%>
+  <br>
+
+  <%= link_to 'Nuevo Pedido', new_order_path , class: "btn btn-default margenes"%>
+<% else %>
+  <%= render '/noPermission' %>
+<% end %>

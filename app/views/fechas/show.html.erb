@@ -1,34 +1,38 @@
-<p id="notice"><%= notice %></p>
+<% if can? :read, Fecha %>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Fecha:</strong>
-  <%= @fecha.fecha %>
-</p>
+  <p>
+    <strong>Fecha:</strong>
+    <%= @fecha.fecha %>
+  </p>
 
-<label>Empleados</label>
-  <table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Rut</th>
-      <th>Email</th>
-      <th>Sueldo</th>
-      <th>Fecha ingreso</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @fecha.employees.each do |employee| %>
+  <label>Empleados</label>
+    <table>
+    <thead>
       <tr>
-        <td><%= employee.nombre %></td>
-        <td><%= employee.rut %></td>
-        <td><%= employee.email %></td>
-        <td><%= employee.sueldo %></td>
-        <td><%= employee.fecha_ingreso %></td>
+        <th>Nombre</th>
+        <th>Rut</th>
+        <th>Email</th>
+        <th>Sueldo</th>
+        <th>Fecha ingreso</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<%= link_to 'Editar', edit_fecha_path(@fecha), class: "btn btn-primary margenes" %> 
-<%= link_to 'Volver', fechas_path, class: "btn btn-default margenes" %>
+    <tbody>
+      <% @fecha.employees.each do |employee| %>
+        <tr>
+          <td><%= employee.nombre %></td>
+          <td><%= employee.rut %></td>
+          <td><%= employee.email %></td>
+          <td><%= employee.sueldo %></td>
+          <td><%= employee.fecha_ingreso %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Editar', edit_fecha_path(@fecha), class: "btn btn-primary margenes" %> 
+  <%= link_to 'Volver', fechas_path, class: "btn btn-default margenes" %>
+<% else %>
+  <%= render '/noPermission' %>
+<% end %>

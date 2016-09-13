@@ -1,4 +1,6 @@
-<h1>Nueva Categoria</h1>
-
-<%= render 'form' , texto: "Crear" %>
-
+<% if can? :create, :Category %>
+	<h1>Nueva Categoria</h1>
+	<%= render 'form' , texto: "Crear" %>
+<% else %>
+	<%= render '/noPermission' %>
+<% end %>

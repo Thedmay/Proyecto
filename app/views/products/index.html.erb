@@ -1,37 +1,44 @@
-<p id="notice"><%= notice %></p>
+<% if can? :crud, :Product %>
+  <p id="notice"><%= notice %></p>
 
-<h1>Listando Productos</h1>
+  <h1>Listando Productos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Codigo</th>
-      <th>Unidades</th>
-      <th>Medida</th>
-      <th>Fecha produce</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= product.nombre %></td>
-        <td><%= product.codigo %></td>
-        <td><%= product.unidades %></td>
-        <td><%= product.medida %></td>
-        <td><%= product.fecha_produce %></td>
-        <td><%= product.category.nombre %></td>
-        <td><%= link_to 'Mostrar', product %></td>
-        <td><%= link_to 'Editar', edit_product_path(product) %></td>
-        <td><%= link_to 'Destruir', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Nombre</th>
+        <th>Codigo</th>
+        <th>Unidades</th>
+        <th>Medida</th>
+        <th>Fecha produce</th>
+        <th>Category</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.nombre %></td>
+          <td><%= product.codigo %></td>
+          <td><%= product.unidades %></td>
+          <td><%= product.medida %></td>
+          <td><%= product.fecha_produce %></td>
+          <td><%= product.category.nombre %></td>
+          <td><%= link_to 'Mostrar', product %></td>
+          <td><%= link_to 'Editar', edit_product_path(product) %></td>
+          <% if can? :destroy, :Product %>
+            <td><%= link_to 'Destruir', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'Nuevo Producto', new_product_path ,class: "btn btn-primary"%>
+  <br>
+
+  <%= link_to 'Nuevo Producto', new_product_path ,class: "btn btn-primary"%>
+  
+<% else %>
+  <%= render '/noPermission' %>
+<% end %>

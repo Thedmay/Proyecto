@@ -1,4 +1,6 @@
-<h1>Editando Factura</h1>
-
-<%= render 'form', texto: "Editar", productos: @bill.products, productos2: Product.diferencia(@bill.products), cantidades_products: BillProduct.cantidades(@bill.id, 1) ,editar: true %>
-
+<% if can? :update, :Bill %>
+	<h1>Editando Factura</h1>
+	<%= render 'form', texto: "Editar", productos: @bill.products, productos2: Product.diferencia(@bill.products), cantidades_products: BillProduct.cantidades(@bill.id, 1) ,editar: true %>
+<% else %>
+	<%= render '/noPermission' %>
+<% end %>

@@ -1,32 +1,36 @@
-<p id="notice"><%= notice %></p>
+<% if can? :read, :Category %>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @category.nombre %>
-</p>
+  <p>
+    <strong>Nombre:</strong>
+    <%= @category.nombre %>
+  </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Codigo</th>
-      <th>Unidades</th>
-      <th>Medida</th>
-      <th>Fecha produce</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @category.products.each do |product| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= product.nombre %></td>
-        <td><%= product.codigo %></td>
-        <td><%= product.unidades %></td>
-        <td><%= product.medida %></td>
-        <td><%= product.fecha_produce %></td>
+        <th>Nombre</th>
+        <th>Codigo</th>
+        <th>Unidades</th>
+        <th>Medida</th>
+        <th>Fecha produce</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'Editar', edit_category_path(@category) , class: "btn btn-primary margenes"%> 
-<%= link_to 'Volver', categories_path , class: "btn btn-default margenes"%>
+    </thead>
+
+    <tbody>
+      <% @category.products.each do |product| %>
+        <tr>
+          <td><%= product.nombre %></td>
+          <td><%= product.codigo %></td>
+          <td><%= product.unidades %></td>
+          <td><%= product.medida %></td>
+          <td><%= product.fecha_produce %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'Editar', edit_category_path(@category) , class: "btn btn-primary margenes"%> 
+  <%= link_to 'Volver', categories_path , class: "btn btn-default margenes"%>
+<% else %>
+  <% render '/noPermission' %>
+<% end %>
