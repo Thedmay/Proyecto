@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912140718) do
+ActiveRecord::Schema.define(version: 20160921143703) do
 
   create_table "assistances", force: :cascade do |t|
     t.integer  "fecha_id",    limit: 4
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 20160912140718) do
   create_table "employees", force: :cascade do |t|
     t.string   "nombre",        limit: 255
     t.string   "rut",           limit: 255
-    t.string   "clave",         limit: 255
     t.string   "email",         limit: 255
     t.float    "sueldo",        limit: 24
     t.date     "fecha_ingreso"
@@ -117,13 +116,11 @@ ActiveRecord::Schema.define(version: 20160912140718) do
   add_index "matter_products", ["product_id"], name: "index_matter_products_on_product_id", using: :btree
 
   create_table "matters", force: :cascade do |t|
-    t.string   "nombre",        limit: 255
-    t.string   "medida",        limit: 255
-    t.float    "saldo",         limit: 24
-    t.date     "fecha_ingreso"
-    t.date     "fecha_utiliza"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "nombre",     limit: 255
+    t.string   "medida",     limit: 255
+    t.float    "saldo",      limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "order_products", force: :cascade do |t|
@@ -146,19 +143,19 @@ ActiveRecord::Schema.define(version: 20160912140718) do
     t.integer  "customer_id", limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.date     "fecha_final"
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "nombre",        limit: 255
-    t.string   "codigo",        limit: 255
-    t.float    "unidades",      limit: 24
-    t.string   "medida",        limit: 255
-    t.date     "fecha_produce"
-    t.integer  "category_id",   limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "nombre",      limit: 255
+    t.string   "codigo",      limit: 255
+    t.float    "unidades",    limit: 24
+    t.string   "medida",      limit: 255
+    t.integer  "category_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree

@@ -9,8 +9,6 @@
         <th>Nombre</th>
         <th>Medida</th>
         <th>Saldo</th>
-        <th>Fecha ingreso</th>
-        <th>Fecha utiliza</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -21,8 +19,6 @@
           <td><%= matter.nombre %></td>
           <td><%= matter.medida %></td>
           <td><%= matter.saldo %></td>
-          <td><%= matter.fecha_ingreso %></td>
-          <td><%= matter.fecha_utiliza %></td>
           <td><%= link_to 'Mostrar', matter %></td>
           <td><%= link_to 'Editar', edit_matter_path(matter) %></td>
           <% if can? :destroy, :Matter %>

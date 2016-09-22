@@ -1,0 +1,39 @@
+</<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body class="fondo">
+	<div 	
+  		<h1 style=" font-size: 20px; text-align: left;">Administración</h1>
+  	</div>
+
+  	<table>
+	    <thead>
+	      <tr>
+	        <th>Nombre</th>
+	        <th>Email</th>
+	        <th>Último ingreso</th>
+	        <th colspan="2"></th>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+	      <% i = 0 %>
+	      <% @correos.each do |correo| %>
+	        <tr>
+	          <td><%= @nombres.at(i) %></td>
+	          <td><%= correo %></td>
+	          <td><%= @fechas.at(i) %></td>
+	          <td><%= link_to 'Editar', edit_usuario_registration_path(1) %></td>
+		      <% if can? :destroy, :Usuario %>
+		        <td><%= link_to 'Destruir', root_path , method: :delete, data: { confirm: "¿Esta seguro?" } %></td>
+		      <% end %>
+	        </tr>
+	      <% end %>
+	    </tbody>
+	</table>
+	<%= link_to 'Nuevo usuario', new_usuario_registration_path , class: "btn btn-primary margenes"%>
+</body>
+</html>

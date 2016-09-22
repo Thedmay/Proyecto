@@ -30,10 +30,6 @@
       <%= f.text_field :medida , class: 'form-control'%>
     </div>
     <div class="field">
-      <%= f.label :fecha_produce %><br>
-      <%= f.date_select :fecha_produce , class: 'form-control'%>
-    </div>
-    <div class="field">
       <%= f.label :category_id%>
       <%= collection_select( :product, :category_id, Category.all, :id, :nombre, {}, { :class => 'form-control',:multiple => false})%>
     </div>

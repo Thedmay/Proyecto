@@ -1,4 +1,5 @@
 <% editar ||= false %>
+
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
@@ -18,7 +19,11 @@
     </div>
     <div class="field">
       <%= f.label :fecha %><br>
-      <%= f.date_select :fecha , class: 'form-control'%>
+      <input id="order_fecha" type='date' min='2000-01-01' max='2017-12-12' class="form-control" name="order[fecha]"></input>
+    </div>
+    <div class="field">
+      <%= f.label :fecha_final %><br>
+      <input id="order_fecha_final" type='date' min='2000-01-01' max='2017-12-12' class="form-control" name="order[fecha_final]"></input>
     </div>
     <div class="field">
       <%= f.label :detalle %><br>
@@ -26,7 +31,7 @@
     </div>
     <div class="field">
       <%= f.label :cantidad %><br>
-      <%= f.text_field :cantidad , class: 'form-control'%>
+      <%= f.number_field :cantidad , class: 'form-control'%>
     </div>
     <div class="field">
       <%= f.label :medida %><br>

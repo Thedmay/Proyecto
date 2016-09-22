@@ -10,8 +10,7 @@
         <th>Codigo</th>
         <th>Unidades</th>
         <th>Medida</th>
-        <th>Fecha produce</th>
-        <th>Category</th>
+        <th>Categoría</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -23,7 +22,6 @@
           <td><%= product.codigo %></td>
           <td><%= product.unidades %></td>
           <td><%= product.medida %></td>
-          <td><%= product.fecha_produce %></td>
           <td><%= product.category.nombre %></td>
           <td><%= link_to 'Mostrar', product %></td>
           <td><%= link_to 'Editar', edit_product_path(product) %></td>

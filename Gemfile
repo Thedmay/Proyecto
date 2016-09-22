@@ -53,5 +53,6 @@ group :development do
   gem 'spring'
   # Permisos
   gem 'cancancan'
+  gem 'tzinfo-data'
 end
 

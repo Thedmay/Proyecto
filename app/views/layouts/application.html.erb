@@ -121,8 +121,11 @@
 							<li class="parent">
 								<a><span class="glyphicon glyphicon-user"></span></a>
 								<ul class="sub-menu">
+									<% if can? :manage, :Usuario %>
+										<li><%= link_to "Administrar", administrar_index_path %>
+									<% end %>
 									<li><%= link_to "Editar Perfil", edit_usuario_registration_path %></li>
-				        		<li><%= link_to "Cerrar sesion", destroy_usuario_session_path, method: :delete%></li>
+				        			<li><%= link_to "Cerrar sesion", destroy_usuario_session_path, method: :delete%></li>
 								</ul>
 							</li>
 						<% else %>

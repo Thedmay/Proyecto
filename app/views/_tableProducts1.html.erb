@@ -10,7 +10,6 @@
         <th>Codigo</th>
         <th>Unidades</th>
         <th>Medida</th>
-        <th>Fecha produce</th>
         <th>Categoria</th>
         <th>Cantidad</th>
       </tr>
@@ -23,7 +22,6 @@
           <td><%= product.codigo %></td>
           <td><%= product.unidades %></td>
           <td><%= product.medida %></td>
-          <td><%= product.fecha_produce %></td>
           <td><%= product.category.nombre %></td>
           <% if editar or cantidades_products != nil%>
             <td><%= number_field_tag "cantidadesProducts[]", cantidades_products.at(i), class: 'form-control' %></td>

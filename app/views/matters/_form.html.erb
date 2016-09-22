@@ -24,14 +24,6 @@
       <%= f.label :saldo %><br>
       <%= f.text_field :saldo, class: 'form-control' %>
     </div>
-    <div class="field">
-      <%= f.label :fecha_ingreso %><br>
-      <%= f.date_select :fecha_ingreso %>
-    </div>
-    <div class="field">
-      <%= f.label :fecha_utiliza %><br>
-      <%= f.date_select :fecha_utiliza %>
-    </div>
     <div class="actions">
       <%= f.submit class: "btn btn-primary margenes", value: texto%>
       <% if texto=="Editar" %>
