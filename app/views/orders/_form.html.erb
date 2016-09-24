@@ -15,7 +15,8 @@
   <div class="caja">
     <div class="field">
       <%= f.label :numero %><br>
-      <%= f.number_field :numero, class: 'form-control' %>
+      <input id="numero" class="form-control" type="text_field" value="Holy" onkeyup="holy()">
+      <%= f.number_field :numero, class: 'form-control', :onchange => "holy()" %>
     </div>
     <div class="field">
       <%= f.label :fecha %><br>

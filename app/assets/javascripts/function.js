@@ -59,3 +59,10 @@ $(function() {
 	}catch(e){}
 
 });
+
+function holy() {
+	try{
+		document.getElementById("order_detalle").value = document.getElementById("numero").value;
+	}
+	catch(e){};
+};

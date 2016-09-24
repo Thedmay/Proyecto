@@ -1,38 +1,37 @@
-<% if can? :crud, :Usuario %>
-  <p id="notice"><%= notice %></p>
+<h1>Listando Usuarios</h1>
 
-  <h1>Listando Usuarios</h1>
+<table id="usuarios">
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Email</th>
+			<th>Cantidad de ingresos</th>
+			<th>Último ingreso</th>
+			<th>Rol</th>
+			<th>Fecha creación</th>
+			<th>Última edición</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @usuarios.each do |usuario| %>
+		<tr>
+			<td><%= usuario.nombre %></td>
+			<td><%= usuario.email %></td>
+			<td><%= usuario.sign_in_count %></td>
+			<td><%if usuario.last_sign_in_at.blank? %>Never logged in<% else %><%= time_ago_in_words(usuario.last_sign_in_at.to_datetime)+' ago' %><% end %></td>
+			<td>
+				<% if usuario.permission_level == 1 %><%= "Administrador" %>
+				<% else %> <%= "Empleado" %> <% end %>
+			</td>
+			<td><%= usuario.created_at.to_s(:datetime).downcase %></td>
+			<td><%= usuario.updated_at.to_s(:datetime).downcase %></td>
+			<td><%= link_to "Edit", edit_usuario_path(usuario) %></td>
+			<td><%= link_to "Delete", usuario, :method => :delete, :confirm => "Are you sure?" %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Email</th>
-        <th>Último ingreso</th>
-        <th>Fecha de ingreso</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @usuarios.each do |usuario| %>
-        <tr>
-          <td><%= usuario.nombre %></td>
-          <td><%= usuario.email %></td>
-          <td><%= usuario.created_at %></td>
-          <td><%= usuario.last_sign_in_at %></td>
-          <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
-          <% if can? :destroy, :Usuario %>
-            <td><%= link_to 'Destruir', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'Nuevo Usuario', new_usuario_path , class: "btn btn-default margenes"%>
-<% else %>
-  <%= render '/noPermission' %>
-<% end %>
+<p><%= link_to "Nuevo usuario", new_usuario_path, class: "btn btn-default margenes" %></p>

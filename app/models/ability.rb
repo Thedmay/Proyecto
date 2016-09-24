@@ -3,6 +3,8 @@ class Ability
 
   def initialize(user)
 
+    user ||= Usuario.new
+
     if user.permission_level > 0
         can :manage, :all
     else
