@@ -6,6 +6,8 @@
       <th>Cantidad</th>
       <th>Medida</th>
       <th>Saldo</th>
+      <th>Fecha ingreso</th>
+      <th>Fecha utiliza</th>
     </tr>
   </thead>
 
@@ -17,6 +19,8 @@
         <td><%= @cantidadesMatters.at(i) %></td>
         <td><%= matter.medida %></td>
         <td><%= matter.saldo %></td>
+        <td><%= matter.fecha_ingreso %></td>
+        <td><%= matter.fecha_utiliza %></td>
       </tr>
       <% i+=1 %>
     <% end %>

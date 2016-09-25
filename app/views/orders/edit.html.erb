@@ -1,7 +1,3 @@
-<% if can? :update, :Order %>
-	<h1>Editando Pedido</h1>
+<h1>Editando Pedido</h1>
 
-	<%= render 'form', texto: "Editar" ,productos: @order.products, materiales: @order.matters,productos2: Product.diferencia(@order.products), materiales2: Matter.diferencia(@order.matters), cantidades_products: OrderProduct.cantidades(@order.id, 0), cantidades_matters: CustomerMatter.cantidades(@order.id, 0),editar: true %>
-<% else %>
-	<%= render '/noPermission' %>
-<% end %>
+<%= render 'form', texto: "Editar" ,productos: @order.products, materiales: @order.matters,productos2: Product.diferencia(@order.products), materiales2: Matter.diferencia(@order.matters), cantidades_products: OrderProduct.cantidades(@order.id, 0), cantidades_matters: CustomerMatter.cantidades(@order.id, 0),editar: true %>

@@ -8,7 +8,6 @@ class Order < ActiveRecord::Base
   validates :cantidad, numericality: { only_integer: true }
   validates :medida, presence: true
   validates :customer_id, presence: true
-  validates :fecha_final, presence: true
   belongs_to :customer
   has_many :order_products
   has_many :customer_matters

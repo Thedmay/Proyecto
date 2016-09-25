@@ -3,6 +3,7 @@ class Employee < ActiveRecord::Base
 	validates :rut, presence: true
 	validates :rut, rut: true
 	validates :rut, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
+	validates :clave, presence: true
 	validates :email, presence: true
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, format: { :with => VALID_EMAIL_REGEX }

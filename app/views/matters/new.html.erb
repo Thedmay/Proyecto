@@ -1,6 +1,4 @@
-<% if can? :create, :Matter %>
-	<h1>Nueva Materia</h1>
-	<%= render 'form', texto: "Crear" %>
-<% else %>
-	<%= render '/noPermission' %>
-<% end %>
+<h1>New Matter</h1>
+
+<%= render 'form', texto: "Crear" %>
+

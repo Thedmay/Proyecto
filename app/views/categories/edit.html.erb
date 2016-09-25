@@ -1,6 +1,3 @@
-<% if can? :update, :Category %>
-	<h1>Editando Categoria</h1>
-	<%= render 'form', texto: "Editar" %>
-<% else %>
-	<%= render '/noPermission' %>
-<% end %>
+<h1>Editando Categoria</h1>
+
+<%= render 'form', texto: "Editar" %>

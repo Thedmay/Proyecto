@@ -51,8 +51,5 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  # Permisos
-  gem 'cancancan'
-  gem 'tzinfo-data'
 end
 

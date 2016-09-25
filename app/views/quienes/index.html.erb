@@ -1,31 +1,37 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Plantilla básica de Bootstrap</title>
- 
-    <!-- CSS de Bootstrap -->
+    <title>Quienes somos</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
- 
-    <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
-  <body background-image:url(<%=asset_path "fondo.jpg"%>)>
-    <h1>¡Hola mundo!</h1>
+  <body class="fondo">
+    <div id="wrapper">
+      <header class="cajatitulo">
+        <div class='define'>
+          <h1>Quienes somos</h1>
+        </div>
+      </header>
+
+      <section>
+        <div class='define'>
+          <p><h2 style=" font-size: 20px; text-align: justify;">TRASVASIJE ALEX SOTO es una Empresa Nacional, orientada a la prestación de servicios en el área productiva, tanto de trasvasijes como de maquila, brindando para ello un servicio de excelencia en  respuesta a los requerimientos de parte de sus clientes.</p>
+
+          <p><h2 style=" font-size: 20px; text-align: justify;">Formada en Noviembre de 2015 como respuesta a los requerimientos de muchos clientes del Rubro Construcción, Agrícola, Minería y Tratamientos de Aguas Industriales, entre otros.</p></h2>
+
+          <p><h2 style=" font-size: 20px; text-align: justify;">El Mayor compromiso es entregar la mejor calidad, servicio y precios de mercado, para ello enfocaremos nuestro trabajo en un mejoramiento continuo con los servicios prestados hacia ellos y así dar respuesta real y satisfactoria a sus requerimientos.</p></h2>
+        </div>
+      </section> 
+     
+      <footer>
+          <div class="define">
+          <h3 style=" font-size: 12px;">Avda. Elías Fernández Albano # 565 La cisterna – Santiago </h3>
+        </div>
+      </footer>
  
-    <!-- Librería jQuery requerida por los plugins de JavaScript -->
     <script src="http://code.jquery.com/jquery.js"></script>
- 
-    <!-- Todos los plugins JavaScript de Bootstrap (también puedes
-         incluir archivos JavaScript individuales de los únicos
-         plugins que utilices) -->
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

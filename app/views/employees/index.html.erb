@@ -1,41 +1,37 @@
-<% if can? :crud, :Employee %>
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-  <h1>Listando Empleados</h1>
+<h1>Listando Empleados</h1>
 
-  <table>
-    <thead>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Rut</th>
+      <th>Clave</th>
+      <th>Email</th>
+      <th>Sueldo</th>
+      <th>Fecha ingreso</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
       <tr>
-        <th>Nombre</th>
-        <th>Rut</th>
-        <th>Email</th>
-        <th>Sueldo</th>
-        <th>Fecha ingreso</th>
-        <th colspan="3"></th>
+        <td><%= employee.nombre %></td>
+        <td><%= employee.rut %></td>
+        <td><%= employee.clave %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.sueldo %></td>
+        <td><%= employee.fecha_ingreso %></td>
+        <td><%= link_to 'Mostrar', employee, class: "" %></td>
+        <td><%= link_to 'Editar', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Destruir', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </thead>
+    <% end %>
+  </tbody>
+</table>
 
-    <tbody>
-      <% @employees.each do |employee| %>
-        <tr>
-          <td><%= employee.nombre %></td>
-          <td><%= employee.rut %></td>
-          <td><%= employee.email %></td>
-          <td><%= employee.sueldo %></td>
-          <td><%= employee.fecha_ingreso %></td>
-          <td><%= link_to 'Mostrar', employee, class: "" %></td>
-          <td><%= link_to 'Editar', edit_employee_path(employee) %></td>
-          <% if can? :destroy, :Employee %>
-          <td><%= link_to 'Destruir', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<br>
 
-  <br>
-
-  <%= link_to 'Nuevo Empelado', new_employee_path, class: "btn btn-primary" %>
-<% else %>
-  <%= render '/noPermission' %>
-<% end %>
+<%= link_to 'Nuevo Empelado', new_employee_path, class: "btn btn-primary" %>

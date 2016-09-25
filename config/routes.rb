@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :assistances
+  resources :assistances
   resources :lincenses
   resources :fechas
   resources :assistances
@@ -11,12 +13,12 @@ Rails.application.routes.draw do
   resources :products
   devise_for :usuarios
 
-  resources :usuarios
-
   get 'orders/:id/bill', to: 'orders#bill'
   
   get 'welcome/index'
   get 'quienes/index'
+  get 'productos/index'
+  get 'contacto/index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

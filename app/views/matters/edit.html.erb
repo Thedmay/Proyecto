@@ -1,6 +1,3 @@
-<% if can? :update, :Matter %>
-	<h1>Editando Materia</h1>
-	<%= render 'form', texto: "Editar"%>
-<% else %>
-	<%= render '/noPermission' %>
-<% end %>
+<h1>Editando Materia</h1>
+
+<%= render 'form', texto: "Editar"%>

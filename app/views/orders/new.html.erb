@@ -1,7 +1,4 @@
-<% if can? :create, :Order %>
-	<h1>Nuevo Pedido</h1>
+<h1>Nuevo Pedido</h1>
 
-	<%= render 'form', texto: "Crear" ,productos: Product.all, materiales: Matter.all %>
-<% else %>
-	<%= render '/noPermission' %>
-<% end %>
+<%= render 'form', texto: "Crear" ,productos: Product.all, materiales: Matter.all %>
+

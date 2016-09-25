@@ -1,97 +1,93 @@
-<% if can? :read, :Customer %>
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-  <p>
-    <strong>Nombre:</strong>
-    <%= @customer.nombre %>
-  </p>
+<p>
+  <strong>Nombre:</strong>
+  <%= @customer.nombre %>
+</p>
 
-  <p>
-    <strong>Rut:</strong>
-    <%= @customer.rut %>
-  </p>
+<p>
+  <strong>Rut:</strong>
+  <%= @customer.rut %>
+</p>
 
-  <p>
-    <strong>Telefono:</strong>
-    <%= @customer.telefono %>
-  </p>
+<p>
+  <strong>Telefono:</strong>
+  <%= @customer.telefono %>
+</p>
 
-  <p>
-    <strong>Email:</strong>
-    <%= @customer.email %>
-  </p>
+<p>
+  <strong>Email:</strong>
+  <%= @customer.email %>
+</p>
 
-  <p>
-    <strong>Direccion:</strong>
-    <%= @customer.direccion %>
-  </p>
+<p>
+  <strong>Direccion:</strong>
+  <%= @customer.direccion %>
+</p>
 
-  <label>Pedidos</label>
+<label>Pedidos</label>
 
-  <table>
-    <thead>
+<table>
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Fecha</th>
+      <th>Detalle</th>
+      <th>Cantidad</th>
+      <th>Medida</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customer.orders.each do |order| %>
       <tr>
-        <th>Numero</th>
-        <th>Fecha</th>
-        <th>Detalle</th>
-        <th>Cantidad</th>
-        <th>Medida</th>
-        <th colspan="3"></th>
+        <td><%= order.numero %></td>
+        <td><%= order.fecha %></td>
+        <td><%= order.detalle %></td>
+        <td><%= order.cantidad %></td>
+        <td><%= order.medida %></td>
+        <td><%= link_to 'Mostrar', order %></td>
+        <td><%= link_to 'Editar', edit_order_path(order) %></td>
+        <td><%= link_to 'Destruir', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </thead>
+    <% end %>
+  </tbody>
+</table>
 
-    <tbody>
-      <% @customer.orders.each do |order| %>
-        <tr>
-          <td><%= order.numero %></td>
-          <td><%= order.fecha %></td>
-          <td><%= order.detalle %></td>
-          <td><%= order.cantidad %></td>
-          <td><%= order.medida %></td>
-          <td><%= link_to 'Mostrar', order %></td>
-          <td><%= link_to 'Editar', edit_order_path(order) %></td>
-          <td><%= link_to 'Destruir', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<label>Facturas</label>
 
-  <label>Facturas</label>
+<table>
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Fecha</th>
+      <th>Razon social</th>
+      <th>Giro comercial</th>
+      <th>Monto neto</th>
+      <th>Iva</th>
+      <th>Total</th>
+      <th>Cliente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-  <table>
-    <thead>
+  <tbody>
+    <% @customer.bills.each do |bill| %>
       <tr>
-        <th>Numero</th>
-        <th>Fecha</th>
-        <th>Razon social</th>
-        <th>Giro comercial</th>
-        <th>Monto neto</th>
-        <th>Iva</th>
-        <th>Total</th>
-        <th>Cliente</th>
-        <th colspan="3"></th>
+        <td><%= bill.numero %></td>
+        <td><%= bill.fecha %></td>
+        <td><%= bill.razon_social %></td>
+        <td><%= bill.giro_comercial %></td>
+        <td><%= bill.monto_neto %></td>
+        <td><%= bill.iva %></td>
+        <td><%= bill.total %></td>
+        <td><%= bill.customer.nombre %></td>
+        <td><%= link_to 'Mostrar', bill %></td>
       </tr>
-    </thead>
+    <% end %>
+  </tbody>
+</table>
 
-    <tbody>
-      <% @customer.bills.each do |bill| %>
-        <tr>
-          <td><%= bill.numero %></td>
-          <td><%= bill.fecha %></td>
-          <td><%= bill.razon_social %></td>
-          <td><%= bill.giro_comercial %></td>
-          <td><%= bill.monto_neto %></td>
-          <td><%= bill.iva %></td>
-          <td><%= bill.total %></td>
-          <td><%= bill.customer.nombre %></td>
-          <td><%= link_to 'Mostrar', bill %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <%= link_to 'Editar', edit_customer_path(@customer) , class: "btn btn-primary margenes"%> 
-  <%= link_to 'Volver', customers_path , class: "btn btn-default margenes"%>
-<% else %>
-  <%= render '/noPermission' %>
-<% end %>
+<%= link_to 'Editar', edit_customer_path(@customer) , class: "btn btn-primary margenes"%> 
+<%= link_to 'Volver', customers_path , class: "btn btn-default margenes"%>

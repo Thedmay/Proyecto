@@ -1,7 +1,3 @@
-<% if can? :update, :Product %>
-	<h1>Editando Producto</h1>
+<h1>Editando Producto</h1>
 
-	<%= render 'form', texto: "Editar", materiales: @product.matters, materiales2: Matter.diferencia(@product.matters), cantidad_matters: MatterProduct.cantidades(@product.id, 2),editar: true %>
-<% else %>
-	<%= render '/noPermission' %>
-<% end %>
+<%= render 'form', texto: "Editar", materiales: @product.matters, materiales2: Matter.diferencia(@product.matters), cantidad_matters: MatterProduct.cantidades(@product.id, 2),editar: true %>

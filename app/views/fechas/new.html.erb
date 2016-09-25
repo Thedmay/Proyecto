@@ -1,6 +1,3 @@
-<% if can? :create, Fecha %>
-	<h1>Crear Fecha</h1>
-	<%= render 'form', texto: "Crear" ,empleados: Employee.all %>
-<% else %>
-	<%= render '/noPermission' %>
-<% end %>
+<h1>Crear Fecha</h1>
+
+<%= render 'form', texto: "Crear" ,empleados: Employee.all %>

@@ -10,33 +10,32 @@
       </ul>
     </div>
   <% end %>
-  <div class="caja">
-    <div class="field">
-      <%= f.label :nombre %><br>
-      <%= f.text_field :nombre , class: 'form-control'%>
-    </div>
-    <div class="field">
-      <%= f.label :rut %><br>
-      <%= f.text_field :rut , class: 'form-control'%>
-    </div>
-    <div class="field">
-      <%= f.label :telefono %><br>
-      <%= f.number_field :telefono , class: 'form-control'%>
-    </div>
-    <div class="field">
-      <%= f.label :email %><br>
-      <%= f.text_field :email , class: 'form-control'%>
-    </div>
-    <div class="field">
-      <%= f.label :direccion %><br>
-      <%= f.text_field :direccion, class: 'form-control' %>
-    </div>
-    <div class="actions">
-      <%= f.submit class: "btn btn-primary margenes", value: texto%>
-      <% if texto=="Editar" %>
-        <%= link_to 'Mostrar', @customer , class: "btn btn-primary margenes"%> 
-      <% end %>
-      <%= link_to 'Volver', customers_path , class: "btn btn-default margenes"%>
-    </div>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre , class: 'form-control'%>
+  </div>
+  <div class="field">
+    <%= f.label :rut %><br>
+    <%= f.text_field :rut , class: 'form-control'%>
+  </div>
+  <div class="field">
+    <%= f.label :telefono %><br>
+    <%= f.number_field :telefono , class: 'form-control'%>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email , class: 'form-control'%>
+  </div>
+  <div class="field">
+    <%= f.label :direccion %><br>
+    <%= f.text_field :direccion, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary margenes", value: texto%>
+    <% if texto=="Editar" %>
+      <%= link_to 'Mostrar', @customer , class: "btn btn-primary margenes"%> 
+    <% end %>
+    <%= link_to 'Volver', customers_path , class: "btn btn-default margenes"%>
   </div>
 <% end %>

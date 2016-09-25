@@ -1,0 +1,82 @@
+<!DOCTYPE>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quienes somos</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script language="JavaScript">
+		function ValidarFormulario(f)
+		{
+		if (f.Nombre.value == 'Nombre'|| f.Telefono.value == "Telefono"|| f.Mensaje.value == "Mensaje" )
+			{
+			alert("Debe Introducir todos los campos");
+			}
+		else
+			{
+			alert("Atencion: Los datos del formulario son correctos. Los datos seran enviados");
+			f.submit();
+			}
+		}
+	</script>
+  </head>
+  <body class="fondo">
+    <div id="wrapper">
+      <header class="cajatitulo">
+        <div class='define'>
+          <h1>Contacto</h1>
+        </div>
+      </header>
+
+      <section>
+      <div class="main">
+				<div class="indent-left">
+					<div class="wrapper">
+						<article class="col-1">
+							<br>
+							<br>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.195698454598!2d-70.66866484952635!3d-33.52229720849417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662dae3229d34f7%3A0xa48f177dde0fc86d!2sAv.+Fern%C3%A1ndez+Albano+565%2C+La+Cisterna%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1447628614073" width="260" height="223" frameborder="0" style="border:0" allowfullscreen></iframe>
+								<h3>Datos:</h3>
+								<dl>
+									<dt><span>Telefono:</span>  +56999999999</dt>
+									<dt><span>E-mail:</span> <a href="#">email@gmail.com</a></dt>
+								</dl>
+						</article>
+						<article class="col-2">
+						<div class="indent-left">
+								<h2>Contáctanos</h2>
+							<form id="contact-form" action="mailto:nico.raudy@gmail.com" method="post" ENCTYPE="text/plain">
+								<fieldset>
+									<label>
+										<input type="text" placeholder='Nombre' value="Nombre" onBlur="if(this.value=='')this.value='Nombre'" onFocus="if(this.value =='Nombre' ) this.value=''" required />
+									</label>
+									<!--<label>
+										<input type="text" name="Email" value="Email" onBlur="if(this.value=='') this.value='Email'" onFocus="if(this.value =='Email' ) this.value=''" pattern="^[a-zA-Z0-9.!#$%*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"/>
+									</label>-->
+									<label>
+										<input type="number" placeholder='Telefono' min='0' value="Telefono" onBlur="if(this.value=='') this.value='Telefono'" onFocus="if(this.value =='Telefono' ) this.value=''" pattern="[0-9]" minlenght="8" maxlength="8" required />
+									</label>
+										<textarea name="Mensaje" onBlur="if(this.value=='') this.value='Message'" onFocus="if(this.value =='Message' ) this.value=''">Mensaje</textarea>
+								</fieldset>
+								<div class="buttons-wrapper">
+									<a class="button" onClick="document.getElementById('contact-form').reset()">Limpiar</a>
+									<a class="button" onClick="document.getElementById('contact-form').submit()">Enviar</a>
+								</div>
+							</form>
+						</article>
+					</div>
+				</div>
+			</div>
+      </section> 
+     
+      <footer>
+          <div class="define">
+          <h3 style=" font-size: 12px;">Avda. Elías Fernández Albano # 565 La cisterna – Santiago </h3>
+        </div>
+      </footer>
+ 
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

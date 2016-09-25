@@ -1,54 +1,60 @@
-<% if can? :read, :Matter %>
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-  <p>
-    <strong>Nombre:</strong>
-    <%= @matter.nombre %>
-  </p>
+<p>
+  <strong>Nombre:</strong>
+  <%= @matter.nombre %>
+</p>
 
-  <p>
-    <strong>Medida:</strong>
-    <%= @matter.medida %>
-  </p>
+<p>
+  <strong>Medida:</strong>
+  <%= @matter.medida %>
+</p>
 
-  <p>
-    <strong>Saldo:</strong>
-    <%= @matter.saldo %>
-  </p>
+<p>
+  <strong>Saldo:</strong>
+  <%= @matter.saldo %>
+</p>
 
-  <p>
-    <strong>Cantidad en pedidos:</strong>
-    <%= @cantidadPedidos %>
-  </p>
+<p>
+  <strong>Fecha ingreso:</strong>
+  <%= @matter.fecha_ingreso %>
+</p>
 
-  <label>Productos</label>
-  <table>
-    <thead>
+<p>
+  <strong>Fecha utiliza:</strong>
+  <%= @matter.fecha_utiliza %>
+</p>
+
+<p>
+  <strong>Cantidad en pedidos:</strong>
+  <%= @cantidadPedidos %>
+</p>
+
+<label>Productos</label>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Unidades</th>
+      <th>Medida</th>
+      <th>Fecha produce</th>
+      <th>Categoria</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matter.products.each do |product| %>
       <tr>
-        <th>Nombre</th>
-        <th>Codigo</th>
-        <th>Unidades</th>
-        <th>Medida</th>
-        <th>Fecha produce</th>
-        <th>Categoria</th>
+        <td><%= product.nombre %></td>
+        <td><%= product.codigo %></td>
+        <td><%= product.unidades %></td>
+        <td><%= product.medida %></td>
+        <td><%= product.fecha_produce %></td>
+        <td><%= product.category.nombre %></td>
       </tr>
-    </thead>
-
-    <tbody>
-      <% @matter.products.each do |product| %>
-        <tr>
-          <td><%= product.nombre %></td>
-          <td><%= product.codigo %></td>
-          <td><%= product.unidades %></td>
-          <td><%= product.medida %></td>
-          <td><%= product.fecha_produce %></td>
-          <td><%= product.category.nombre %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= link_to 'Editar', edit_matter_path(@matter) , class: "btn btn-primary margenes"%> 
-  <%= link_to 'Volver', matters_path ,class: "btn btn-default margenes"%>
-<% else %>
-  <%= render '/noPermission' %>
-<% end %>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Editar', edit_matter_path(@matter) , class: "btn btn-primary margenes"%> 
+<%= link_to 'Volver', matters_path ,class: "btn btn-default margenes"%>

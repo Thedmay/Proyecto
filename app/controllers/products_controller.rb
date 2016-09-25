@@ -80,7 +80,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:nombre, :codigo, :unidades, :cantidad, :medida, :category_id, :cantidadesMatters, :matters, :cantidadesMatters2, :matters2)
+      params.require(:product).permit(:nombre, :codigo, :unidades, :cantidad, :medida, :fecha_produce, :category_id, :cantidadesMatters, :matters, :cantidadesMatters2, :matters2)
     end
 
     def validar_tablas1

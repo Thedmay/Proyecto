@@ -1,6 +1,3 @@
-<% if can? :update, :Employee %>
-	<h1>Editando Empleado</h1>
-	<%= render 'form', texto: "Editar"%>
-<% else %>
-	<%= render '/noPermission' %>
-<% end %>
+<h1>Editando Empleado</h1>
+
+<%= render 'form', texto: "Editar"%>

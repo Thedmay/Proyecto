@@ -1,6 +1,5 @@
-<% if can? :update, Fecha %>
-	<h1>Editando Asistencia</h1>
-	<%= render 'form', texto: "Editar", empleados: @fecha.employees, editar: true, empleados2: Employee.diferencia(@fecha.employees) %>
-<% else %>
-	<%= render '/noPermission' %>
-<% end %>
+<h1>Editando Asistencia</h1>
+
+<%= render 'form', texto: "Editar", empleados: @fecha.employees, editar: true, empleados2: Employee.diferencia(@fecha.employees) %>
+
+

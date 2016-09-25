@@ -39,3 +39,184 @@
     @-moz-keyframes cintaimagen {  0% {background-position:0 0;} 100% { background-position:-960px 0; } }
 
     @keyframes cintaimagen {  0% {background-position:0 0;} 100% { background-position:-960px 0; } }
+
+        
+#wrapper{
+    min-height:100%;
+}
+
+
+header {
+    display:block;
+    padding:5px 0px;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+    background:#1D628B;
+}
+
+.cajatitulo{
+    border-radius: 35px 0px 35px 0px;
+    -moz-border-radius: 35px 0px 35px 0px;
+    -webkit-border-radius: 35px 0px 35px 0px;
+    border: 2px solid #5878ca;
+    text-align: center;
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+}
+
+section {
+    overflow: auto;/* Definimos el padding inferior:50px del pie de pagina mas 10px de separacion */
+    padding-bottom: 60px; /* Definimos un padding superior */
+    padding-top:30px;
+}    
+        
+footer{
+    position: relative;/* Altura total del footer en px con valor negativo */
+    margin-top: -50px;/* Altura del footer en px. Se han restado los 5px del margen superior mas los 5px del margen inferior*/
+    height: 60px;
+    padding:5px 0px;
+    clear: both;
+    background: #1D628B;
+    text-align: center;
+    color: #fff;
+}
+ 
+
+/* Esta clase define la anchura del contenido y la posicion centrada El contenido queda centrado y limitado, pero la cabecera y el pie llegan hasta los limites del navegador.*/
+.define {
+    width:960px;
+    margin:0 auto;
+}
+
+
+/* galeria en productos*/
+
+.img{
+    float:left;
+    -webkit-transition-duration: 0.5s;
+    }
+.img img{
+    padding:10px;
+    border:1px solid #fff;
+}
+.img:hover{
+    -webkit-transform:scale(0.8);
+    -webkit-box-shadow:0px 0px 50px #ccc;
+}   
+.img .mask{
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    position: absolute; 
+    opacity:0.6;
+    cursor:pointer;
+    -webkit-transition-duration: 0.5s;
+}
+#img-1:hover .mask{
+    height:0%;  
+}
+#img-2:hover .mask{
+    height:0%;  
+    margin-top:130px;
+}
+#img-4:hover .mask{
+    margin-left:219px;
+    margin-top:135px;
+    height:0%;
+    width:0%;
+}
+#img-5:hover .mask{
+    margin-left:250px;
+    margin-top:250px;
+    height:0%;
+    width:0%;
+    -webkit-transform: rotateX(360deg);
+}
+
+
+table, th, td {
+    border: 2px ;
+}
+
+.centrado{
+    margin-left: auto;
+    margin-right: auto;   
+}
+
+
+
+/* Email */
+
+.main {width:980px;padding:0;margin:0 auto;font-size:0.875em;line-height:1.428em}
+.col-1{float:left;}
+.col-2{float:right;}
+
+.wrapper {width:100%;overflow:hidden}
+.indent-left {padding-left: 20px}
+.button {
+    display: inline-block;
+    padding:0 24px;
+    margin-left:2px;
+    margin-bottom:2px;
+    font-size:14px;
+    line-height:38px;
+    color:#000;
+    border:1px solid #fff;
+    background:url(../images/button-tail.gif) 0 0 repeat-x #f2f2f2;
+    box-shadow:0 0 2px #bbb;
+    cursor:pointer;
+}
+
+#content {
+    width:100%;
+    background-color: white;
+    padding:25px 0 42px;
+}
+
+
+/***** contact form *****/
+#contact-form {
+    position:relative;
+    vertical-align:top;
+    width:100%;
+    z-index:1;
+    }
+    #contact-form fieldset {
+        border:none;
+        padding:0;
+        }           
+            #contact-form label {
+                display:block;
+                height:50px;
+            }
+            
+            #contact-form input {
+                width:323px;
+                padding:12px 20px;
+                margin:0;
+                font-family:Arial, Helvetica, sans-serif;
+                font-size:14px;
+                line-height:1.214em;
+                color:#808080;
+                border:1px solid #e6e6e6;
+                background:#fff;
+                outline:none;
+            }
+            #contact-form textarea {
+                overflow:auto;
+                height:130px;
+                width:563px;
+                padding:12px 20px;
+                margin:0;
+                font-family:Arial, Helvetica, sans-serif;
+                font-size:14px;
+                line-height:1.214em;
+                color:#808080;
+                border:1px solid #e6e6e6;
+                background:#fff;
+                outline:none;
+         }
+     .buttons-wrapper {padding:18px 0 0 0;text-align:right}
+     .buttons-wrapper a {margin-left:15px}
+
+

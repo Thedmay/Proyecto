@@ -1,37 +1,35 @@
-<% if can? :crud, :Matter %>
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-  <h1>Listando Materias</h1>
+<h1>Listando Materias</h1>
 
-  <table>
-    <thead>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Medida</th>
+      <th>Saldo</th>
+      <th>Fecha ingreso</th>
+      <th>Fecha utiliza</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matters.each do |matter| %>
       <tr>
-        <th>Nombre</th>
-        <th>Medida</th>
-        <th>Saldo</th>
-        <th colspan="3"></th>
+        <td><%= matter.nombre %></td>
+        <td><%= matter.medida %></td>
+        <td><%= matter.saldo %></td>
+        <td><%= matter.fecha_ingreso %></td>
+        <td><%= matter.fecha_utiliza %></td>
+        <td><%= link_to 'Mostrar', matter %></td>
+        <td><%= link_to 'Editar', edit_matter_path(matter) %></td>
+        <td><%= link_to 'Destruir', matter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </thead>
+    <% end %>
+  </tbody>
+</table>
 
-    <tbody>
-      <% @matters.each do |matter| %>
-        <tr>
-          <td><%= matter.nombre %></td>
-          <td><%= matter.medida %></td>
-          <td><%= matter.saldo %></td>
-          <td><%= link_to 'Mostrar', matter %></td>
-          <td><%= link_to 'Editar', edit_matter_path(matter) %></td>
-          <% if can? :destroy, :Matter %>
-            <td><%= link_to 'Destruir', matter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<br>
 
-  <br>
-
-  <%= link_to 'Nueva Materia', new_matter_path, class: "btn btn-primary margenes"%>
-<% else %>
-  <%= render '/noPermission' %>
-<% end %>
+<%= link_to 'Nueva Materia', new_matter_path, class: "btn btn-primary margenes"%>

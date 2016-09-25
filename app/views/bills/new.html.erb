@@ -1,6 +1,4 @@
-<% if can? :create, :Bill %>
-	<h1>Nueva Factura</h1>
-	<%= render 'form', texto: "Crear", productos: Product.all %>
-<% else %>
-	<%= render '/noPermission' %>
-<% end %>
+<h1>Nueva Factura</h1>
+
+<%= render 'form', texto: "Crear", productos: Product.all %>
+
