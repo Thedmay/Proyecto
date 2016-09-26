@@ -24,7 +24,7 @@
         <td><%= matter.fecha_utiliza %></td>
         <td><%= link_to 'Mostrar', matter %></td>
         <td><%= link_to 'Editar', edit_matter_path(matter) %></td>
-        <td><%= link_to 'Destruir', matter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Eliminar', matter, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>

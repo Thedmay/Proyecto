@@ -26,7 +26,7 @@
         <td><%= order.customer.nombre %></td>
         <td><%= link_to 'Mostrar', order %></td>
         <td><%= link_to 'Editar', edit_order_path(order) %></td>
-        <td><%= link_to 'Destruir', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Eliminar', order, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>

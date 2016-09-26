@@ -30,7 +30,7 @@
         <td><%= bill.customer.nombre %></td>
         <td><%= link_to 'Mostrar', bill %></td>
         <td><%= link_to 'Editar', edit_bill_path(bill) %></td>
-        <td><%= link_to 'Destruir', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Eliminar', bill, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -16,7 +16,7 @@
         <td><%= fecha.fecha %></td>
         <td><%= link_to 'Mostar', fecha %></td>
         <td><%= link_to 'Editar', edit_fecha_path(fecha) %></td>
-        <td><%= link_to 'Destruir', fecha, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Eliminar', fecha, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>

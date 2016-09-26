@@ -22,7 +22,7 @@
         <td><%= lincense.detalle %></td>
         <td><%= link_to 'Mostrar', lincense %></td>
         <td><%= link_to 'Editar', edit_lincense_path(lincense) %></td>
-        <td><%= link_to 'Destruir', lincense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Eliminar', lincense, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>

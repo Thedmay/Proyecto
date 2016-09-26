@@ -26,7 +26,7 @@
         <td><%= employee.fecha_ingreso %></td>
         <td><%= link_to 'Mostrar', employee, class: "" %></td>
         <td><%= link_to 'Editar', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destruir', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Eliminar', employee, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
