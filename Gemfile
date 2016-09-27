@@ -31,6 +31,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rut_validation'
 
+gem 'rails_admin', '~> 1.0'
+
+gem 'coffee-script-source', '1.8.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
