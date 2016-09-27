@@ -11,27 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :employee_id, value: "Empleado"%>
-    <%= collection_select( :lincense, :employee_id, Employee.all, :id, :nombre, {}, {:class => 'form-control', :multiple => false})%>
-  </div>
-  <div class="field">
-    <%= f.label :fechaInicio , value: "Fecha de inicio" %><br>
-    <%= f.date_select :fechaInicio, class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :duracion %><br>
-    <%= f.number_field :duracion, class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :detalle %><br>
-    <%= f.text_area :detalle, class: 'form-control' %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary margenes", value: texto %>
-    <% if texto=="Editar" %>
-      <%= link_to 'Mostrar', @lincense, class: "btn btn-info margenes" %> 
-    <% end %>
-    <%= link_to 'Volver', lincenses_path, class: "btn btn-default margenes" %>
+  <div class="caja">
+    <div class="field">
+      <%= f.label :employee_id, value: "Empleado"%>
+      <%= collection_select( :lincense, :employee_id, Employee.all, :id, :nombre, {}, {:class => 'form-control', :multiple => false})%>
+    </div>
+    <div class="field">
+      <%= f.label :fechaInicio , value: "Fecha de inicio" %><br>
+      <input id="lincense_fechaInicio" type='date' min='2015-11-01' max='2017-12-12' class="form-control" name="lincense[fechaInicio]"></input>
+    </div>
+    <div class="field">
+      <%= f.label :duracion %><br>
+      <%= f.number_field :duracion, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :detalle %><br>
+      <%= f.text_area :detalle, class: 'form-control' %>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary margenes", value: texto %>
+      <% if texto=="Editar" %>
+        <%= link_to 'Mostrar', @lincense, class: "btn btn-info margenes" %> 
+      <% end %>
+      <%= link_to 'Volver', lincenses_path, class: "btn btn-default margenes" %>
+    </div>
   </div>
 <% end %>

@@ -19,7 +19,7 @@ gem 'font-awesome-rails'
 #Agregar bootstrap
 gem "bootstrap-sass", "~> 3.0.2.1"
 #Usar devise para las cuentas de ususario
-gem 'devise', '~> 3.5.0'
+gem 'devise'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -51,5 +51,8 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # Permisos
+  gem 'cancancan'
+  gem 'tzinfo-data'
 end
 

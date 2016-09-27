@@ -1,27 +1,35 @@
-<p id="notice"><%= notice %></p>
+<% if can? :crud, Fecha %>
+    <p id="notice"><%= notice %></p>
 
-<h1>Listando Fechas</h1>
+  <h1>Listando Fechas</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Fecha</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @fechas.each do |fecha| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= fecha.fecha %></td>
-        <td><%= link_to 'Mostar', fecha %></td>
-        <td><%= link_to 'Editar', edit_fecha_path(fecha) %></td>
-        <td><%= link_to 'Eliminar', fecha, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+        <th>Fecha</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @fechas.each do |fecha| %>
+        <tr>
+          <td><%= fecha.fecha %></td>
+          <td><%= link_to 'Mostar', fecha %></td>
+          <td><%= link_to 'Editar', edit_fecha_path(fecha) %></td>
+          <% if can? :destroy, Fecha %>
+            <td><%= link_to 'Destruir', fecha, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'Nueva Fecha', new_fecha_path , class: "btn btn-primary"%>
+  <br>
+
+  <%= link_to 'Nueva Fecha', new_fecha_path , class: "btn btn-primary"%>
+
+
+<% else %>
+  <%= render '/noPermission' %>
+<% end %>

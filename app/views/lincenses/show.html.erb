@@ -1,24 +1,28 @@
-<p id="notice"><%= notice %></p>
+<% if can? :read, :Licence %>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Employee:</strong>
-  <%= @lincense.employee.nombre %>
-</p>
+	<p>
+	  <strong>Employee:</strong>
+	  <%= @lincense.employee.nombre %>
+	</p>
 
-<p>
-  <strong>Fechainicio:</strong>
-  <%= @lincense.fechaInicio %>
-</p>
+	<p>
+	  <strong>Fechainicio:</strong>
+	  <%= @lincense.fechaInicio %>
+	</p>
 
-<p>
-  <strong>Duracion:</strong>
-  <%= @lincense.duracion %> dias
-</p>
+	<p>
+	  <strong>Duracion:</strong>
+	  <%= @lincense.duracion %> dias
+	</p>
 
-<p>
-  <strong>Detalle:</strong>
-  <%= @lincense.detalle %>
-</p>
+	<p>
+	  <strong>Detalle:</strong>
+	  <%= @lincense.detalle %>
+	</p>
 
-<%= link_to 'Editar', edit_lincense_path(@lincense), class: "btn btn-primary margenes" %> 
-<%= link_to 'Volver', lincenses_path , class: "btn btn-default margenes"%>
+	<%= link_to 'Editar', edit_lincense_path(@lincense), class: "btn btn-primary margenes" %> 
+	<%= link_to 'Volver', lincenses_path , class: "btn btn-default margenes"%>
+<% else %>
+	<%= render 'noPermission' %>
+<% end %>

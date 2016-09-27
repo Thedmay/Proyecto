@@ -12,31 +12,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre , class: 'form-control'%>
+  <div class="caja">
+    <div class="field">
+      <%= f.label :nombre %><br>
+      <%= f.text_field :nombre , class: 'form-control'%>
+    </div>
+    <div class="field">
+      <%= f.label :codigo %><br>
+      <%= f.number_field :codigo , class: 'form-control'%>
+    </div>
+    <div class="field">
+      <%= f.label :unidades %><br>
+      <%= f.number_field :unidades , class: 'form-control'%>
+    </div>
+    <div class="field">
+      <%= f.label :medida %><br>
+      <%= f.text_field :medida , class: 'form-control'%>
+    </div>
+    <div class="field">
+      <%= f.label :category_id%>
+      <%= collection_select( :product, :category_id, Category.all, :id, :nombre, {}, { :class => 'form-control',:multiple => false})%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :codigo %><br>
-    <%= f.text_field :codigo , class: 'form-control'%>
-  </div>
-  <div class="field">
-    <%= f.label :unidades %><br>
-    <%= f.text_field :unidades , class: 'form-control'%>
-  </div>
-  <div class="field">
-    <%= f.label :medida %><br>
-    <%= f.text_field :medida , class: 'form-control'%>
-  </div>
-  <div class="field">
-    <%= f.label :fecha_produce %><br>
-    <%= f.date_select :fecha_produce , class: 'form-control'%>
-  </div>
-  <div class="field">
-    <%= f.label :category_id%>
-    <%= collection_select( :product, :category_id, Category.all, :id, :nombre, {}, { :class => 'form-control',:multiple => false})%>
-  </div>
-
   <% if editar %>
     <%= render '/tableMatters1', materiales: materiales, materiales2: materiales2, cantidades_matters: cantidad_matters ,editar: editar %>
   <% else %>

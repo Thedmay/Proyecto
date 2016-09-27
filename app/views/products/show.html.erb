@@ -1,46 +1,45 @@
-<p id="notice"><%= notice %></p>
+<% if can? :read, :Product %>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @product.nombre %>
-</p>
+  <p>
+    <strong>Nombre:</strong>
+    <%= @product.nombre %>
+  </p>
 
-<p>
-  <strong>Codigo:</strong>
-  <%= @product.codigo %>
-</p>
+  <p>
+    <strong>Codigo:</strong>
+    <%= @product.codigo %>
+  </p>
 
-<p>
-  <strong>Unidades:</strong>
-  <%= @product.unidades %>
-</p>
+  <p>
+    <strong>Unidades:</strong>
+    <%= @product.unidades %>
+  </p>
 
-<p>
-  <strong>Medida:</strong>
-  <%= @product.medida %>
-</p>
+  <p>
+    <strong>Medida:</strong>
+    <%= @product.medida %>
+  </p>
 
-<p>
-  <strong>Fecha produce:</strong>
-  <%= @product.fecha_produce %>
-</p>
+  <p>
+    <strong>Categoría:</strong>
+    <%= @product.category.nombre %>
+  </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @product.category.nombre %>
-</p>
+  <p>
+    <strong>Cantidad en pedidos:</strong>
+    <%= @cantidadPedidos %>
+  </p>
 
-<p>
-  <strong>Cantidad en pedidos:</strong>
-  <%= @cantidadPedidos %>
-</p>
+  <p>
+    <strong>Cantidad vendida:</strong>
+    <%= @cantidadVentas %>
+  </p>
 
-<p>
-  <strong>Cantidad vendida:</strong>
-  <%= @cantidadVentas %>
-</p>
+  <%= render '/tableMatters2', materiales: @product.matters%>
 
-<%= render '/tableMatters2', materiales: @product.matters%>
-
-<%= link_to 'Editar', edit_product_path(@product) ,class: "btn btn-primary margenes"%> 
-<%= link_to 'Volver', products_path ,class: "btn btn-default margenes"%>
+  <%= link_to 'Editar', edit_product_path(@product) ,class: "btn btn-primary margenes"%> 
+  <%= link_to 'Volver', products_path ,class: "btn btn-default margenes"%>
+<% else %>
+  <%= render '/noPermission' %>
+<% end %>

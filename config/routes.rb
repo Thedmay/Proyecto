@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :assistances
-  resources :assistances
   resources :lincenses
   resources :fechas
   resources :assistances
@@ -13,18 +11,26 @@ Rails.application.routes.draw do
   resources :products
   devise_for :usuarios
 
+  resources :usuarios
+
   get 'orders/:id/bill', to: 'orders#bill'
+
+  get 'bienvenida', :controller => 'welcome', :action => 'index'
+  get 'quienes', :controller => 'quienes', :action => 'index'
+  get 'productos', :controller => 'productos', :action => 'index'
+  get 'contacto', :controller => 'contacto', :action => 'index'
+
+
+  #get 'welcome', :as => "Bienvenida"
+  #get 'quienes', :as => "quienes"
+  #get 'productos', :as => "productos"
+  #get 'contacto', :as => "contacto"
   
-  get 'welcome/index'
-  get 'quienes/index'
-  get 'productos/index'
-  get 'contacto/index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

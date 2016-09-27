@@ -2,3 +2,7 @@
 
 <%= render 'form', texto: "Crear" %>
 
+<% if can? :create, :Lincense %>
+<% else %>
+	<%= render 'noPermission' %>
+<% end %>

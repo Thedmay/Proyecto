@@ -30,7 +30,9 @@
         <td><%= bill.customer.nombre %></td>
         <td><%= link_to 'Mostrar', bill %></td>
         <td><%= link_to 'Editar', edit_bill_path(bill) %></td>
-        <td><%= link_to 'Eliminar', bill, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+        <% if can? :destroy, :Bill %>
+          <td><%= link_to 'Destruir', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -39,3 +41,7 @@
 <br>
 
 <%= link_to 'Nueva Factura', new_bill_path , class: "btn btn-primary margenes"%>
+<% if can? :crud, :Bill %>
+<% else %>
+  <%= render '/noPermission' %>
+<% end %>

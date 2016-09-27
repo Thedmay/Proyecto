@@ -1,0 +1,41 @@
+<%= form_for(@usuario) do |f| %>
+  <% if @usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+
+      <ul>
+      <% @usuario.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    
+  <div class="caja">
+    <p><%= f.label :nombre %><br />
+       <%= f.text_field :nombre, class: "form-control" %></p>
+
+    <p><%= f.label :email %><br />
+    <%= f.email_field :email , class: "form-control"%></p>
+
+    <% if action_name == "new" %>
+    <p><%= f.label :password, "Nueva password" %><br />
+    <%= f.password_field :password , class: "form-control"%></p>
+
+    <p><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, class: "form-control" %></p>
+    <% end %>
+
+    <p>
+      <%= f.label :permission_level %><br />
+      <select name="usuario[permission_level]" id="usuario_permission_level" class="form-control">
+        <option value="0">Trabajador</option>
+        <option value="1">Administrador</option>
+      </select>
+    </p>
+
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary margenes" %>
+    </div>
+  </div>
+<% end %>

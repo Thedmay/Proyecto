@@ -1,71 +1,70 @@
-<p id="notice"><%= notice %></p>
+<% if can? :read, :Employee %>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @employee.nombre %>
-</p>
+  <p>
+    <strong>Nombre:</strong>
+    <%= @employee.nombre %>
+  </p>
 
-<p>
-  <strong>Rut:</strong>
-  <%= @employee.rut %>
-</p>
+  <p>
+    <strong>Rut:</strong>
+    <%= @employee.rut %>
+  </p>
 
-<p>
-  <strong>Clave:</strong>
-  <%= @employee.clave %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @employee.email %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @employee.email %>
-</p>
+  <p>
+    <strong>Sueldo:</strong>
+    <%= @employee.sueldo %>
+  </p>
 
-<p>
-  <strong>Sueldo:</strong>
-  <%= @employee.sueldo %>
-</p>
+  <p>
+    <strong>Fecha ingreso:</strong>
+    <%= @employee.fecha_ingreso %>
+  </p>
 
-<p>
-  <strong>Fecha ingreso:</strong>
-  <%= @employee.fecha_ingreso %>
-</p>
-
-<label>Licencias</label>
-<table>
-  <thead>
-    <tr>
-      <th>Fechainicio</th>
-      <th>Duracion</th>
-      <th>Detalle</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @employee.lincenses.each do |lincense| %>
+  <label>Licencias</label>
+  <table>
+    <thead>
       <tr>
-        <td><%= lincense.fechaInicio %></td>
-        <td><%= lincense.duracion %></td>
-        <td><%= lincense.detalle %></td>
+        <th>Fechainicio</th>
+        <th>Duracion</th>
+        <th>Detalle</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<label>Asistencia</label>
-<table>
-  <thead>
-    <tr>
-      <th>Fecha</th>
-    </tr>
-  </thead>
+    <tbody>
+      <% @employee.lincenses.each do |lincense| %>
+        <tr>
+          <td><%= lincense.fechaInicio %></td>
+          <td><%= lincense.duracion %></td>
+          <td><%= lincense.detalle %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-  <tbody>
-    <% @employee.fechas.each do |fecha| %>
+  <label>Asistencia</label>
+  <table>
+    <thead>
       <tr>
-        <td><%= fecha.fecha %></td>
+        <th>Fecha</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'Editar', edit_employee_path(@employee), class: "btn btn-primary margenes" %> 
-<%= link_to 'Volver', employees_path, class: "btn btn-default margenes" %>
+    </thead>
+
+    <tbody>
+      <% @employee.fechas.each do |fecha| %>
+        <tr>
+          <td><%= fecha.fecha %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'Editar', edit_employee_path(@employee), class: "btn btn-primary margenes" %> 
+  <%= link_to 'Volver', employees_path, class: "btn btn-default margenes" %>
+<% else %>
+  <%= render '/noPermission' %>
+<% end %>

@@ -1,33 +1,39 @@
-<p id="notice"><%= notice %></p>
+<% if can? :crud, :Lincense %>
+  <p id="notice"><%= notice %></p>
 
-<h1>Listando Licencias</h1>
+  <h1>Listando Licencias</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Employee</th>
-      <th>Fechainicio</th>
-      <th>Duracion</th>
-      <th>Detalle</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @lincenses.each do |lincense| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= lincense.employee.nombre %></td>
-        <td><%= lincense.fechaInicio %></td>
-        <td><%= lincense.duracion %></td>
-        <td><%= lincense.detalle %></td>
-        <td><%= link_to 'Mostrar', lincense %></td>
-        <td><%= link_to 'Editar', edit_lincense_path(lincense) %></td>
-        <td><%= link_to 'Eliminar', lincense, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+        <th>Employee</th>
+        <th>Fechainicio</th>
+        <th>Duracion</th>
+        <th>Detalle</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @lincenses.each do |lincense| %>
+        <tr>
+          <td><%= lincense.employee.nombre %></td>
+          <td><%= lincense.fechaInicio %></td>
+          <td><%= lincense.duracion %></td>
+          <td><%= lincense.detalle %></td>
+          <td><%= link_to 'Mostrar', lincense %></td>
+          <td><%= link_to 'Editar', edit_lincense_path(lincense) %></td>
+          <% if can? :destroy, :Lincens %>
+            <td><%= link_to 'Destruir', lincense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'Nueva Licencia', new_lincense_path , class: "btn btn-primary margenes"%>
+  <br>
+
+  <%= link_to 'Nueva Licencia', new_lincense_path , class: "btn btn-primary margenes"%>
+<% else %>
+  <%= render 'noPermission' %>
+<% end %>

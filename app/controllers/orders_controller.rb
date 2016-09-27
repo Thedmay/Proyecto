@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
     @order.cantidadesMatters = params[:cantidadesMatters]
 
     respond_to do |format|
-      if validar_tablas1 and validar_tablas2 and @order.save
+      if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -89,6 +89,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:numero, :fecha, :detalle, :cantidad, :medida, :customer_id, :cantidadesProducts, :products, :matters, :cantidadesMatters, :cantidadesProducts2, :products2, :matters2, :cantidadesMatters2)
+      params.require(:order).permit(:numero, :fecha, :detalle, :cantidad, :medida, :customer_id, :cantidadesProducts, :products, :matters, :cantidadesMatters, :cantidadesProducts2, :products2, :matters2, :cantidadesMatters2, :fecha_final)
     end
 end
