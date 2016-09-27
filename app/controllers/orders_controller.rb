@@ -4,6 +4,11 @@ class OrdersController < ApplicationController
 
   # GET /orders
   # GET /orders.json
+
+  def llenar
+    
+  end
+
   def index
     @orders = Order.all
   end

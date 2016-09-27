@@ -15,7 +15,6 @@
   <div class="caja">
     <div class="field">
       <%= f.label :numero %><br>
-      <input id="numero" class="form-control" type="text_field" value="Holy" onkeyup="holy()">
       <%= f.number_field :numero, class: 'form-control', :onchange => "holy()" %>
     </div>
     <div class="field">
@@ -48,6 +47,7 @@
     <%= render '/tableMatters1', materiales: materiales, materiales2: materiales2, cantidades_matters: cantidades_matters, editar:editar%>
   <% else %>
     <%= render '/tableProducts1', productos: productos, editar:editar %>
+    <input type="button" name="llenar" id="llenar" value="Buscar materiales" class="btn btn-info margenes">
     <%= render '/tableMatters1', materiales: materiales, editar:editar%>
   <% end %>
   
