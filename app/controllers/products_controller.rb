@@ -84,14 +84,38 @@ class ProductsController < ApplicationController
     end
 
     def validar_tablas1
-      return !(params[:cantidadesMatters]==nil or params[:matters]==nil)
+      if (params[:cantidadesMatters]!=nil and params[:matters]!=nil)
+        params[:cantidadesMatters].each do |cant|
+          if cant.to_i < 1
+            return false
+          end
+        end
+        return true
+      else
+        return false
+      end
+      return 
     end
 
     def validar_tablas2
-      return !(params[:cantidadesMatters2]==nil or params[:matters2]==nil)
+      if (params[:cantidadesMatters2]!=nil and params[:matters2]!=nil)
+        params[:cantidadesMatters2].each do |cant|
+          if cant.to_i < 1
+            return false
+          end
+        end
+        return true
+      else
+        return false
+      end
     end
 
     def validar_ambas_tablas
-      return (validar_tablas1 or validar_tablas2)
+      if params[:matters]==nil
+        return validar_tablas2
+      elsif params[:matters2]==nil
+        return validar_tablas1
+      else
+        return (validar_tablas1 and validar_tablas2)
     end
 end

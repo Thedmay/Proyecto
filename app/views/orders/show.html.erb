@@ -39,7 +39,7 @@
   <%= render '/tableProducts2', productos: @order.products, cantidades: @order.order_products %>
   <%= render '/tableMatters2', materiales: @order.matters%>
 
-  <%= link_to 'Facturar', params[:id]+'/bill' , class: "btn btn-primary margenes"%> 
+  <%= link_to 'Facturar', params[:id]+'/bill' , class: "btn btn-primary margenes"%>
   <%= link_to 'Editar', edit_order_path(@order) , class: "btn btn-info margenes"%> 
   <%= link_to 'Volver', orders_path , class: "btn btn-default margenes"%>
 <% else %>

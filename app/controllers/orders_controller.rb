@@ -5,12 +5,12 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
 
-  def llenar
-    
-  end
-
   def index
     @orders = Order.all
+  end
+
+  def llenar
+    @materiales=Matter.all
   end
 
   # GET /orders/1
@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @materiales = nil
   end
 
   def bill
@@ -43,7 +44,7 @@ class OrdersController < ApplicationController
     @order.cantidadesMatters = params[:cantidadesMatters]
 
     respond_to do |format|
-      if @order.save
+      if validar_matter_product && @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -66,7 +67,7 @@ class OrdersController < ApplicationController
     @order.cantidadesMatters3 = params[:cantidadesMatters2]
 
     respond_to do |format|
-      if  @order.update(order_params)
+      if validar_todo and @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
@@ -95,5 +96,87 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:numero, :fecha, :detalle, :cantidad, :medida, :customer_id, :cantidadesProducts, :products, :matters, :cantidadesMatters, :cantidadesProducts2, :products2, :matters2, :cantidadesMatters2, :fecha_final)
+    end
+
+    def validar_tablas1_matter
+      if (params[:cantidadesMatters]!=nil and params[:matters]!=nil)
+        params[:cantidadesMatters].each do |cant|
+          if cant.to_i < 1
+            return false
+          end
+        end
+        return true
+      else
+        return false
+      end
+      return 
+    end
+
+    def validar_tablas2_matter
+      if (params[:cantidadesMatters2]!=nil and params[:matters2]!=nil)
+        params[:cantidadesMatters2].each do |cant|
+          if cant.to_i < 1
+            return false
+          end
+        end
+        return true
+      else
+        return false
+      end
+    end
+
+    def validar_tablas1_product
+      if (params[:cantidadesProducts]!=nil and params[:products]!=nil)
+        params[:cantidadesProducts].each do |cant|
+          if cant.to_i < 1
+            return false
+          end
+        end
+        return true
+      else
+        return false
+      end
+      return 
+    end
+
+    def validar_tablas2_product
+      if (params[:cantidadesProducts2]!=nil and params[:products2]!=nil)
+        params[:cantidadesProducts2].each do |cant|
+          if cant.to_i < 1
+            return false
+          end
+        end
+        return true
+      else
+        return false
+      end
+    end
+
+    def validar_matter_product
+      return (validar_tablas1_product and validar_tablas1_matter)
+    end
+
+    def validar_todo
+      return (validar_ambas_tablas_product and validar_ambas_tablas_matter)
+    end
+
+    def validar_ambas_tablas_product
+      if params[:products]==nil
+        return validar_tablas2_product
+      elsif params[:products2]==nil
+        return validar_tablas1_product
+      else
+        return (validar_tablas1_product and validar_tablas2_product)
+      end
+    end
+
+    def validar_ambas_tablas_matter
+      if params[:matters]==nil
+        return validar_tablas2_matter
+      elsif params[:matters2]==nil
+        return validar_tablas1_matter
+      else
+        return (validar_tablas1_matter and validar_tablas2_matter)
+      end
     end
 end

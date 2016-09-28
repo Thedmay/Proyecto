@@ -14,15 +14,15 @@
   <div class="caja">
     <div class="field">
       <%= f.label :nombre %><br>
-      <%= f.text_field :nombre, class: 'form-control'%>
+      <%= f.text_field :nombre, class: 'form-control', :onkeypress => "return sololetras(event)"%>
     </div>
     <div class="field">
       <%= f.label :medida %><br>
-      <%= f.text_field :medida, class: 'form-control' %>
+      <%= f.text_field :medida, class: 'form-control', :onkeypress => "return sololetras(event)" %>
     </div>
     <div class="field">
       <%= f.label :saldo %><br>
-      <%= f.text_field :saldo, class: 'form-control' %>
+      <%= f.text_field :saldo, class: 'form-control', :onkeypress => "return solonumeros(event)" %>
     </div>
     <div class="actions">
       <%= f.submit class: "btn btn-primary margenes", value: texto%>

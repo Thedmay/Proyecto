@@ -1,15 +1,15 @@
 class Bill < ActiveRecord::Base
-  validates :numero, presence: true
-  validates :numero, numericality: { only_integer: true }
+  validates :numero, presence: { message: "NO puede dejarse vacío" }
+  validates :numero, numericality: { only_integer: true, :message => "DEBE ser solo numeros"}
   validates :numero, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
-  validates :fecha, presence: true
-  validates :razon_social, presence: true
-  validates :giro_comercial, presence: true
-  validates :monto_neto, presence: true
-  validates :monto_neto, numericality: { only_integer: true }
-  validates :iva, presence: true
-  validates :iva, numericality: { only_integer: true }
-  validates :total, presence: true
+  validates :fecha, presence: { message: "NO puede dejarse vacío" }
+  validates :razon_social, presence: { message: "NO puede dejarse vacío" }
+  validates :giro_comercial, presence: { message: "NO puede dejarse vacío" }
+  validates :monto_neto, presence: { message: "NO puede dejarse vacío" }
+  validates :monto_neto, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates :iva, presence: { message: "NO puede dejarse vacío" }
+  validates :iva, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates :total, presence: { message: "NO puede dejarse vacío" }
   validates :total, numericality: { only_integer: true }
   belongs_to :customer
   has_many :bill_products

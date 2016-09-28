@@ -30,7 +30,7 @@ class BillsController < ApplicationController
     @bill.cantidades = params[:cantidadesProducts]
     @bill.products = params[:products]
     respond_to do |format|
-      if @bill.save
+      if validar_suma && @bill.save
         format.html { redirect_to @bill, notice: 'Bill was successfully created.' }
         format.json { render :show, status: :created, location: @bill }
       else
@@ -48,7 +48,7 @@ class BillsController < ApplicationController
     @bill.cantidades2=params[:cantidadesProducts]
     @bill.cantidades3=params[:cantidadesProducts2]
     respond_to do |format|
-      if @bill.update(bill_params)
+      if validar_suma && validar_tabla && @bill.update(bill_params)
         format.html { redirect_to @bill, notice: 'Bill was successfully updated.' }
         format.json { render :show, status: :ok, location: @bill }
       else
@@ -77,5 +77,23 @@ class BillsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
       params.require(:bill).permit(:numero, :fecha, :razon_social, :giro_comercial, :monto_neto, :iva, :total, :customer_id, :cantidadesProducts, :products, :cantidadesProducts2, :products2)
+    end
+
+    def validar_suma
+      return @bill.iva + @bill.monto_neto == @bill.total
+    end
+
+    def validar_tabla
+      if (params[:cantidadesProducts]!=nil and params[:products]!=nil)
+        params[:cantidadesProducts].each do |cant|
+          if cant.to_i < 1
+            return false
+          end
+        end
+        return true
+      else
+        return false
+      end
+      return 
     end
 end

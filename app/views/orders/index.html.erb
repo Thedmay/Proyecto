@@ -1,6 +1,5 @@
 <% if can? :crud, :Order %>
-  <p id="notice"><%= notice %></p>
-
+  
   <h1>Listando Pedidos</h1>
 
   <table>
@@ -22,7 +21,7 @@
         <tr>
           <td><%= order.numero %></td>
           <td><%= order.fecha %></td>
-          <th><%= order.fecha_final %></th>
+          <td><%= order.fecha_final %></td>
           <td><%= order.detalle %></td>
           <td><%= order.cantidad %></td>
           <td><%= order.medida %></td>

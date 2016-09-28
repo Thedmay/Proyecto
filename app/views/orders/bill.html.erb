@@ -1,7 +1,7 @@
 <% if can? :crud, :Order %>
 	<h1>Facturar Orden</h1>
 
-	<%= render '/bills/form', productos: @order.products, customer: @order.customer, cantidades_products: OrderProduct.cantidades(@order.id, 0) %>
+	<%= render '/bills/form', productos: @order.products, customer: @order.customer, cantidades_products: OrderProduct.cantidades(@order.id, 0), texto: "Agregar" %>
 
 	<%= link_to 'Back', bills_path %>
 <% else %>

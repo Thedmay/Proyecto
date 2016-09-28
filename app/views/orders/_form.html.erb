@@ -1,4 +1,5 @@
 <% editar ||= false %>
+<% materiales ||= nil %>
 
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
@@ -15,7 +16,7 @@
   <div class="caja">
     <div class="field">
       <%= f.label :numero %><br>
-      <%= f.number_field :numero, class: 'form-control', :onchange => "holy()" %>
+      <%= f.number_field :numero, class: 'form-control', :onkeypress => "return solonumeros(event)" %>
     </div>
     <div class="field">
       <%= f.label :fecha %><br>
@@ -27,15 +28,15 @@
     </div>
     <div class="field">
       <%= f.label :detalle %><br>
-      <%= f.text_field :detalle , class: 'form-control'%>
+      <%= f.text_field :detalle , class: 'form-control', :onkeypress => "return sololetras(event)"%>
     </div>
     <div class="field">
       <%= f.label :cantidad %><br>
-      <%= f.number_field :cantidad , class: 'form-control'%>
+      <%= f.number_field :cantidad , class: 'form-control', :onkeypress => "return solonumeros(event)"%>
     </div>
     <div class="field">
       <%= f.label :medida %><br>
-      <%= f.text_field :medida, class: 'form-control' %>
+      <%= f.text_field :medida, class: 'form-control' , :onkeypress => "return sololetras(event)"%>
     </div>
     <div class="field">
       <%= f.label :customer_id, value: "Cliente"%>
@@ -47,7 +48,6 @@
     <%= render '/tableMatters1', materiales: materiales, materiales2: materiales2, cantidades_matters: cantidades_matters, editar:editar%>
   <% else %>
     <%= render '/tableProducts1', productos: productos, editar:editar %>
-    <input type="button" name="llenar" id="llenar" value="Buscar materiales" class="btn btn-info margenes">
     <%= render '/tableMatters1', materiales: materiales, editar:editar%>
   <% end %>
   

@@ -22,7 +22,7 @@
     </div>
     <div class="field">
       <%= f.label :duracion %><br>
-      <%= f.number_field :duracion, class: 'form-control' %>
+      <%= f.number_field :duracion, class: 'form-control', :onkeypress => "return solonumeros(event)"%>
     </div>
     <div class="field">
       <%= f.label :detalle %><br>

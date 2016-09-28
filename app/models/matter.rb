@@ -1,7 +1,7 @@
 class Matter < ActiveRecord::Base
-	validates :nombre, presence: true
-	validates :medida, presence: true
-	validates :saldo, presence: true
+	validates :nombre, presence: { message: "NO puede dejarse vacío" }
+	validates :medida, presence: { message: "NO puede dejarse vacío" }
+	validates :saldo, presence: { message: "NO puede dejarse vacío" }
 	has_many :matter_products
 	has_many :customer_matters
 	has_many :products, through: :matter_products

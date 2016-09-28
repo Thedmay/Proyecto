@@ -15,19 +15,19 @@
   <div class="caja">
     <div class="field">
       <%= f.label :nombre %><br>
-      <%= f.text_field :nombre , class: 'form-control'%>
+      <%= f.text_field :nombre , class: 'form-control', :onkeypress => "return sololetras(event)"%>
     </div>
     <div class="field">
       <%= f.label :codigo %><br>
-      <%= f.number_field :codigo , class: 'form-control'%>
+      <%= f.number_field :codigo , class: 'form-control', :onkeypress => "return solonumeros(event)"%>
     </div>
     <div class="field">
       <%= f.label :unidades %><br>
-      <%= f.number_field :unidades , class: 'form-control'%>
+      <%= f.number_field :unidades , class: 'form-control', :onkeypress => "return solonumeros(event)"%>
     </div>
     <div class="field">
       <%= f.label :medida %><br>
-      <%= f.text_field :medida , class: 'form-control'%>
+      <%= f.text_field :medida , class: 'form-control', :onkeypress => "return sololetras(event)"%>
     </div>
     <div class="field">
       <%= f.label :category_id%>

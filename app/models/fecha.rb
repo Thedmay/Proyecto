@@ -1,6 +1,6 @@
 class Fecha < ActiveRecord::Base
 	validates :fecha, uniqueness: {case_sensitive: false ,message: "Ya esta ingresado"}
-	validates :fecha, presence: true
+	validates :fecha, presence: { message: "NO puede dejarse vacío" }
 	has_many :assistances
 	has_many :employees, through: :assistances
 	after_create :save_assistances

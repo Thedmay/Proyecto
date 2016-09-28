@@ -1,15 +1,15 @@
 class Employee < ActiveRecord::Base
-	validates :nombre, presence: true
-	validates :rut, presence: true
+	validates :nombre, presence: { message: "NO puede dejarse vacío" }
+	validates :rut, presence: { message: "NO puede dejarse vacío" }
 	validates :rut, rut: true
 	validates :rut, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
-	validates :email, presence: true
+	validates :email, presence: { message: "NO puede dejarse vacío" }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, format: { :with => VALID_EMAIL_REGEX }
 	validates :email, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
-	validates :sueldo, presence: true
-	validates :sueldo, numericality: { only_integer: true }
-	validates :fecha_ingreso, presence: true
+	validates :sueldo, presence: { message: "NO puede dejarse vacío" }
+	validates :sueldo, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+	validates :fecha_ingreso, presence: { message: "NO puede dejarse vacío" }
 	has_many :lincenses
 	has_many :assistances
 	has_many :fechas, through: :assistances

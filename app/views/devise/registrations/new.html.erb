@@ -6,7 +6,7 @@
 
              <div class="form-group">
                 <%= f.label :nombre %><br />
-                <%= f.text_field :nombre, autofocus: true, class:"form-control" %>
+                <%= f.text_field :nombre, autofocus: true, class:"form-control", :onkeypress => "return sololetras(event)" %>
             </div>
 
             <div class="form-group">

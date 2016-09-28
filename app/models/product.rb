@@ -1,11 +1,11 @@
 class Product < ActiveRecord::Base
-  validates :nombre, presence: true
-  validates :codigo, presence: true
-  validates :codigo, numericality: { only_integer: true }
-  validates :unidades, presence: true
-  validates :unidades, numericality: { only_integer: true }
-  validates :medida, presence: true
-  validates :category_id, presence: true
+  validates :nombre, presence: { message: "NO puede dejarse vacío" }
+  validates :codigo, presence: { message: "NO puede dejarse vacío" }
+  validates :codigo, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates :unidades, presence: { message: "NO puede dejarse vacío" }
+  validates :unidades, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates :medida, presence: { message: "NO puede dejarse vacío" }
+  validates :category_id, presence: { message: "NO puede dejarse vacío" }
   belongs_to :category
   has_many :matter_products
   has_many :bill_products

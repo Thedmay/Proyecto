@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-	validates :nombre, presence: true
+	validates :nombre, presence: { message: "NO puede dejarse vacío" }
 	has_many :products;
 	before_destroy :destroy_products
 

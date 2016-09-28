@@ -1,14 +1,14 @@
 class Order < ActiveRecord::Base
-  validates :numero, presence: true
+  validates :numero, presence: { message: "NO puede dejarse vacío" }
   validates :numero, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
-  validates :numero, numericality: { only_integer: true }
-  validates :fecha, presence: true
-  validates :detalle, presence: true
-  validates :cantidad, presence: true
-  validates :cantidad, numericality: { only_integer: true }
-  validates :medida, presence: true
-  validates :customer_id, presence: true
-  validates :fecha_final, presence: true
+  validates :numero, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates :fecha, presence: { message: "NO puede dejarse vacío" }
+  validates :detalle, presence: { message: "NO puede dejarse vacío" }
+  validates :cantidad, presence: { message: "NO puede dejarse vacío" }
+  validates :cantidad, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates :medida, presence: { message: "NO puede dejarse vacío" }
+  validates :customer_id, presence: { message: "NO puede dejarse vacío" }
+  validates :fecha_final, presence: { message: "NO puede dejarse vacío" }
   belongs_to :customer
   has_many :order_products
   has_many :customer_matters

@@ -24,9 +24,9 @@
           <td><%= product.medida %></td>
           <td><%= product.category.nombre %></td>
           <% if editar or cantidades_products != nil%>
-            <td><%= number_field_tag "cantidadesProducts[]", cantidades_products.at(i), class: 'form-control' %></td>
+            <td><%= number_field_tag "cantidadesProducts[]", cantidades_products.at(i), class: 'form-control', :onkeypress => "return solonumeros(event)" %></td>
           <% else %>
-            <td><%= number_field_tag "cantidadesProducts[]", '0' , class: 'form-control'%></td>
+            <td><%= number_field_tag "cantidadesProducts[]", '0' , class: 'form-control', :onkeypress => "return solonumeros(event)"%></td>
           <% end %>
         </tr>
         <% i+=1 %>
@@ -34,6 +34,8 @@
     </tbody>
   </table>
 </div>
+
+<br>
 <% if editar %>
   <div class="field">
     <label>Todos los Productos</label>
@@ -60,7 +62,7 @@
               <td><%= product.medida %></td>
               <td><%= product.fecha_produce %></td>
               <td><%= product.category.nombre %></td>
-              <td><%= number_field_tag "cantidadesProducts2[]", '0' %></td>
+              <td><%= number_field_tag "cantidadesProducts2[]", '0' , :onkeypress => "return solonumeros(event)"%></td>
             </tr>
           <% end %>
         <% end %>
@@ -68,3 +70,4 @@
     </table>
   </div>
 <% end %>
+<br>

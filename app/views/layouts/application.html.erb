@@ -1,14 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Proyect</title>
+  <title>Trasvasije</title>
+
+  <script type="text/javascript">
+  	function sololetras(e){
+  		key = e.keyCode || e.which;
+  		teclado = String.fromCharCode(key).toLowerCase();
+  		letras = " abcdefghijklmnñopqrstuvwxyz";
+  		especiales = "8-37-38-46-164";
+
+  		teclado_especial=false;
+
+  		for(var i in especiales){
+  			if(key == especiales[i])
+  			{
+  				teclado_especial=true;
+  			}
+  		}
+  		if(letras.indexOf(teclado)==-1 && !teclado_especial){
+  			return false;
+  		}
+
+  	}
+  	function solonumeros(e){
+  		key = e.keyCode || e.which;
+  		teclado = String.fromCharCode(key).toLowerCase();
+  		letras = "1234567890";
+  		especiales = "37-38-46";
+
+  		teclado_especial=false;
+
+  		for(var i in especiales){
+  			if(key == especiales[i])
+  			{
+  				teclado_especial=true;
+  			}
+  		}
+  		if(letras.indexOf(teclado)==-1 && !teclado_especial){
+  			return false;
+  		}
+
+  	}
+
+  	
+  </script>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<div id="wrap">
-		<header>
+		<header id="cabeza">
 			<div class="inner relative">
 				<a class="logo"><%= image_tag("logo.png") %></a>
 				
@@ -119,7 +163,7 @@
 								</li>
 							<% end %>
 							<li class="parent">
-								<a><span class="glyphicon glyphicon-user"></span></a>
+								<a><span class="nuevo_icono">___</span></a>
 								<ul class="sub-menu">
 									<% if can? :manage, :Usuario %>
 										<li><%= link_to "Administrar", "/admin/usuario" %>
@@ -149,9 +193,13 @@
 				</nav>
 			</div>
 		</header>	
-	</div> 
-	<p class="notice" style="<%="display:none;" if notice.nil? %>"><%= notice %></p>
-	<p class="alert" "<%="display:none;" if alert.nil? %>"><%= alert %></p>
+	</div>
+	<% if not notice.nil? %>
+		<p class="notice btn btn-info" style="<%="display:none;" if notice.nil? %>"><%= notice %></p>
+	<% end %>
+	<% if not alert.nil? %>
+		<p class="alert" "<%="display:none;" if alert.nil? %>"><%= alert %></p>
+	<% end %>
 	<div class="margen">
 		<%= yield %>
 	</div>

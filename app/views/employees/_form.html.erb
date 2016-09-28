@@ -14,7 +14,7 @@
   <div class="caja">
     <div class="field">
       <%= f.label :nombre %><br>
-      <%= f.text_field :nombre , class: 'form-control'%>
+      <%= f.text_field :nombre , class: 'form-control', :onkeypress => "return sololetras(event)" %>
     </div>
     <div class="field">
       <%= f.label :rut %><br>
@@ -26,7 +26,7 @@
     </div>
     <div class="field">
       <%= f.label :sueldo %><br>
-      <%= f.number_field :sueldo , class: 'form-control'%>
+      <%= f.number_field :sueldo , class: 'form-control', :onkeypress => "return solonumeros(event)"%>
     </div>
     <div class="field">
       <%= f.label :fecha_ingreso %><br>

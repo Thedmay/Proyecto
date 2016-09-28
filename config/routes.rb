@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :usuarios
 
+  post 'orders/new', :controller => 'orders', :action => 'llenar'
+
   get 'orders/:id/bill', to: 'orders#bill'
 
   get 'bienvenida', :controller => 'welcome', :action => 'index'

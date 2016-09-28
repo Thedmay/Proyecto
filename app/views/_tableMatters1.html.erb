@@ -14,18 +14,22 @@
     </thead>
     <tbody>
       <% i = 0 %>
-      <% materiales.each do |matter| %>
-        <tr>
-          <td><%= check_box_tag "matters[]", matter.id, :checked => editar %><%=matter.nombre%></td>
-          <td><%= matter.medida %></td>
-          <td><%= matter.saldo %></td>
-          <% if editar or cantidades_matters != nil %>
-            <td><%= number_field_tag "cantidadesMatters[]", cantidades_matters.at(i) , class: 'form-control', :readonly => true%></td>
-          <% else %>
-            <td><%= number_field_tag "cantidadesMatters[]", '0', class: 'form-control',:readonly => true %></td>
-          <% end %>
-        </tr>
-        <% i+=1 %>
+      <% if materiales != nil %>
+        <% materiales.each do |matter| %>
+          <tr>
+            
+              <td><%= check_box_tag "matters[]", matter.id, :checked => editar %><%=matter.nombre%></td>
+              <td><%= matter.medida %></td>
+              <td><%= matter.saldo %></td>
+              <% if editar or cantidades_matters != nil %>
+                <td><%= number_field_tag "cantidadesMatters[]", cantidades_matters.at(i) , class: 'form-control', :onkeypress => "return solonumeros(event)"%></td>
+              <% else %>
+                <td><%= number_field_tag "cantidadesMatters[]", '0', class: 'form-control', :onkeypress => "return solonumeros(event)" %></td>
+              <% end %>
+            
+          </tr>
+          <% i+=1 %>
+        <% end %>
       <% end %>
     </tbody>
   </table>
@@ -39,8 +43,6 @@
           <th>Nombre</th>
           <th>Medida</th>
           <th>Saldo</th>
-          <th>Fecha ingreso</th>
-          <th>Fecha utiliza</th>
           <th>Cantidad</th>
         </tr>
       </thead>
@@ -51,9 +53,7 @@
               <td><%= check_box_tag "matters2[]", matter.id %><%=matter.nombre%></td>
               <td><%= matter.medida %></td>
               <td><%= matter.saldo %></td>
-              <td><%= matter.fecha_ingreso %></td>
-              <td><%= matter.fecha_utiliza %></td></td>
-              <td><%= number_field_tag "cantidadesMatters2[]", '0', class: 'form-control' %></td>
+              <td><%= number_field_tag "cantidadesMatters2[]", '0', class: 'form-control', :onkeypress => "return solonumeros(event)" %></td>
             </tr>
           <% end %>
         <% end %>

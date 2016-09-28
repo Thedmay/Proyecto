@@ -1,6 +1,6 @@
 <% if can? :read, :Category %>
   <p id="notice"><%= notice %></p>
-
+  <br><br>
   <p>
     <strong>Nombre:</strong>
     <%= @category.nombre %>
@@ -13,7 +13,6 @@
         <th>Codigo</th>
         <th>Unidades</th>
         <th>Medida</th>
-        <th>Fecha produce</th>
       </tr>
     </thead>
 
@@ -24,7 +23,6 @@
           <td><%= product.codigo %></td>
           <td><%= product.unidades %></td>
           <td><%= product.medida %></td>
-          <td><%= product.fecha_produce %></td>
         </tr>
       <% end %>
     </tbody>
