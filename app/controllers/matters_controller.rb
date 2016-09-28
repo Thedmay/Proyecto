@@ -30,7 +30,7 @@ class MattersController < ApplicationController
 
     respond_to do |format|
       if @matter.save
-        format.html { redirect_to @matter, notice: 'Matter was successfully created.' }
+        format.html { redirect_to @matter, notice: 'Materia fue exitosamente creada.' }
         format.json { render :show, status: :created, location: @matter }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class MattersController < ApplicationController
   def update
     respond_to do |format|
       if @matter.update(matter_params)
-        format.html { redirect_to @matter, notice: 'Matter was successfully updated.' }
+        format.html { redirect_to @matter, notice: 'Materia fue exitosamente editada.' }
         format.json { render :show, status: :ok, location: @matter }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class MattersController < ApplicationController
   def destroy
     @matter.destroy
     respond_to do |format|
-      format.html { redirect_to matters_url, notice: 'Matter was successfully destroyed.' }
+      format.html { redirect_to matters_url, notice: 'Materia fue exitosamente destruida.' }
       format.json { head :no_content }
     end
   end

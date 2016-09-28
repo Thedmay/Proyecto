@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if validar_matter_product && @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to @order, notice: 'Pedido fue exitosamente creado.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if validar_todo and @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to @order, notice: 'Pedido fue exitosamente editado.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -82,7 +82,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to orders_url, notice: 'Pedido fue exitosamente destruido.' }
       format.json { head :no_content }
     end
   end

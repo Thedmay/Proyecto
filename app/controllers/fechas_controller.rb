@@ -32,7 +32,7 @@ class FechasController < ApplicationController
 
     respond_to do |format|
       if @fecha.save
-        format.html { redirect_to @fecha, notice: 'Fecha was successfully created.' }
+        format.html { redirect_to @fecha, notice: 'Fecha fue exitosamente creado.' }
         format.json { render :show, status: :created, location: @fecha }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class FechasController < ApplicationController
     @fecha.employees3 = params[:employees2]
     respond_to do |format|
       if @fecha.update(fecha_params)
-        format.html { redirect_to @fecha, notice: 'Fecha was successfully updated.' }
+        format.html { redirect_to @fecha, notice: 'Fecha fue exitosamente editada.' }
         format.json { render :show, status: :ok, location: @fecha }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class FechasController < ApplicationController
   def destroy
     @fecha.destroy
     respond_to do |format|
-      format.html { redirect_to fechas_url, notice: 'Fecha was successfully destroyed.' }
+      format.html { redirect_to fechas_url, notice: 'Fecha fue exitosamente destruida.' }
       format.json { head :no_content }
     end
   end

@@ -31,7 +31,7 @@ class BillsController < ApplicationController
     @bill.products = params[:products]
     respond_to do |format|
       if validar_suma && @bill.save
-        format.html { redirect_to @bill, notice: 'Bill was successfully created.' }
+        format.html { redirect_to @bill, notice: 'Factura fue exitosamente creado.' }
         format.json { render :show, status: :created, location: @bill }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class BillsController < ApplicationController
     @bill.cantidades3=params[:cantidadesProducts2]
     respond_to do |format|
       if validar_suma && validar_tabla && @bill.update(bill_params)
-        format.html { redirect_to @bill, notice: 'Bill was successfully updated.' }
+        format.html { redirect_to @bill, notice: 'Factura  fue exitosamente editada.' }
         format.json { render :show, status: :ok, location: @bill }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class BillsController < ApplicationController
   def destroy
     @bill.destroy
     respond_to do |format|
-      format.html { redirect_to bills_url, notice: 'Bill was successfully destroyed.' }
+      format.html { redirect_to bills_url, notice: 'Factura  fue exitosamente destruida.' }
       format.json { head :no_content }
     end
   end

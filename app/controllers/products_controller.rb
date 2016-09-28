@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
     
     respond_to do |format|
       if validar_ambas_tablas and @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to @product, notice: 'Producto fue exitosamente editado.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -67,7 +67,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'Producto fue exitosamente destruido.' }
       format.json { head :no_content }
     end
   end
@@ -94,7 +94,6 @@ class ProductsController < ApplicationController
       else
         return false
       end
-      return 
     end
 
     def validar_tablas2
@@ -117,5 +116,6 @@ class ProductsController < ApplicationController
         return validar_tablas1
       else
         return (validar_tablas1 and validar_tablas2)
+      end
     end
 end

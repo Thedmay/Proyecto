@@ -41,7 +41,7 @@ class UsuariosController < ApplicationController
 
     respond_to do |format|
       if @usuario.save
-        format.html { redirect_to usuarios_url, :notice => 'Usuario was successfully created.' }
+        format.html { redirect_to usuarios_url, :notice => 'Usuario fue exitosamente creado.' }
         format.json { render :json => @usuario, :status => :created, :location => @usuario }
       else
         format.html { render :action => "new" }
@@ -56,7 +56,7 @@ class UsuariosController < ApplicationController
 
     respond_to do |format|
       if @usuario.update_attributes(usuario_params)
-        format.html { redirect_to usuarios_url, :notice => 'Usuario was successfully updated.' }
+        format.html { redirect_to usuarios_url, :notice => 'Usuario fue exitosamente editado.' }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

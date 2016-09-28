@@ -29,7 +29,7 @@ class LincensesController < ApplicationController
 
     respond_to do |format|
       if @lincense.save
-        format.html { redirect_to @lincense, notice: 'Lincense was successfully created.' }
+        format.html { redirect_to @lincense, notice: 'Licensia fue exitosamente creada.' }
         format.json { render :show, status: :created, location: @lincense }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class LincensesController < ApplicationController
   def update
     respond_to do |format|
       if @lincense.update(lincense_params)
-        format.html { redirect_to @lincense, notice: 'Lincense was successfully updated.' }
+        format.html { redirect_to @lincense, notice: 'Licensia fue exitosamente editada.' }
         format.json { render :show, status: :ok, location: @lincense }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class LincensesController < ApplicationController
   def destroy
     @lincense.destroy
     respond_to do |format|
-      format.html { redirect_to lincenses_url, notice: 'Lincense was successfully destroyed.' }
+      format.html { redirect_to lincenses_url, notice: 'Licensia fue exitosamente destruida.' }
       format.json { head :no_content }
     end
   end

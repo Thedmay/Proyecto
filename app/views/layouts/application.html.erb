@@ -43,7 +43,18 @@
 
   	}
 
-  	
+  	//Cuenta atrás en javascript
+
+	var URLactual = window.location.href;
+	function hola()
+	{
+	     if(URLactual != window.location.href)
+	     {
+			  URLactual = window.location.href;
+	          location.reload();
+	     }
+	}
+	inter=setInterval("hola()", 3000); // Ejecuto la acción cada segundo
   </script>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
