@@ -10,6 +10,8 @@
         <th>Telefono</th>
         <th>Email</th>
         <th>Direccion</th>
+        <th>Razon Social</th>
+        <th>Giro comercial</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -22,6 +24,12 @@
           <td><%= customer.telefono %></td>
           <td><%= customer.email %></td>
           <td><%= customer.direccion %></td>
+          <td><%= customer.razon_social %></td>
+          <% @giros.each do |giro|%>
+            <% if giro.id == customer.giro_comercial_id %>
+              <td><%= giro.nombre %></td>
+            <% end %>
+          <% end %>
           <td><%= link_to 'Mostrar', customer %></td>
           <td><%= link_to 'Editar', edit_customer_path(customer) %></td>
           <% if can? :destroy, :Customer %>

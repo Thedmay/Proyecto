@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
     @product.matters = params[:matters]
 
     respond_to do |format|
-      if @product.save
+      if validar_unico_c and @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     @product.matters3=params[:matters2]
     
     respond_to do |format|
-      if @product.update(product_params)
+      if validar_unico_u and @product.update(product_params)
         format.html { redirect_to @product, notice: 'Producto fue exitosamente editado.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -119,5 +119,19 @@ class ProductsController < ApplicationController
       else
         return (validar_tablas1 and validar_tablas2)
       end
+    end
+
+    def validar_unico_c
+      Product.where(nombre:@product.nombre, medida: @product.medida, unidades: @product.unidades).each do |h|
+        return false
+      end
+      return true
+    end
+
+    def validar_unico_u
+      Product.where(nombre:@product.nombre, medida: @product.medida, unidades: @product.unidades).each do |h|
+        return h.id == @product.id
+      end
+      return true
     end
 end
