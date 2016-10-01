@@ -1,4 +1,4 @@
-<% if can? :crud, :Order %>
+<% if can? :rud, :Order %>
   
   <h1>Listando Pedidos</h1>
 
@@ -17,16 +17,18 @@
     <tbody>
       <% @orders.each do |order| %>
         <tr>
-          <td><%= order.numero %></td>
-          <td><%= order.fecha %></td>
-          <td><%= order.fecha_final %></td>
-          <td><%= order.detalle %></td>
-          <td><%= order.customer.nombre %></td>
-          <td><%= link_to 'Mostrar', order %></td>
-          <td><%= link_to 'Editar', edit_order_path(order) %></td>
-          <% if can? :destroy, :Product %>
-            <td><%= link_to 'Destruir', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
+          <% if current_customer.id == @order.customer_id %>
+            <td><%= order.numero %></td>
+            <td><%= order.fecha %></td>
+            <td><%= order.fecha_final %></td>
+            <td><%= order.detalle %></td>
+            <td><%= order.customer.nombre %></td>
+            <td><%= link_to 'Mostrar', order %></td>
+            <td><%= link_to 'Editar', edit_order_path(order) %></td>
+            <% if can? :destroy, :Product %>
+              <td><%= link_to 'Destruir', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          <% end %> 
         </tr>
       <% end %>
     </tbody>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :customers
   resources :giro_comercials
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :lincenses

@@ -30,10 +30,16 @@
       <%= f.label :detalle %><br>
       <%= f.text_field :detalle , class: 'form-control', :onkeypress => "return sololetras(event)"%>
     </div>
-    <div class="field">
-      <%= f.label :customer_id, value: "Cliente"%>
-      <%= collection_select( :order, :customer_id, Customer.all, :id, :nombre, {},{ :class => 'form-control', :multiple => false}) %>
-    </div>
+      <div class="field">
+        <%= f.label :customer_id, value: "Cliente"%>
+        <% if current_usuario %>
+          <%= collection_select( :order, :customer_id, Customer.all, :id, :nombre, {},{ :class => 'form-control', :multiple => false}) %>
+        <% else %>
+          <select class="form-control">
+            <option value=current_customer><%= current_customer.nombre %></option>
+          </select> 
+        <% end %>
+      </div>
   </div>
   <% if editar %>
     <%= render '/tableProducts1', productos: productos, editar:editar, productos2: productos2, cantidades_products: cantidades_products %>

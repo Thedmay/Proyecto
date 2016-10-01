@@ -1,4 +1,4 @@
-<% if can? :read, :Bill %>
+<% if can? :read, :Bill and @bill.customer_id == current_customer.id%>
   <p id="notice"><%= notice %></p>
 
   <p>
@@ -43,7 +43,6 @@
 
   <%= render '/tableProducts2', productos: @bill.products, cantidades: @bill.bill_products %>
 
-  <%= link_to 'Editar', edit_bill_path(@bill) , class: "btn btn-primary margenes"%> 
   <%= link_to 'Volver', bills_path , class: "btn btn-default margenes"%>
 <% else %>
   <%= render '/noPermission' %>

@@ -2,8 +2,10 @@ class Bill < ActiveRecord::Base
   validates :numero, presence: { message: "NO puede dejarse vacío" }
   validates :numero, numericality: { only_integer: true, :message => "DEBE ser solo numeros"}
   validates :numero, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
-  validates_numericality_of :total,less_than_or_equal_to:9999999
+  
+  validates_numericality_of :total,less_than_or_equal_to:9999999,
                             :message => "Parece ser muy grande"
+  
   validates :fecha, presence: { message: "NO puede dejarse vacío" }
   validates :razon_social, presence: { message: "NO puede dejarse vacío" }
   validates :nombre, presence: true, length:{in:3..200,
@@ -18,9 +20,11 @@ class Bill < ActiveRecord::Base
   validates :monto_neto, presence: { message: "NO puede dejarse vacío" }
   validates :monto_neto, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
   validates_numericality_of :monto_neto,less_than_or_equal_to:100000000,
-  validates :iva, presence: { message: "NO puede dejarse vacío" }
+                            :message => "Parece ser muy grande"
+  validates :iva, presence:{ message: "NO puede dejarse vacío" }
   validates :iva, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
   validates_numericality_of :iva,less_than_or_equal_to:19000000,
+                            :message => "Parece ser muy grande"
   validates :total, presence: { message: "NO puede dejarse vacío" }
   validates :total, numericality: { only_integer: true }
   validates_numericality_of :total,less_than_or_equal_to:119000000,
@@ -106,5 +110,9 @@ class Bill < ActiveRecord::Base
     self.bill_products.each do |bill_product|
       bill_product.destroy
     end
+  end
+
+  def anular_bill
+    self.update(:anulado => false)
   end
 end

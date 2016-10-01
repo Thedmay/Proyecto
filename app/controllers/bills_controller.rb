@@ -1,5 +1,4 @@
 class BillsController < ApplicationController
-  before_action :authenticate_usuario!
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   # GET /bills
@@ -61,7 +60,7 @@ class BillsController < ApplicationController
   # DELETE /bills/1
   # DELETE /bills/1.json
   def destroy
-    @bill.destroy
+    @bill.anular_bill
     respond_to do |format|
       format.html { redirect_to bills_url, notice: 'Factura  fue exitosamente destruida.' }
       format.json { head :no_content }

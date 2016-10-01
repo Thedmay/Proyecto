@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_usuario!
+  #before_action :authenticate_usuario! || :authenticate_customer!
   before_action :set_order, only: [:show, :edit, :update, :destroy, :bill]
 
   # GET /orders

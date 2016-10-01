@@ -3,14 +3,19 @@ class Ability
 
   def initialize(user)
 
-    user ||= Usuario.new
-
-    if user.permission_level > 0
-        can :manage, :all
-    else
-        can :manage, :Product
-        can :manage, :Matter
-        can :manage, :Order
+    begin
+        if user.permission_level == 1
+            can :manage, :all
+        else user.permission_level == 0        
+            can :manage, :Product
+            can :manage, :Matter
+            can :manage, :Order
+        end
+    rescue Exception => e
+        alias_action :read, :update, :destroy, :to => :rud
+        can :create, :Order
+        can :rud, :Order
+        can :read, :Bill
     end
 
     # Define abilities for the passed in user here. For example:

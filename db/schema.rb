@@ -69,18 +69,29 @@ ActiveRecord::Schema.define(version: 20161001043052) do
   add_index "customer_matters", ["order_id"], name: "index_customer_matters_on_order_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
-    t.string   "nombre",            limit: 255
-    t.string   "rut",               limit: 255
-    t.integer  "telefono",          limit: 4
-    t.string   "email",             limit: 255
-    t.string   "direccion",         limit: 255
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.string   "razon_social",      limit: 255
-    t.integer  "giro_comercial_id", limit: 4
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "nombre",                 limit: 255, default: "", null: false
+    t.string   "rut",                    limit: 255, default: "", null: false
+    t.integer  "telefono",               limit: 4,   default: 0,  null: false
+    t.string   "direccion",              limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "razon_social",           limit: 255
+    t.integer  "giro_comercial_id",      limit: 4
   end
 
+  add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
   add_index "customers", ["giro_comercial_id"], name: "index_customers_on_giro_comercial_id", using: :btree
+  add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
 
   create_table "employees", force: :cascade do |t|
     t.string   "nombre",        limit: 255

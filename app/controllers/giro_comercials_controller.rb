@@ -28,7 +28,7 @@ class GiroComercialsController < ApplicationController
 
     respond_to do |format|
       if @giro_comercial.save
-        format.html { redirect_to @giro_comercial, notice: 'Giro comercial was successfully created.' }
+        format.html { redirect_to @giro_comercial, notice: 'Giro comercial fue exitosamente creado.' }
         format.json { render :show, status: :created, location: @giro_comercial }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class GiroComercialsController < ApplicationController
   def update
     respond_to do |format|
       if @giro_comercial.update(giro_comercial_params)
-        format.html { redirect_to @giro_comercial, notice: 'Giro comercial was successfully updated.' }
+        format.html { redirect_to @giro_comercial, notice: 'Giro comercial  fue exitosamente editado.' }
         format.json { render :show, status: :ok, location: @giro_comercial }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class GiroComercialsController < ApplicationController
   def destroy
     @giro_comercial.destroy
     respond_to do |format|
-      format.html { redirect_to giro_comercials_url, notice: 'Giro comercial was successfully destroyed.' }
+      format.html { redirect_to giro_comercials_url, notice: 'Giro comercial  fue exitosamente destruido.' }
       format.json { head :no_content }
     end
   end

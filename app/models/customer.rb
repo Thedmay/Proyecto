@@ -1,13 +1,18 @@
 class Customer < ActiveRecord::Base
-	validates :nombre, presence: { message: "NO puede dejarse vacío" }
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+    validates :nombre, presence: { message: "NO puede dejarse vacío" }
 	validates :nombre, presence: true, length:{in:3..200,
-          too_short:"demasiado corto",
-          too_long:"demasiado largo"}
-  	validates_format_of :nombre, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/,
-                      :message => "Invalido"
+	      too_short:"demasiado corto",
+	      too_long:"demasiado largo"}
+		validates_format_of :nombre, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/,
+	                  :message => "Invalido"
 	validates_format_of :rut,
-                      :with => /\A(\d{1,3})\.(\d{3})\.(\d{3})\-(k|\d{1})\Z/i,
-                      :message => "Formato no Valido EJ: 123.456.789-k"
+	                  :with => /\A(\d{1,3})\.(\d{3})\.(\d{3})\-(k|\d{1})\Z/i,
+	                  :message => "Formato no Valido EJ: 123.456.789-k"
 	validates :rut, presence: {message: 'NO puede estar en blanco'}
 	validates :rut, rut: {message: 'DEBE ser rut válido'}
 	validates :rut, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
@@ -20,8 +25,8 @@ class Customer < ActiveRecord::Base
 	validates :email, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
 	validates :direccion, presence:{ message: "NO puede dejarse vacío" }
 	validates :nombre, presence: true, length:{in:5..200,
-          too_short:"demasiado corto",
-          too_long:"demasiado largo"}
+	      too_short:"demasiado corto",
+	      too_long:"demasiado largo"}
 	has_many :bills
 	has_many :orders
 	belongs_to :giro_comercials

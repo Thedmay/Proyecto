@@ -17,6 +17,37 @@
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
+    <% if request.original_url.include? "usuarios" %>
+      <div class="form-group">
+        <%= f.label :permission_level, value: "Grado" %>
+        <select class="form-control" id="usuario_permission_level" name="usuario[permission_level]">
+          <option value=0>Empleado</option>
+          <option value=1>Administrador</option>
+        </select> 
+      </div>
+    <% else %>
+      <div class="field">
+        <%= f.label :rut %><br>
+        <%= f.text_field :rut , class: 'form-control'%>
+      </div>
+      <div class="field">
+        <%= f.label :telefono %><br>
+        <%= f.number_field :telefono , class: 'form-control', :onkeypress => "return solonumeros(event)"%>
+      </div>
+      <div class="field">
+        <%= f.label :direccion %><br>
+        <%= f.text_field :direccion, class: 'form-control' %>
+      </div>
+      <div>
+        <%= f.label :razon_social %><br>
+        <%= f.text_field :razon_social, class: 'form-control' %>
+      </div>
+      <div>
+        <%= f.label :giro_comercial_id %><br>
+        <%= collection_select( :customer, :giro_comercial_id, GiroComercial.all, :id, :nombre, {}, {:class => 'form-control', :multiple => false})%>
+      </div>
+    <% end %>
+
     <div class="field">
       <%= f.label :password , value: "Contraseña"%> <i>(dejar en blanco si no desea cambiarla)</i><br />
       <%= f.password_field :password, autocomplete: "off" , class: "form-control"%>

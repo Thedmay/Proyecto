@@ -20,7 +20,7 @@ class Employee < ActiveRecord::Base
 			  too_long:"demasiado largo"}
 	validates :sueldo, presence: { message: "NO puede dejarse vacío" }
 	validates :sueldo, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
-	validates_numericality_of :total,less_than_or_equal_to:100000000,
+	validates_numericality_of :sueldo,less_than_or_equal_to:100000000,
                             :message => "Parece ser muy grande"
 	validates :fecha_ingreso, presence: { message: "NO puede dejarse vacío" }
 	has_many :lincenses
