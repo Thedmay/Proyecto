@@ -32,6 +32,10 @@
       <%= f.text_field :direccion, class: 'form-control' %>
     </div>
     <div>
+      <%= f.label :razon_social %><br>
+      <%= f.text_field :razon_social, class: 'form-control' %>
+    </div>
+    <div>
       <%= f.label :giro_comercial_id %><br>
       <%= collection_select( :customer, :giro_comercial_id, GiroComercial.all, :id, :nombre, {}, {:class => 'form-control', :multiple => false})%>
     </div>
