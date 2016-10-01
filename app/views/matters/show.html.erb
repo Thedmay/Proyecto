@@ -12,11 +12,6 @@
   </p>
 
   <p>
-    <strong>Saldo:</strong>
-    <%= @matter.saldo %>
-  </p>
-
-  <p>
     <strong>Cantidad en pedidos:</strong>
     <%= @cantidadPedidos %>
   </p>
@@ -29,7 +24,6 @@
         <th>Codigo</th>
         <th>Unidades</th>
         <th>Medida</th>
-        <th>Fecha produce</th>
         <th>Categoria</th>
       </tr>
     </thead>
@@ -41,7 +35,6 @@
           <td><%= product.codigo %></td>
           <td><%= product.unidades %></td>
           <td><%= product.medida %></td>
-          <td><%= product.fecha_produce %></td>
           <td><%= product.category.nombre %></td>
         </tr>
       <% end %>

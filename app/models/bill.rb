@@ -2,15 +2,29 @@ class Bill < ActiveRecord::Base
   validates :numero, presence: { message: "NO puede dejarse vacío" }
   validates :numero, numericality: { only_integer: true, :message => "DEBE ser solo numeros"}
   validates :numero, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
+  validates_numericality_of :total,less_than_or_equal_to:9999999
+                            :message => "Parece ser muy grande"
   validates :fecha, presence: { message: "NO puede dejarse vacío" }
   validates :razon_social, presence: { message: "NO puede dejarse vacío" }
+  validates :nombre, presence: true, length:{in:3..200,
+          too_short:"demasiado corto",
+          too_long:"demasiado largo"}
   validates :giro_comercial, presence: { message: "NO puede dejarse vacío" }
+  validates :giro_comercial, presence: true, length:{in:2..200,
+          too_short:"demasiado corto",
+          too_long:"demasiado largo"}
+  validates_format_of :giro_comercial, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/,
+                      :message => "Invalido"
   validates :monto_neto, presence: { message: "NO puede dejarse vacío" }
   validates :monto_neto, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates_numericality_of :monto_neto,less_than_or_equal_to:100000000,
   validates :iva, presence: { message: "NO puede dejarse vacío" }
   validates :iva, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates_numericality_of :iva,less_than_or_equal_to:19000000,
   validates :total, presence: { message: "NO puede dejarse vacío" }
   validates :total, numericality: { only_integer: true }
+  validates_numericality_of :total,less_than_or_equal_to:119000000,
+                            :message => "Parece ser muy grande"
   belongs_to :customer
   has_many :bill_products
   has_many :products, through: :bill_products

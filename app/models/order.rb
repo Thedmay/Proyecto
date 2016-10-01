@@ -2,11 +2,15 @@ class Order < ActiveRecord::Base
   validates :numero, presence: { message: "NO puede dejarse vacío" }
   validates :numero, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
   validates :numero, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates_numericality_of :numero,less_than_or_equal_to:9999999,
+                            :message => "Parece ser muy grande"
   validates :fecha, presence: { message: "NO puede dejarse vacío" }
   validates :detalle, presence: { message: "NO puede dejarse vacío" }
-  validates :cantidad, presence: { message: "NO puede dejarse vacío" }
-  validates :cantidad, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
-  validates :medida, presence: { message: "NO puede dejarse vacío" }
+  validates :detalle, presence: true, length:{in:2..200,
+          too_short:"demasiado corto",
+          too_long:"demasiado largo"}
+  validates_format_of :detalle, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/,
+                      :message => "Invalido"
   validates :customer_id, presence: { message: "NO puede dejarse vacío" }
   validates :fecha_final, presence: { message: "NO puede dejarse vacío" }
   belongs_to :customer

@@ -9,8 +9,6 @@
         <th>Fecha</th>
         <th>Fecha final</th>
         <th>Detalle</th>
-        <th>Cantidad</th>
-        <th>Medida</th>
         <th>Cliente</th>
         <th colspan="3"></th>
       </tr>
@@ -23,8 +21,6 @@
           <td><%= order.fecha %></td>
           <td><%= order.fecha_final %></td>
           <td><%= order.detalle %></td>
-          <td><%= order.cantidad %></td>
-          <td><%= order.medida %></td>
           <td><%= order.customer.nombre %></td>
           <td><%= link_to 'Mostrar', order %></td>
           <td><%= link_to 'Editar', edit_order_path(order) %></td>

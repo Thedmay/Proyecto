@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @giro_comercial.nombre %>
+</p>
+
+<h1>Clientes</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Rut</th>
+        <th>Telefono</th>
+        <th>Email</th>
+        <th>Direccion</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @giro_comercial.customers.each do |customer| %>
+        <tr>
+          <td><%= customer.nombre %></td>
+          <td><%= customer.rut %></td>
+          <td><%= customer.telefono %></td>
+          <td><%= customer.email %></td>
+          <td><%= customer.direccion %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<%= link_to 'Editar', edit_giro_comercial_path(@giro_comercial), class: "btn btn-primary margenes" %> 
+<%= link_to 'Volver', giro_comercials_path, class: "btn btn-info margenes" %>

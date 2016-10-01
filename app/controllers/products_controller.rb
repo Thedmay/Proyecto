@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
     @product.matters = params[:matters]
 
     respond_to do |format|
-      if validar_tablas1 and @product.save
+      if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     @product.matters3=params[:matters2]
     
     respond_to do |format|
-      if validar_ambas_tablas and @product.update(product_params)
+      if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Producto fue exitosamente editado.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -80,11 +80,12 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:nombre, :codigo, :unidades, :cantidad, :medida, :category_id, :cantidadesMatters, :matters, :cantidadesMatters2, :matters2)
+      params.require(:product).permit(:nombre, :codigo, :unidades, :category_id, :cantidadesMatters, :matters, :cantidadesMatters2, :matters2, :medida)
     end
 
     def validar_tablas1
-      if (params[:cantidadesMatters]!=nil and params[:matters]!=nil)
+      params[:cantidadesMatters].delete(0)
+      if (params[:cantidadesMatters]!=nil and !params[:cantidadesMatters].empty?  and params[:matters]!=nil)
         params[:cantidadesMatters].each do |cant|
           if cant.to_i < 1
             return false
@@ -97,7 +98,8 @@ class ProductsController < ApplicationController
     end
 
     def validar_tablas2
-      if (params[:cantidadesMatters2]!=nil and params[:matters2]!=nil)
+      params[:cantidadesMatters2].delete(0)
+      if (params[:cantidadesMatters2]!=nil and !params[:cantidadesMatters2].empty?  and params[:matters2]!=nil)
         params[:cantidadesMatters2].each do |cant|
           if cant.to_i < 1
             return false

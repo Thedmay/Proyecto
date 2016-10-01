@@ -31,14 +31,6 @@
       <%= f.text_field :detalle , class: 'form-control', :onkeypress => "return sololetras(event)"%>
     </div>
     <div class="field">
-      <%= f.label :cantidad %><br>
-      <%= f.number_field :cantidad , class: 'form-control', :onkeypress => "return solonumeros(event)"%>
-    </div>
-    <div class="field">
-      <%= f.label :medida %><br>
-      <%= f.text_field :medida, class: 'form-control' , :onkeypress => "return sololetras(event)"%>
-    </div>
-    <div class="field">
       <%= f.label :customer_id, value: "Cliente"%>
       <%= collection_select( :order, :customer_id, Customer.all, :id, :nombre, {},{ :class => 'form-control', :multiple => false}) %>
     </div>

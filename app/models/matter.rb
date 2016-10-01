@@ -1,7 +1,17 @@
 class Matter < ActiveRecord::Base
 	validates :nombre, presence: { message: "NO puede dejarse vacío" }
+	validates :nombre, presence: true, length:{in:2..200,
+          too_short:"demasiado corto",
+          too_long:"demasiado largo"}
+    validates_format_of :nombre, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/,
+                      :message => "Invalido"
 	validates :medida, presence: { message: "NO puede dejarse vacío" }
-	validates :saldo, presence: { message: "NO puede dejarse vacío" }
+	validates :medida, presence: true, length:{in:2..200,
+        	  too_short:"demasiado corto",
+    	      too_long:"demasiado largo"}
+  	validates_format_of :medida, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/,
+                      :message => "Invalido"
+    
 	has_many :matter_products
 	has_many :customer_matters
 	has_many :products, through: :matter_products

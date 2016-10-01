@@ -8,7 +8,6 @@
       <tr>
         <th>Nombre</th>
         <th>Medida</th>
-        <th>Saldo</th>
         <th>Cantidad</th>
       </tr>
     </thead>
@@ -20,7 +19,6 @@
             
               <td><%= check_box_tag "matters[]", matter.id, :checked => editar %><%=matter.nombre%></td>
               <td><%= matter.medida %></td>
-              <td><%= matter.saldo %></td>
               <% if editar or cantidades_matters != nil %>
                 <td><%= number_field_tag "cantidadesMatters[]", cantidades_matters.at(i) , class: 'form-control', :onkeypress => "return solonumeros(event)"%></td>
               <% else %>

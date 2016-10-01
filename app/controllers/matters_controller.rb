@@ -71,6 +71,6 @@ class MattersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def matter_params
-      params.require(:matter).permit(:nombre, :cantidad, :medida, :saldo)
+      params.require(:matter).permit(:nombre, :cantidad, :medida)
     end
 end

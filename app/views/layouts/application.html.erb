@@ -164,12 +164,25 @@
 									</ul>
 								</li>
 							<% end %>
-							<% if can? :manage, :Customer %>
+							<% if can? :manage, :Customer or can? :manage, :Giro_Comercial %>
 								<li class="parent">
 									<a> Clientes</a>
 									<ul class="sub-menu">
-										<li><%= link_to  "Agregar", new_customer_path%></li>
-										<li><%= link_to  "Listar", customers_path%></li>
+										<% if can? :manage, :Clientes %>
+											<li>
+												<li><%= link_to  "Agregar", new_customer_path%></li>
+												<li><%= link_to  "Listar", customers_path%></li>
+											</li>
+										<% end %>
+										<% if can? :manage, :Giro_Comercials %>
+											<li>
+												<a class="parent">Giro comercial</a>
+												<ul class="sub-menu">
+													<li><%= link_to  "Agregar", new_giro_comercial_path%></li>
+													<li><%= link_to  "Listar", giro_comercials_path%></li>
+												</ul>
+											</li>
+										<% end %>
 									</ul>
 								</li>
 							<% end %>

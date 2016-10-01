@@ -1,10 +1,22 @@
 class Product < ActiveRecord::Base
   validates :nombre, presence: { message: "NO puede dejarse vacío" }
+  validates :nombre, presence: true, length:{in:3..50,
+          too_short:"demasiado corto",
+          too_long:"demasiado largo"}
+  validates_format_of :nombre, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/,
+                      :message => "Invalido"
   validates :codigo, presence: { message: "NO puede dejarse vacío" }
   validates :codigo, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates_numericality_of :total,less_than_or_equal_to:1000000,
+                            :message => "Parece ser muy grande"
   validates :unidades, presence: { message: "NO puede dejarse vacío" }
   validates :unidades, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates_numericality_of :unidades,less_than_or_equal_to:100000,
+                            :message => "Parece ser muy grande"
   validates :medida, presence: { message: "NO puede dejarse vacío" }
+  validates :medida, presence: true, length:{in:2..200,
+          too_short:"demasiado corto",
+          too_long:"demasiado largo"}
   validates :category_id, presence: { message: "NO puede dejarse vacío" }
   belongs_to :category
   has_many :matter_products

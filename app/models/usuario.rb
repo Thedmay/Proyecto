@@ -4,6 +4,16 @@ class Usuario < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :nombre, presence: true, length:{in:5..50,
+          too_short:"demasiado corto",
+          too_long:"demasiado largo"}
+  validates_format_of :nombre, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/,
+                      :message => "Invalido"
+  validates :email, presence: true, length:{in:5..254,
+          too_short:"demasiado corto",
+          too_long:"demasiado largo"}
+  validates :email, uniqueness: {case_sensitive: false ,message: "ya existe un email con ese nombre"}
+
   def pass=(pass)
     @pass=pass
   end

@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
     @order.cantidadesMatters = params[:cantidadesMatters]
 
     respond_to do |format|
-      if validar_matter_product && @order.save
+      if @order.save
         format.html { redirect_to @order, notice: 'Pedido fue exitosamente creado.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -67,7 +67,7 @@ class OrdersController < ApplicationController
     @order.cantidadesMatters3 = params[:cantidadesMatters2]
 
     respond_to do |format|
-      if validar_todo and @order.update(order_params)
+      if  @order.update(order_params)
         format.html { redirect_to @order, notice: 'Pedido fue exitosamente editado.' }
         format.json { render :show, status: :ok, location: @order }
       else
@@ -95,11 +95,12 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:numero, :fecha, :detalle, :cantidad, :medida, :customer_id, :cantidadesProducts, :products, :matters, :cantidadesMatters, :cantidadesProducts2, :products2, :matters2, :cantidadesMatters2, :fecha_final)
+      params.require(:order).permit(:numero, :fecha, :detalle, :customer_id, :cantidadesProducts, :products, :matters, :cantidadesMatters, :cantidadesProducts2, :products2, :matters2, :cantidadesMatters2, :fecha_final)
     end
 
     def validar_tablas1_matter
-      if (params[:cantidadesMatters]!=nil and params[:matters]!=nil)
+      params[:cantidadesMatters].delete(0)
+      if (params[:cantidadesMatters]!=nil and !params[:cantidadesMatters].empty?  and params[:matters]!=nil)
         params[:cantidadesMatters].each do |cant|
           if cant.to_i < 1
             return false
@@ -113,7 +114,8 @@ class OrdersController < ApplicationController
     end
 
     def validar_tablas2_matter
-      if (params[:cantidadesMatters2]!=nil and params[:matters2]!=nil)
+      params[:cantidadesMatters2].delete(0)
+      if (params[:cantidadesMatters2]!=nil and !params[:cantidadesMatters2].empty?  and params[:matters2]!=nil)
         params[:cantidadesMatters2].each do |cant|
           if cant.to_i < 1
             return false
@@ -126,7 +128,8 @@ class OrdersController < ApplicationController
     end
 
     def validar_tablas1_product
-      if (params[:cantidadesProducts]!=nil and params[:products]!=nil)
+      params[:cantidadesProducts].delete(0)
+      if (params[:cantidadesProducts]!=nil and !params[:cantidadesProducts].empty?  and params[:products]!=nil)
         params[:cantidadesProducts].each do |cant|
           if cant.to_i < 1
             return false
@@ -140,7 +143,8 @@ class OrdersController < ApplicationController
     end
 
     def validar_tablas2_product
-      if (params[:cantidadesProducts2]!=nil and params[:products2]!=nil)
+      params[:cantidadesProducts2].delete(0)
+      if (params[:cantidadesProducts2]!=nil and !params[:cantidadesProducts2].empty?  and params[:products2]!=nil)
         params[:cantidadesProducts2].each do |cant|
           if cant.to_i < 1
             return false

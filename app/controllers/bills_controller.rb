@@ -48,7 +48,7 @@ class BillsController < ApplicationController
     @bill.cantidades2=params[:cantidadesProducts]
     @bill.cantidades3=params[:cantidadesProducts2]
     respond_to do |format|
-      if validar_suma && validar_tabla && @bill.update(bill_params)
+      if validar_suma && @bill.update(bill_params)
         format.html { redirect_to @bill, notice: 'Factura  fue exitosamente editada.' }
         format.json { render :show, status: :ok, location: @bill }
       else
@@ -84,7 +84,8 @@ class BillsController < ApplicationController
     end
 
     def validar_tabla
-      if (params[:cantidadesProducts]!=nil and params[:products]!=nil)
+      params[:cantidadesProducts].delete(0)
+      if (params[:cantidadesProducts]!=nil and !params[:cantidadesProducts].empty? and params[:products]!=nil)
         params[:cantidadesProducts].each do |cant|
           if cant.to_i < 1
             return false

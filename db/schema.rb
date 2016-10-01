@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921143703) do
+ActiveRecord::Schema.define(version: 20161001043052) do
 
   create_table "assistances", force: :cascade do |t|
     t.integer  "fecha_id",    limit: 4
@@ -40,12 +40,13 @@ ActiveRecord::Schema.define(version: 20160921143703) do
     t.date     "fecha"
     t.string   "razon_social",   limit: 255
     t.string   "giro_comercial", limit: 255
-    t.float    "monto_neto",     limit: 24
-    t.float    "iva",            limit: 24
-    t.float    "total",          limit: 24
     t.integer  "customer_id",    limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "monto_neto",     limit: 4
+    t.integer  "iva",            limit: 4
+    t.integer  "total",          limit: 4
+    t.boolean  "anulado",                    default: true
   end
 
   add_index "bills", ["customer_id"], name: "index_bills_on_customer_id", using: :btree
@@ -68,29 +69,39 @@ ActiveRecord::Schema.define(version: 20160921143703) do
   add_index "customer_matters", ["order_id"], name: "index_customer_matters_on_order_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
-    t.string   "nombre",     limit: 255
-    t.string   "rut",        limit: 255
-    t.integer  "telefono",   limit: 4
-    t.string   "email",      limit: 255
-    t.string   "direccion",  limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "nombre",            limit: 255
+    t.string   "rut",               limit: 255
+    t.integer  "telefono",          limit: 4
+    t.string   "email",             limit: 255
+    t.string   "direccion",         limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "razon_social",      limit: 255
+    t.integer  "giro_comercial_id", limit: 4
   end
+
+  add_index "customers", ["giro_comercial_id"], name: "index_customers_on_giro_comercial_id", using: :btree
 
   create_table "employees", force: :cascade do |t|
     t.string   "nombre",        limit: 255
     t.string   "rut",           limit: 255
     t.string   "email",         limit: 255
-    t.float    "sueldo",        limit: 24
     t.date     "fecha_ingreso"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "sueldo",        limit: 4
   end
 
   create_table "fechas", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date     "fecha"
+  end
+
+  create_table "giro_comercials", force: :cascade do |t|
+    t.string   "nombre",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "lincenses", force: :cascade do |t|
@@ -118,9 +129,9 @@ ActiveRecord::Schema.define(version: 20160921143703) do
   create_table "matters", force: :cascade do |t|
     t.string   "nombre",     limit: 255
     t.string   "medida",     limit: 255
-    t.float    "saldo",      limit: 24
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "saldo",      limit: 4
   end
 
   create_table "order_products", force: :cascade do |t|
@@ -138,12 +149,12 @@ ActiveRecord::Schema.define(version: 20160921143703) do
     t.integer  "numero",      limit: 4
     t.date     "fecha"
     t.string   "detalle",     limit: 255
-    t.float    "cantidad",    limit: 24
     t.string   "medida",      limit: 255
     t.integer  "customer_id", limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.date     "fecha_final"
+    t.integer  "cantidad",    limit: 4
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree

@@ -1,0 +1,23 @@
+<%= form_for(@giro_comercial) do |f| %>
+  <% if @giro_comercial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@giro_comercial.errors.count, "error") %> prohibited this giro_comercial from being saved:</h2>
+
+      <ul>
+      <% @giro_comercial.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="caja">
+    <div class="field">
+      <%= f.label :nombre %><br>
+      <%= f.text_field :nombre, class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary margenes", value: "Ingresar" %>
+      <%= link_to 'Volver', giro_comercials_path, class: "btn btn-info margenes" %>
+    </div>
+  </div>
+<% end %>
