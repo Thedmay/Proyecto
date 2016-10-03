@@ -88,7 +88,7 @@ class Order < ActiveRecord::Base
 
   def save_order_products
     i=0
-    while i < @products.size()
+    while @products!=nil and i < @products.size()
       OrderProduct.create(order_id:self.id,
         cantidad:@cantidadesProducts.at(i),
         product_id: @products.at(i))
@@ -98,7 +98,7 @@ class Order < ActiveRecord::Base
 
   def save_order_matters
     i=0
-    while i < @matters.size()
+    while @matters!=nil and i < @matters.size()
       CustomerMatter.create(order_id:self.id,
         cantidad:@cantidadesMatters.at(i),
         matter_id: @matters.at(i))

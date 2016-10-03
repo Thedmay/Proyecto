@@ -10,12 +10,24 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   pool: 5
-  username: root
+  username: isw
   password: "1243"
-  socket: /var/run/mysqld/mysqld.sock
+  host: 127.0.0.1
+  port: 5432
+
+  pool: 5
+
+
+#default: &default
+#  adapter: mysql2
+#  encoding: utf8
+#  pool: 5
+#  username: root
+#  password: "1243"
+#  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default

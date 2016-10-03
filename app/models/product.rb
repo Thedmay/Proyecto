@@ -69,7 +69,7 @@ class Product < ActiveRecord::Base
 
   def save_matter_products
   	i=0
-  	while i < @matters.size()
+  	while @matters != nil and i < @matters.size()
   		MatterProduct.create(product_id:self.id,
   			cantidad:@cantidadesMatters.at(i),
   			matter_id: @matters.at(i))

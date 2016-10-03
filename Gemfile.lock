@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/svenfuchs/rails-i18n.git
+  revision: 705798b51a6a94d415a8670da3f84ee91496aa62
+  branch: rails-4-x
+  specs:
+    rails-i18n (4.0.9)
+      i18n (~> 0.7)
+      railties (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -94,14 +103,14 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
-    mysql2 (0.4.3)
-    mysql2 (0.4.3-x86-mingw32)
     nested_form (0.3.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     nokogiri (1.6.7.2-x86-mingw32)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
+    pg (0.19.0)
+    pg (0.19.0-x86-mingw32)
     rack (1.6.4)
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
@@ -207,8 +216,9 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
-  mysql2 (>= 0.3.13, < 0.5)
+  pg
   rails (= 4.2.6)
+  rails-i18n!
   rails_admin (~> 1.0)
   rut_validation
   sass-rails (~> 5.0)

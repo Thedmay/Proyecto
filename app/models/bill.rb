@@ -66,7 +66,7 @@ class Bill < ActiveRecord::Base
 
   def save_bill_products
   	i=0
-  	while i < @products.size()
+  	while @products!=nil and i < @products.size()
   		BillProduct.create(bill_id:self.id,
   			cantidad:@cantidades.at(i),
   			product_id: @products.at(i))
