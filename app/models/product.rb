@@ -18,6 +18,10 @@ class Product < ActiveRecord::Base
           too_short:"demasiado corto",
           too_long:"demasiado largo"}
   validates :category_id, presence: { message: "NO puede dejarse vacío" }
+  validates :precio, presence: { message: "NO puede dejarse vacío" }
+  validates :precio, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
+  validates_numericality_of :precio,less_than_or_equal_to:100000000,
+                            :message => "Parece ser muy grande"
   belongs_to :category
   has_many :matter_products
   has_many :bill_products

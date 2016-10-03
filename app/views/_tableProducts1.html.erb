@@ -11,6 +11,7 @@
         <th>Unidades</th>
         <th>Medida</th>
         <th>Categoria</th>
+        <th>Precio</th>
         <th>Cantidad</th>
       </tr>
     </thead>
@@ -23,6 +24,7 @@
           <td><%= product.unidades %></td>
           <td><%= product.medida %></td>
           <td><%= product.category.nombre %></td>
+          <td><%= product.precio%></td>
           <% if editar or cantidades_products != nil%>
             <td><%= number_field_tag "cantidadesProducts[]", cantidades_products.at(i), class: 'form-control', :onkeypress => "return solonumeros(event)" %></td>
           <% else %>

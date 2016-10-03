@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   get 'productos', :controller => 'productos', :action => 'index'
   get 'contacto', :controller => 'contacto', :action => 'index'
 
-
   #get 'welcome', :as => "Bienvenida"
   #get 'quienes', :as => "quienes"
   #get 'productos', :as => "productos"

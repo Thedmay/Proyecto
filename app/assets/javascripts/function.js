@@ -112,3 +112,15 @@ $(function holamundo() {
 	}catch(e){}
 
 });
+
+$(document).on('ready', function(){
+		$(".selector").on('change', function(){
+			$.ajax({
+				url: "bills/new";
+				type:"GET";
+				dataType: "script";
+				data:
+					customer_id: $(.selector option:selected).val()
+			})
+		})
+});

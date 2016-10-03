@@ -1,4 +1,4 @@
-<% if can? :read, :Bill and @bill.customer_id == current_customer.id%>
+<% if current_usuario.permission_level > -1 or (can? :read, :Bill and @bill.customer_id == current_customer.id) %>
   <p id="notice"><%= notice %></p>
 
   <p>

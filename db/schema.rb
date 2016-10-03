@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001043052) do
+ActiveRecord::Schema.define(version: 20161003004416) do
 
   create_table "assistances", force: :cascade do |t|
     t.integer  "fecha_id",    limit: 4
@@ -162,10 +162,11 @@ ActiveRecord::Schema.define(version: 20161001043052) do
     t.string   "detalle",     limit: 255
     t.string   "medida",      limit: 255
     t.integer  "customer_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.date     "fecha_final"
     t.integer  "cantidad",    limit: 4
+    t.integer  "estado",      limit: 4,   default: 0
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
@@ -178,6 +179,7 @@ ActiveRecord::Schema.define(version: 20161001043052) do
     t.integer  "category_id", limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "precio",      limit: 4
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree

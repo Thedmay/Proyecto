@@ -12,10 +12,10 @@ class Ability
             can :manage, :Order
         end
     rescue Exception => e
-        alias_action :read, :update, :destroy, :to => :rud
         can :create, :Order
-        can :rud, :Order
+        can :read, :Order
         can :read, :Bill
+        can :read, :Product
     end
 
     # Define abilities for the passed in user here. For example:

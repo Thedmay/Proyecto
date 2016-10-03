@@ -18,6 +18,13 @@ class BillsController < ApplicationController
     @bill = Bill.new
   end
 
+  def get_cosas
+    @giro_comercial = GiroComercial.where(id: 
+      Customer.where(id: @bill.customer_id).each do |cust|
+      cust.giro_comercial_id
+    end)
+  end
+
   # GET /bills/1/edit
   def edit
   end

@@ -1,4 +1,4 @@
-<% if can? :read, :Order %>
+<% if current_usuario.permission_level > 0 or (can? :read, :Order and current_customer.id == @order.customer_id) %>
   <p id="notice"><%= notice %></p>
 
   <p>
@@ -17,21 +17,25 @@
   </p>
 
   <p>
-    <strong>Detalle:</strong>
-    <%= @order.detalle %>
+    <strong>Cliente:</strong>
+    <%= @order.customer.nombre %>
   </p>
 
   <p>
-
-  <p>
-    <strong>Cliente:</strong>
-    <%= @order.customer.nombre %>
+    <strong>Estado:</strong>
+    <% if @order.customer.estado == 0 %>
+      <%= Pendiente %>
+    <% elsif condition == 1 %>
+      <%= "Aceptada - En proceso" %>
+    <% else %>
+      <%= Finalizada %>
+    <% end %>
   </p>
 
   <%= render '/tableProducts2', productos: @order.products, cantidades: @order.order_products %>
   <%= render '/tableMatters2', materiales: @order.matters%>
 
-  <%= link_to 'Facturar', params[:id]+'/bill' , class: "btn btn-primary margenes"%>
+  <%= link_to 'Facturar', params[:id]+'/bill' , class: "btn btn-primary margenes", :disabled => @order.estado > 1 %>
   <%= link_to 'Editar', edit_order_path(@order) , class: "btn btn-info margenes"%> 
   <%= link_to 'Volver', orders_path , class: "btn btn-default margenes"%>
 <% else %>

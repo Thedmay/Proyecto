@@ -54,7 +54,7 @@
 	          location.reload();
 	     }
 	}
-	inter=setInterval("hola()", 3000); // Ejecuto la acción cada segundo
+	inter=setInterval("hola()", 300000); // Ejecuto la acción cada segundo
   </script>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -105,15 +105,17 @@
 									</ul>
 								</li>
 							<% end %>
-							<% if can? :manage, :Product or  can? :manage, :Matter or can? :manage, :Category%>
+							<% if can? :read, :Product or  can? :manage, :Matter or can? :manage, :Category%>
 								<li class="parent">
 									<a> Elaboración</a>
 									<ul class="sub-menu">
-										<% if can? :manage, :Product %>
+										<% if can? :read, :Product %>
 											<li>
 												<a class="parent"> Productos</a>
 												<ul class="sub-menu">
-													<li><%= link_to  "Agregar", new_product_path%></li>
+													<% if can? :create, :Product %>
+														<li><%= link_to  "Agregar", new_product_path%></li>
+													<% end %>
 													<li><%= link_to  "Listar", products_path%></li>
 												</ul>
 											</li>
@@ -139,11 +141,11 @@
 									</ul>
 								</li>
 							<% end %>
-							<% if can? :rud, :Order or can? :manage, :Bill %>
+							<% if can? :read, :Order or can? :manage, :Bill %>
 								<li class="parent">
 									<a> Documentos</a>
 									<ul class="sub-menu">
-										<% if can? :rud, :Order %>
+										<% if can? :read, :Order %>
 											<li>
 												<a class="parent"> Pedidos</a>
 												<ul class="sub-menu">
@@ -213,9 +215,10 @@
 							</li>
 							<% if not customer_signed_in? %>
 								<li class="parent">
-									<a> Usuarios </a>
+									<a> Intranet </a>
 									<ul class="sub-menu">
-										<li class="current-menu-item"><%= link_to "Ingresar", new_usuario_session_path%></li>
+										<li class="current-menu-item"><%= link_to "Clientes", new_customer_session_path%></li>
+										<li class="current-menu-item"><%= link_to "Trabajadores", new_usuario_session_path%></li>
 										<li class="current-menu-item"><%= link_to "Registrarse", new_customer_registration_path%></li>
 									</ul>
 								</li>

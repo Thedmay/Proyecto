@@ -26,22 +26,26 @@
       <%= f.label :fecha_final %><br>
       <input id="order_fecha_final" type='date' min='2016-09-28' max='2017-09-28' class="form-control" name="order[fecha_final]"></input>
     </div>
-    <div class="field">
-      <%= f.label :detalle %><br>
-      <%= f.text_field :detalle , class: 'form-control', :onkeypress => "return sololetras(event)"%>
-    </div>
       <div class="field">
         <%= f.label :customer_id, value: "Cliente"%>
         <% if current_usuario %>
           <%= collection_select( :order, :customer_id, Customer.all, :id, :nombre, {},{ :class => 'form-control', :multiple => false}) %>
         <% else %>
           <select class="form-control">
-            <option value=current_customer><%= current_customer.nombre %></option>
+            <option value=current_customer name="order[customer_id]" id="order_customer_id"><%= current_customer.nombre %></option>
           </select> 
         <% end %>
       </div>
   </div>
   <% if editar %>
+    <div>
+      <% f.label :estado %>
+      <select class="form-control" name="order[estado]" id="order_estado">
+        <option value=0><%= Pendiente %></option>
+        <option value=1><%= "Aceptado - Procesando" %></option>
+        <option value=2><%= Finalizado %></option>
+      </select>
+    </div>
     <%= render '/tableProducts1', productos: productos, editar:editar, productos2: productos2, cantidades_products: cantidades_products %>
     <%= render '/tableMatters1', materiales: materiales, materiales2: materiales2, cantidades_matters: cantidades_matters, editar:editar%>
   <% else %>
@@ -50,6 +54,12 @@
   <% end %>
   
   <div class="actions">
+    <%begin%>
+      <% if current_customer.id > 0 %>
+        <p style="color:#E60026">ATENCIÓN Los pedidos no se pueden editar, revise con cuidado lo ingresado</p>
+      <%end%>
+    <%rescue%>
+    <%end%>
     <%= f.submit class: "btn btn-primary margenes", value: texto%>
     <% if texto=="Editar" %>
       <%= link_to 'Mostrar', @order , class: "btn btn-primary margenes"%> 

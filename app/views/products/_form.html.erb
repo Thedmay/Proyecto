@@ -26,6 +26,10 @@
       <%= f.number_field :unidades , class: 'form-control', :onkeypress => "return solonumeros(event)"%>
     </div>
     <div class="field">
+      <%= f.label :precio %><br>
+      <%= f.number_field :precio , class: 'form-control', :onkeypress => "return solonumeros(event)"%>
+    </div>
+    <div class="field">
       <%= f.label :medida %><br>
       <%= f.text_field :medida , class: 'form-control', :onkeypress => "return sololetras(event)"%>
     </div>

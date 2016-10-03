@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_usuario!
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -80,7 +79,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:nombre, :codigo, :unidades, :category_id, :cantidadesMatters, :matters, :cantidadesMatters2, :matters2, :medida)
+      params.require(:product).permit(:precio, :nombre, :codigo, :unidades, :category_id, :cantidadesMatters, :matters, :cantidadesMatters2, :matters2, :medida)
     end
 
     def validar_tablas1

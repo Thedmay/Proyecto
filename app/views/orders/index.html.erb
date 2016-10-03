@@ -1,4 +1,4 @@
-<% if can? :rud, :Order %>
+<% if can? :read, :Order %>
   
   <h1>Listando Pedidos</h1>
 
@@ -8,8 +8,8 @@
         <th>Numero</th>
         <th>Fecha</th>
         <th>Fecha final</th>
-        <th>Detalle</th>
         <th>Cliente</th>
+        <th>Estado</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -21,10 +21,18 @@
             <td><%= order.numero %></td>
             <td><%= order.fecha %></td>
             <td><%= order.fecha_final %></td>
-            <td><%= order.detalle %></td>
             <td><%= order.customer.nombre %></td>
+            <% if order.estado == 0%>
+              <td style="color:#E60026"><%= Pendiente  %></td>
+            <% elsif order.estado == 1 %>
+              <td style="color:#FFE900"><%= Aceptada - Procesando  %></td>
+            <% else %>
+              <td style="color:#009150"><%= Finalizada  %></td>
+            <% end %>
             <td><%= link_to 'Mostrar', order %></td>
-            <td><%= link_to 'Editar', edit_order_path(order) %></td>
+            <% if can? :update, :Order%>
+              <td><%= link_to 'Editar', edit_order_path(order) %></td>
+            <% end %>
             <% if can? :destroy, :Product %>
               <td><%= link_to 'Destruir', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
