@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function() { 
 
 	/* MAIN MENU */
 	$('#main-menu > li:has(ul.sub-menu)').addClass('parent');

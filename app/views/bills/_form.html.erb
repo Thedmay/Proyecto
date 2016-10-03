@@ -69,3 +69,22 @@
     <%= link_to 'Volver', bills_path , class: "btn btn-default margenes"%>
   </div>
 <% end %>
+
+
+
+<% GiroComercial.all.each do |giro|  %>
+  <% @array = giro.id %>
+  <% @array = giro.nombre %>
+<% end %>
+
+<%  @array %>
+
+
+
+<script type="text/javascript">
+
+  var tmp2 = <%= @girogiro %>
+</script>
+
+
+

@@ -33,6 +33,7 @@ class OrdersController < ApplicationController
 
   def bill
     @bill = Bill.new
+    @num = Bill.last.numero+1
   end
 
   # GET /orders/1/edit

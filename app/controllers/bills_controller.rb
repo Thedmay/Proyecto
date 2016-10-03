@@ -20,8 +20,15 @@ class BillsController < ApplicationController
   # GET /bills/new
   def new
     @bill = Bill.new
-    @giros = GiroComercial.all
     @num = Bill.last.numero+1
+    @giros2=Array.new
+    #aux = GiroComercial.all
+    #aux.each |giro| do
+    #  aux = [giro.id,giro.nombre]
+    #  @giros2.push(aux)
+    #end
+    
+    #@giros2 = Hash[GiroComercial.all.map { |var_tmp| [var_tmp.id.to_s, var_tmp.nombre.to_s ]}]
   end
 
   def get_cosas
@@ -94,7 +101,7 @@ class BillsController < ApplicationController
     end
 
     def validar_suma
-      return @bill.iva + @bill.monto_neto == @bill.total
+      return ((@bill.iva.to_i + @bill.monto_neto.to_i) == @bill.total.to_i)
     end
 
     def validar_tabla
