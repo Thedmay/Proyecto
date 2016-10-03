@@ -1,49 +1,101 @@
-<% if current_usuario.permission_level > -1 or (can? :read, :Bill and @bill.customer_id == current_customer.id) %>
-  <p id="notice"><%= notice %></p>
+<% begin %>
+  <% if (can? :read, :Bill and @bill.customer_id == current_customer.id) %>
+    <p id="notice"><%= notice %></p>
 
-  <p>
-    <strong>Numero:</strong>
-    <%= @bill.numero %>
-  </p>
+    <p>
+      <strong>Numero:</strong>
+      <%= @bill.numero %>
+    </p>
 
-  <p>
-    <strong>Fecha:</strong>
-    <%= @bill.fecha %>
-  </p>
+    <p>
+      <strong>Fecha:</strong>
+      <%= @bill.fecha %>
+    </p>
 
-  <p>
-    <strong>Razon social:</strong>
-    <%= @bill.razon_social %>
-  </p>
+    <p>
+      <strong>Razon social:</strong>
+      <%= @bill.razon_social %>
+    </p>
 
-  <p>
-    <strong>Giro comercial:</strong>
-    <%= @bill.giro_comercial %>
-  </p>
+    <p>
+      <strong>Giro comercial:</strong>
+      <%= @bill.giro_comercial %>
+    </p>
 
-  <p>
-    <strong>Monto neto:</strong>
-    <%= @bill.monto_neto %>
-  </p>
+    <p>
+      <strong>Monto neto:</strong>
+      <%= @bill.monto_neto %>
+    </p>
 
-  <p>
-    <strong>Iva:</strong>
-    <%= @bill.iva %>
-  </p>
+    <p>
+      <strong>Iva:</strong>
+      <%= @bill.iva %>
+    </p>
 
-  <p>
-    <strong>Total:</strong>
-    <%= @bill.total %>
-  </p>
+    <p>
+      <strong>Total:</strong>
+      <%= @bill.total %>
+    </p>
 
-  <p>
-    <strong>Cliente:</strong>
-    <%= @bill.customer.nombre %>
-  </p>
+    <p>
+      <strong>Cliente:</strong>
+      <%= @bill.customer.nombre %>
+    </p>
 
-  <%= render '/tableProducts2', productos: @bill.products, cantidades: @bill.bill_products %>
+    <%= render '/tableProducts2', productos: @bill.products, cantidades: @bill.bill_products %>
 
-  <%= link_to 'Volver', bills_path , class: "btn btn-default margenes"%>
-<% else %>
-  <%= render '/noPermission' %>
+    <%= link_to 'Volver', bills_path , class: "btn btn-default margenes"%>
+  <% else %>
+    <%= render '/noPermission' %>
+  <% end %>
+<% rescue %>
+  <% if can? :read, :Bill %>
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <strong>Numero:</strong>
+      <%= @bill.numero %>
+    </p>
+
+    <p>
+      <strong>Fecha:</strong>
+      <%= @bill.fecha %>
+    </p>
+
+    <p>
+      <strong>Razon social:</strong>
+      <%= @bill.razon_social %>
+    </p>
+
+    <p>
+      <strong>Giro comercial:</strong>
+      <%= @bill.giro_comercial %>
+    </p>
+
+    <p>
+      <strong>Monto neto:</strong>
+      <%= @bill.monto_neto %>
+    </p>
+
+    <p>
+      <strong>Iva:</strong>
+      <%= @bill.iva %>
+    </p>
+
+    <p>
+      <strong>Total:</strong>
+      <%= @bill.total %>
+    </p>
+
+    <p>
+      <strong>Cliente:</strong>
+      <%= @bill.customer.nombre %>
+    </p>
+
+    <%= render '/tableProducts2', productos: @bill.products, cantidades: @bill.bill_products %>
+
+    <%= link_to 'Volver', bills_path , class: "btn btn-default margenes"%>
+  <% else %>
+    <%= render '/noPermission' %>
+  <% end %>
 <% end %>

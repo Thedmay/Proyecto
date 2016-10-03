@@ -16,7 +16,7 @@
   <div class="caja">
     <div class="field">
       <%= f.label :numero %><br>
-      <%= f.number_field :numero, class: 'form-control', :onkeypress => "return solonumeros(event)" %>
+      <%= f.number_field :numero, class: 'form-control', :readonly => true, :onkeypress => "return solonumeros(event)", :value => @num %>
     </div>
     <div class="field">
       <%= f.label :fecha %><br>
@@ -38,12 +38,12 @@
       </div>
   </div>
   <% if editar %>
-    <div>
-      <% f.label :estado %>
+    <div class="caja">
+      <%= f.label :estado %>
       <select class="form-control" name="order[estado]" id="order_estado">
-        <option value=0><%= Pendiente %></option>
+        <option value=0><%= "Pendiente" %></option>
         <option value=1><%= "Aceptado - Procesando" %></option>
-        <option value=2><%= Finalizado %></option>
+        <option value=2><%= "Finalizado" %></option>
       </select>
     </div>
     <%= render '/tableProducts1', productos: productos, editar:editar, productos2: productos2, cantidades_products: cantidades_products %>

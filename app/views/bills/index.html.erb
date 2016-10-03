@@ -19,7 +19,22 @@
   <tbody>
     <% @bills.each do |bill| %>
       <tr>
-        <% if current_customer.id == bill.customer_id %>
+        <% begin%>
+          <% if current_customer.id == bill.customer_id %>
+            <td><%= bill.numero %></td>
+            <td><%= bill.fecha %></td>
+            <td><%= bill.razon_social %></td>
+            <td><%= bill.giro_comercial %></td>
+            <td><%= bill.monto_neto %></td>
+            <td><%= bill.iva %></td>
+            <td><%= bill.total %></td>
+            <td><%= bill.customer.nombre %></td>
+            <td><%= link_to 'Mostrar', bill %></td>
+            <% if can? :destroy, :Bill %>
+              <td><%= link_to 'Destruir', bill, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+            <% end %>
+          <% end %>
+        <% rescue %>
           <td><%= bill.numero %></td>
           <td><%= bill.fecha %></td>
           <td><%= bill.razon_social %></td>
@@ -30,7 +45,7 @@
           <td><%= bill.customer.nombre %></td>
           <td><%= link_to 'Mostrar', bill %></td>
           <% if can? :destroy, :Bill %>
-            <td><%= link_to 'Destruir', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Destruir', bill, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
           <% end %>
         <% end %>
       </tr>

@@ -4,18 +4,24 @@ class BillsController < ApplicationController
   # GET /bills
   # GET /bills.json
   def index
-    @bills = Bill.all
+    @bills = Bill.where(anulado:true)
   end
 
   # GET /bills/1
   # GET /bills/1.json
   def show
-    @cantidadesProducts = BillProduct.cantidades(@bill.id, 1)
+    if @bill.anulado == true
+      @cantidadesProducts = BillProduct.cantidades(@bill.id, 1)
+    else
+      redirect_to bills_url
+    end
   end
 
   # GET /bills/new
   def new
     @bill = Bill.new
+    @giros = GiroComercial.all
+    @num = Bill.last.numero+1
   end
 
   def get_cosas
@@ -27,6 +33,8 @@ class BillsController < ApplicationController
 
   # GET /bills/1/edit
   def edit
+    @giros = GiroComercial.all
+    @num = @bill.numero
   end
 
   # POST /bills

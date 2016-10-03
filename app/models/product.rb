@@ -5,9 +5,10 @@ class Product < ActiveRecord::Base
           too_long:"demasiado largo"}
   validates_format_of :nombre, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/,
                       :message => "Invalido"
+  validates :codigo, uniqueness: {case_sensitive: false ,message: "ya existe codigo"}
   validates :codigo, presence: { message: "NO puede dejarse vacío" }
   validates :codigo, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
-  validates_numericality_of :total,less_than_or_equal_to:1000000,
+  validates_numericality_of :codigo,less_than_or_equal_to:9999999,
                             :message => "Parece ser muy grande"
   validates :unidades, presence: { message: "NO puede dejarse vacío" }
   validates :unidades, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }

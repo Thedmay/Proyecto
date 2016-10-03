@@ -16,6 +16,10 @@ class Order < ActiveRecord::Base
   after_update :update_listProducts, :update_listMatters
   before_destroy :destroy_listProducts, :destroy_listMatters
 
+  def anular_bill
+    self.update(:anulado => true)
+  end
+
   def products=(products)
     @products=products
   end

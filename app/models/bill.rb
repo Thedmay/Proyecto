@@ -8,15 +8,10 @@ class Bill < ActiveRecord::Base
   
   validates :fecha, presence: { message: "NO puede dejarse vacío" }
   validates :razon_social, presence: { message: "NO puede dejarse vacío" }
-  validates :nombre, presence: true, length:{in:3..200,
+  validates :razon_social, presence: true, length:{in:2..200,
           too_short:"demasiado corto",
           too_long:"demasiado largo"}
   validates :giro_comercial, presence: { message: "NO puede dejarse vacío" }
-  validates :giro_comercial, presence: true, length:{in:2..200,
-          too_short:"demasiado corto",
-          too_long:"demasiado largo"}
-  validates_format_of :giro_comercial, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/,
-                      :message => "Invalido"
   validates :monto_neto, presence: { message: "NO puede dejarse vacío" }
   validates :monto_neto, numericality: { only_integer: true, :message => "DEBE ser solo numeros" }
   validates_numericality_of :monto_neto,less_than_or_equal_to:100000000,
@@ -35,15 +30,6 @@ class Bill < ActiveRecord::Base
   after_create :save_bill_products
   after_update :update_listProducts
   before_destroy :destroy_listProducts
-  before_create :estandarizar_numero
-
-  def estandarizar_numero
-    largo = self.numero.length
-    if largo < 8 and largo > 0
-      numero = self.numero.to_i
-      self.numero = "%07d" % numero
-    end
-  end
 
   def cantidades=(cantidades)
     if cantidades != nil

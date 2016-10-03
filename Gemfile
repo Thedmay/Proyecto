@@ -58,5 +58,7 @@ group :development do
   # Permisos
   gem 'cancancan'
   gem 'tzinfo-data'
+
+  gem 'seed_dump'
 end
 

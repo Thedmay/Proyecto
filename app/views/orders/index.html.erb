@@ -17,17 +17,38 @@
     <tbody>
       <% @orders.each do |order| %>
         <tr>
-          <% if current_customer.id == @order.customer_id %>
+          <% begin %>
+            <% if current_customer.id == order.customer_id %>
+              <td><%= order.numero %></td>
+              <td><%= order.fecha %></td>
+              <td><%= order.fecha_final %></td>
+              <td><%= order.customer.nombre %></td>
+              <% if order.estado == 0%>
+                <td style="color:#E60026"><%= "Pendiente"  %></td>
+              <% elsif order.estado == 1 %>
+                <td style="color:#FFE900"><%= "Aceptada - Procesando"  %></td>
+              <% else %>
+                <td style="color:#009150"><%= "Finalizada"  %></td>
+              <% end %>
+              <td><%= link_to 'Mostrar', order %></td>
+              <% if can? :update, :Order%>
+                <td><%= link_to 'Editar', edit_order_path(order) %></td>
+              <% end %>
+              <% if can? :destroy, :Product %>
+                <td><%= link_to 'Destruir', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+            <% end %>
+          <% rescue  %>
             <td><%= order.numero %></td>
             <td><%= order.fecha %></td>
             <td><%= order.fecha_final %></td>
             <td><%= order.customer.nombre %></td>
             <% if order.estado == 0%>
-              <td style="color:#E60026"><%= Pendiente  %></td>
+              <td style="color:#E60026"><%= "Pendiente"  %></td>
             <% elsif order.estado == 1 %>
-              <td style="color:#FFE900"><%= Aceptada - Procesando  %></td>
+              <td style="color:#FFE900"><%= "Aceptada - Procesando"  %></td>
             <% else %>
-              <td style="color:#009150"><%= Finalizada  %></td>
+              <td style="color:#009150"><%= "Finalizada"  %></td>
             <% end %>
             <td><%= link_to 'Mostrar', order %></td>
             <% if can? :update, :Order%>

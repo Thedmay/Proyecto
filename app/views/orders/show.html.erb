@@ -1,4 +1,5 @@
-<% if current_usuario.permission_level > 0 or (can? :read, :Order and current_customer.id == @order.customer_id) %>
+<% begin %>
+<% if (can? :read, :Order and current_customer.id == @order.customer_id) %>
   <p id="notice"><%= notice %></p>
 
   <p>
@@ -23,21 +24,68 @@
 
   <p>
     <strong>Estado:</strong>
-    <% if @order.customer.estado == 0 %>
-      <%= Pendiente %>
-    <% elsif condition == 1 %>
+    <% if @order.estado == 0 %>
+      <%= "Pendiente" %>
+    <% elsif @order.estado == 1 %>
       <%= "Aceptada - En proceso" %>
     <% else %>
-      <%= Finalizada %>
+      <%= "Finalizada" %>
     <% end %>
   </p>
 
   <%= render '/tableProducts2', productos: @order.products, cantidades: @order.order_products %>
   <%= render '/tableMatters2', materiales: @order.matters%>
-
-  <%= link_to 'Facturar', params[:id]+'/bill' , class: "btn btn-primary margenes", :disabled => @order.estado > 1 %>
+  <% if @order.estado > 1 %>
+    <%= link_to 'Facturar', params[:id]+'/bill' , class: "btn btn-primary margenes" %>
+  <% end %>
   <%= link_to 'Editar', edit_order_path(@order) , class: "btn btn-info margenes"%> 
   <%= link_to 'Volver', orders_path , class: "btn btn-default margenes"%>
 <% else %>
   <%= render '/noPermission' %>
 <% end %>
+<%rescue%>
+<% if can? :read, :Order %>
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Numero:</strong>
+    <%= @order.numero %>
+  </p>
+
+  <p>
+    <strong>Fecha:</strong>
+    <%= @order.fecha %>
+  </p>
+
+  <p>
+    <strong>Fecha final:</strong>
+    <%= @order.fecha_final%>
+  </p>
+
+  <p>
+    <strong>Cliente:</strong>
+    <%= @order.customer.nombre %>
+  </p>
+
+  <p>
+    <strong>Estado:</strong>
+    <% if @order.estado == 0 %>
+      <%= "Pendiente" %>
+    <% elsif @order.estado == 1 %>
+      <%= "Aceptada - En proceso" %>
+    <% else %>
+      <%= "Finalizada" %>
+    <% end %>
+  </p>
+
+  <%= render '/tableProducts2', productos: @order.products, cantidades: @order.order_products %>
+  <%= render '/tableMatters2', materiales: @order.matters%>
+  <% if @order.estado > 1 %>
+    <%= link_to 'Facturar', params[:id]+'/bill' , class: "btn btn-primary margenes" %>
+  <% end %>
+  <%= link_to 'Editar', edit_order_path(@order) , class: "btn btn-info margenes"%> 
+  <%= link_to 'Volver', orders_path , class: "btn btn-default margenes"%>
+<% else %>
+  <%= render '/noPermission' %>
+<% end %>
+<%end%>

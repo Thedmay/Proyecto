@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
 
   def index
-    @orders = Order.all
+    @orders = Order.where(anulado:false)
   end
 
   def llenar
@@ -16,14 +16,19 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @cantidadesProducts = OrderProduct.cantidades(@order.id, 0)
-    @cantidadesMatters = CustomerMatter.cantidades(@order.id, 0)
+    if @order.anulado == false
+      @cantidadesProducts = OrderProduct.cantidades(@order.id, 0)
+      @cantidadesMatters = CustomerMatter.cantidades(@order.id, 0)
+    else
+      redirect_to orders_url
+    end
   end
 
   # GET /orders/new
   def new
     @order = Order.new
     @materiales = nil
+    @num = Order.last.numero+1
   end
 
   def bill
@@ -32,6 +37,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    @num = @order.numero
   end
 
   # POST /orders
@@ -80,7 +86,7 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    @order.destroy
+    @order.anular_order
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Pedido fue exitosamente destruido.' }
       format.json { head :no_content }
@@ -95,7 +101,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:numero, :fecha, :customer_id, :cantidadesProducts, :products, :matters, :cantidadesMatters, :cantidadesProducts2, :products2, :matters2, :cantidadesMatters2, :fecha_final)
+      params.require(:order).permit(:estado,:numero, :fecha, :customer_id, :cantidadesProducts, :products, :matters, :cantidadesMatters, :cantidadesProducts2, :products2, :matters2, :cantidadesMatters2, :fecha_final)
     end
 
     def validar_tablas1_matter
